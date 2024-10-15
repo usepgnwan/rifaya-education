@@ -39,7 +39,7 @@ $_title = strtolower(str_replace(' ', '_', $title));
     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
         {{ $title }}
     </span>
-    <span class="text-[10px] w-3 h-3 icon-arrow  icon-[simple-line-icons--arrow-down] group-hover/rotate:rotate-180 lg:group-hover/focus: ease-in duration-300 "></span>
+    <span class="text-[10px] w-3 h-3 icon-arrow  icon-[simple-line-icons--arrow-left] group-hover/rotate:-rotate-90 lg:group-hover/focus: ease-in duration-300 "></span>
 </button>
 <ul id="data-toggle-{{ $_title }}" class="@if(!$active) hidden @endif py-2 space-y-2">
     {{ $link }}

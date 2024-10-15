@@ -49,7 +49,12 @@
                 </div>
             @else
                 <div class="px-4 text-sm  py-2 flex">
-                    <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="User">
+                @if( $item->user->profile  !== null)
+                <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="{{ $item->user->profile }}" alt="User">
+
+                @else
+                <span class="size-6 icon-[solar--user-circle-bold]"></span>
+                @endif
                     <div class="px-4 pt-1">{{ $item->user->name ?? '' }}</div>
                 </div>
             @endif

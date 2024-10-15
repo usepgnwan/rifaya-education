@@ -19,7 +19,6 @@
                 <div class="flex items-center ">
                     <span class="icon-[ep--arrow-right] text-slate-800 "></span> &nbsp;
                     @if (isset($value['route_name']) && $value['route_name'] != null)
-                    {{$value['route_name']}}
                         <a href="{{ route($value['route_name']) }}" @click.prevent="Livewire.navigate('{{ route($value['route_name']) }}')"
                          class="ms-1 font-medium text-gray-800 hover:text-[#FABE0E] md:ms-2 dark:text-gray-400 dark:hover:text-white">  {{ $key }}</a>
                     @else

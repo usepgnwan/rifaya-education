@@ -1,8 +1,7 @@
 <?php
 
 $version = "9.14.0";
-
-$_path =  isset($_SESSION['_path']) ? $_SESSION['_path'] : '';
+$_path =  isset($_COOKIE['_path_cookie']) ? $_COOKIE['_path_cookie'] : '';
 if (session_id() == '') {
     session_start();
 }

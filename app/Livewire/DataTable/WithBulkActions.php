@@ -32,7 +32,7 @@ trait WithBulkActions
         $this->selected = $this->rows->pluck('id')->map(fn($id) => (string) $id);
     }
 
-    public function selectAll()
+    public function selectAllPage()
     {
         $this->selectAll = true;
     }

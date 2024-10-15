@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="px-1 py-4 dark:text-slate-400 min-h-[150px]">
                                         <div class="font-bold text-xl mb-1 text-gray-600 dark:text-slate-400 min-h-20">
-                                            <p class="px-4 line-clamp-3 hover:line-clamp-none cursor-pointer hover:text-blue-500">
+                                         <p class="px-4 line-clamp-3 hover:line-clamp-none cursor-pointer hover:text-blue-500">
                                                 <a href="{{ route('post.detail', ['slug'=>$item->slug]) }}" @click.prevent="Livewire.navigate('{{ route('post.detail', ['slug'=>$item->slug]) }}')">  {{ $item->title }}</a>
                                             </p>
                                         </div>
@@ -61,8 +61,12 @@
                                         </div>
                                     @else
                                         <div class="px-4 text-sm  py-2 flex">
-                                            <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="User">
-                                            <div class="px-4 pt-1">Rani Oktaviani</div>
+                                            @if( $item->user->profile  !== null)
+                                            <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="{{ $item->user->profile }}" alt="User">
+                                            @else
+                                            <span class="size-6 icon-[solar--user-circle-bold]"></span>
+                                            @endif
+                                            <div class="px-4 pt-1">{{ $item->user->name }}</div>
                                         </div>
                                     @endif
                                 </div>
@@ -134,7 +138,7 @@
                                 </div>
                                 <p class="text-sm  px-1">
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, iusto vero! Modi, nihil eveniet enim voluptatum provident iusto reprehenderit ipsam iure.
-                                </p>
+                                   </p>
                             </div>
                             <hr class="dark:border-gray-700">
                             <div class="px-4 text-sm  py-2 w-full">

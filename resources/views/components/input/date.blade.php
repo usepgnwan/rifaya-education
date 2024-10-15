@@ -1,29 +1,38 @@
-{{--
--- Important note:
---
--- This template is based on an example from Tailwind UI, and is used here with permission from Tailwind Labs
--- for educational purposes only. Please do not use this template in your own projects without purchasing a
--- Tailwind UI license, or they’ll have to tighten up the licensing and you’ll ruin the fun for everyone.
---
--- Purchase here: https://tailwindui.com/
---}}
-
-<div
-    x-data="{ value: @entangle($attributes->wire('model')), picker: undefined }"
-    x-init="new Pikaday({ field: $refs.input, format: 'MM/DD/YYYY', onOpen() { this.setDate($refs.input.value) } })"
-    x-on:change="value = $event.target.value"
-    class="flex rounded-md shadow-sm"
->
-    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-        <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 2C5.44772 2 5 2.44772 5 3V4H4C2.89543 4 2 4.89543 2 6V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V6C18 4.89543 17.1046 4 16 4H15V3C15 2.44772 14.5523 2 14 2C13.4477 2 13 2.44772 13 3V4H7V3C7 2.44772 6.55228 2 6 2ZM6 7C5.44772 7 5 7.44772 5 8C5 8.55228 5.44772 9 6 9H14C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7H6Z"/>
-        </svg>
-    </span>
-
-    <input
-        {{ $attributes->whereDoesntStartWith('wire:model') }}
-        x-ref="input"
-        x-bind:value="value"
-        class="rounded-none rounded-r-md flex-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-    />
+@props([
+    'default_format' => 'yyyy-MM-dd',
+    'timepicker' => false,
+])
+<div x-data="{ value: @entangle($attributes->wire('model')).defer }"
+     x-init="
+        new AirDatepicker($refs.input, {
+        timepicker: {{ $timepicker ? 'true' : 'false' }},  // Pass the boolean correctly
+        dateFormat: '{{ $default_format }}',  // Pass the format string correctly
+        isMobile: true,
+        autoClose: true,
+        onSelect: function({date}) {
+            let selectedDate = '';
+            if ({{ $timepicker ? 'true' : 'false' }}) {
+                // If timepicker is enabled, include both date and time
+                $refs.input.value = date.toISOString().split('.')[0].replace('T', ' ');
+                selectedDate = $refs.input.value;
+            } else {
+                // If timepicker is disabled, only include the date part
+                $refs.input.value = date.toLocaleDateString('id-ID'); // YYYY-MM-DD format
+                selectedDate = $refs.input.value;
+            }
+            $wire.set('{{ $attributes->wire('model')->value() }}', selectedDate);
+        },
+        locale: {
+            days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            today: 'Today',
+            clear: 'Clear',
+            firstDay: 0
+        }
+    });
+" id="">
+    <input x-ref="input" x-bind:value="value"   {{ $attributes->merge(['class' => 'rounded flex-1 form-input border px-3 py-2 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light ']) }}/>
 </div>

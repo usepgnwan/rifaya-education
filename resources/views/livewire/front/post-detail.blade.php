@@ -26,7 +26,7 @@
                     <li aria-current="page">
                         <div class="flex items-center ">
                             <span class="icon-[ep--arrow-right] text-slate-800 mt-2"></span> &nbsp;
-                            <span class="ms-1 font-medium text-gray-500 md:ms-2 dark:text-gray-400 line-clamp-1 hover:line-clamp-none cursor-pointer w-full">{{$detail->title}}</span>
+                            <span class="ms-1 font-medium text-gray-500 md:ms-2 dark:text-gray-400 line-clamp-1 hover:line-clamp-none cursor-pointer w-full">Detail Post</span>
                         </div>
                     </li>
                 </ol>

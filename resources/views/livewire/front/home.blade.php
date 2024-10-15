@@ -250,7 +250,6 @@
                     <span class="text-2xl font-bold"><span class="icon-[pepicons-print--camera]  "></span> Online</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
                     <hr class="dark:border-gray-700 my-4">
                     <span class="text-2xl font-bold"><span class="icon-[fluent--people-edit-16-regular]"></span> Offline</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
-
                 </div>
             </div>
             <div class="max-lg:w-full max-lg:p-5 bg-[#fabe0e] dark:bg-gray-800 dark:text-slate-400 lg:p-4 lg:absolute mx-auto mt-5   w-64 lg:rounded-xl lg:shadow-lg lg:right-0 lg:top-2 text-white">

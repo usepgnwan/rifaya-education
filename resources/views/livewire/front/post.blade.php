@@ -35,21 +35,25 @@
                     <input type="search" id="search" wire:model="search" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  >
                 </div>
                 <div class="w-full sm:w-full lg:w-1/4 lg:relative" wire:ignore>
-                    <select class="select2-init select2-custom absolute block w-full" name="kelas" data-target="kelas"  wire.model.live="kelas">
-                        <option value=""  >- Pilih Kelas -</option>
-                        @foreach ($_kelas as $v )
-                            <option value="{{ $v->id }}" @if($v->id == $kelas) selected @endif> {{ $v->title  }} - {{$v->jenjang->title}}</option>
-                        @endforeach
-                    </select>
+
+
+                        <x-input.select  wire:model.live.debounce.300ms="kelas" :placeholder="__('- Pilih Kelas -')" :multiple="__(true)">
+                            @foreach ($_kelas as $v )
+                                <option value="{{ $v->id }}" @if($v->id == $kelas) selected @endif> {{ $v->title  }} - {{$v->jenjang->title}}</option>
+                            @endforeach
+                        </x-input.select>
                 </div>
                 <div class="w-full sm:w-full lg:w-1/4 lg:relative"  wire:ignore>
 
-                    <select class="select2-init  absolute block w-full" name="kategori" data-target="kategori"  wire.model.live="kategori" >
-                    <option value=""  >- Pilih Kategori -</option>
+                    <!-- <select class="select2-init  absolute block w-full" name="kategori" data-target="kategori"  wire.model.live="kategori" > -->
+                    <x-input.select  wire:model.live.debounce.300ms="kategori" :placeholder="__('- Pilih Kategori -')">
+                        <option value="">- Semua Kategori -</option>
                         @foreach ($_kategori as $v )
-                            <option value="{{ $v->id }}" @if($v->id == $kategori) selected @endif > {{ $v->title  }} </option>
+                            <option value="{{ $v->id }}" @if($v->id == $kategori) selected @endif > {{ $v->title  }}  </option>
                         @endforeach
-                    </select>
+                    </x-input.select>
+
+                    <!-- </select> -->
                 </div>
                 <div class="max-lg:w-full lg:w-1/5">
                     <button name="submit-filter" type="submit" class="btn-red-octaclass block h-[2.65rem] w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  dark:border-gray-800 dark:text-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 dark:hover:text-slate-400"> Cari </button>

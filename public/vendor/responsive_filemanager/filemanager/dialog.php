@@ -5,13 +5,17 @@ $time = time();
 
 include 'connector/connector.php';
 
-if (!auth_user()->check() ) {
+// if (!auth_user()->check() ) {
 
-    echo "User is not authenticated";
-    die;
-}else{
+    // echo "User is not authenticated";
+    // die;
+// }else{
     $config = include 'config/config.php';
-}
+    if($_path == ''){
+        echo "User is not authenticated";
+        die;
+    }
+// }
 
 if (USE_ACCESS_KEYS == true){
 	if (!isset($_GET['akey'], $config['access_keys']) || empty($config['access_keys'])){

@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use Cviebrock\EloquentSluggable\sluggable;
 class Post extends Model
 {
     use HasFactory;
+    use Sluggable;
     protected $guarded = ['id'];
     protected $with = ['user'];
 
@@ -46,4 +48,26 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
+
+
+    const STATUSES = [
+        'published' => 'Published',
+        'draft' => 'Draft',
+        'reject' => 'Reject',
+    ];
+
+    const Type = [
+        'public' => 'Public',
+        'private' => 'private',
+        'purchase' => 'purchase',
+    ];
+
+    public function sluggable(): array
+        {
+            return [
+                'slug' => [
+                    'source' => 'title'
+                ]
+            ];
+        }
 }

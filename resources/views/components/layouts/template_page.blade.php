@@ -10,6 +10,7 @@
         <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
 
         <!-- <script src="{{ asset('/vendor/select2/css/select2.min.css')}}"></script> -->
+         <link rel="stylesheet" href="{{ asset('/vendor/tinymce/skins/ui/oxide-dark/content.css')}}">
     </head>
     <body class=" dark:text-slate-400  dark:bg-gray-700">
        <x-partials.navigations-home :check="'home'"></x-partials.navigations-home>

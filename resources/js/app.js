@@ -4,8 +4,7 @@ const baseUrl = process.env.BASE_URL;
 import $ from 'jquery';
 // Ensure jQuery is globally available
 window.$ = window.jQuery = $;
-
-
+import {createPopper} from '@popperjs/core';
 
 
 import { initializeSwipers } from './swipper';
@@ -18,7 +17,7 @@ import initSelect2 from './select2';
 // Initialize Swiper
 document.addEventListener('livewire:initialized', function () {
     document.addEventListener('livewire:navigated', () => {
-        tinyEditor();
+
 
         setTimeout(() => {
             initTooltips()
@@ -99,12 +98,17 @@ document.addEventListener('livewire:initialized', function () {
 
             on('click', '.menu-group-dashboard', function (e) {
                 let list = this.querySelector('.icon-arrow').classList;
-                if (list.contains('icon-[simple-line-icons--arrow-down]')) {
-                    list.add('icon-[simple-line-icons--arrow-up]');
-                    list.remove('icon-[simple-line-icons--arrow-down]');
-                } else {
+                console.log(list)
+                if (list.contains('icon-[simple-line-icons--arrow-left]')) {
                     list.add('icon-[simple-line-icons--arrow-down]');
-                    list.remove('icon-[simple-line-icons--arrow-up]');
+                    list.remove('icon-[simple-line-icons--arrow-left]');
+                    list.remove('group-hover/rotate:-rotate-90');
+                    list.add('group-hover/rotate:rotate-90');
+                } else {
+                    list.add('icon-[simple-line-icons--arrow-left]');
+                    list.remove('icon-[simple-line-icons--arrow-down]');
+                    list.add('group-hover/rotate:-rotate-90');
+                    list.remove('group-hover/rotate:rotate-90');
                 }
                 console.log(list)
             });
@@ -195,8 +199,6 @@ document.addEventListener('livewire:initialized', function () {
                     }
                 }
             });
-
-
             // Get references to elements
             const gallery = select('.gallery');
             const lightbox = select('#lightbox');
@@ -398,7 +400,7 @@ document.addEventListener('livewire:initialized', function () {
 
             initDropdown();
 
-
+            // tinyEditor();
             initSelect2()
             window.addEventListener('postFilter', function (event) {
                 setTimeout(() => {
@@ -504,8 +506,20 @@ document.addEventListener('livewire:initialized', function () {
             //     Livewire.dispatch(target, { value: e.target.value });
             //     // Livewire.dispatch("update", { value: e.target.value });
             // })
-            // console.log('popstate')
+            console.log('popstate')
             initTooltips();
+            setTimeout(() => {
+                tinyEditor();
+            },1000)
+        });
+        tinyEditor();
+
+
+        window.addEventListener('tiny:init', (v) => {
+
+            setTimeout(() => {
+                tinyEditor();
+            },1000)
         });
         // purecounter('.purecounter');
 

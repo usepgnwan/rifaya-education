@@ -25,7 +25,7 @@ class PostFactory extends Factory
             'image' => $this->faker->imageUrl(640, 480, 'nature', true, 'Faker'),
             'class_id'=>9,
             'user_id'=>1,
-            'category_id'=>1,
+            'category_id'=>rand(1,4),
             'status'=>'published',
         ];
     }

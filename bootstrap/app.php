@@ -19,6 +19,17 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->renderable(function (Throwable $e,Request $request)
         {
+            // If the exception is an AuthenticationException, handle it separately
+            if ($e instanceof \Illuminate\Auth\AuthenticationException) {
+                // dd($e->redirectTo);
+                // Redirect to the login page if the exception has a redirectTo property
+                // if (isset($e->redirectTo)) {
+                //     return redirect($e->redirectTo);
+                // }
+                // Fallback: Redirect to login route
+                return redirect()->guest(route('login'));
+            }
+
            $statusCode = $e->getStatusCode();
            if( $statusCode == 404){
             return response()->json([

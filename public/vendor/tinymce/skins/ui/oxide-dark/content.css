@@ -588,9 +588,9 @@ div.mce-footnotes li > a.mce-footnotes-backlink {
   background-size: auto 6px;
   cursor: default;
 }
-.mce-toc {
+/* .mce-toc {
   border: 1px solid gray;
-}
+} */
 .mce-toc h2 {
   margin: 4px;
 }

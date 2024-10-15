@@ -18,9 +18,20 @@ class LoginForm extends Form
 
     public function store(){
 
+        // $login = $request->email;
+        $fieldType = filter_var($this->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        if(Auth::attempt($this->validate())){
-            return redirect()->route('home');
+
+        if(Auth::attempt([$fieldType => $this->email, 'password' => $this->password])){
+            if (auth()->check()) {
+                $path = strtolower(str_replace(' ', '_', auth()->user()->name)) . '/';
+                // Set the cookie with a name of your choice, e.g., '_path_cookie'
+                setcookie('_path_cookie', $path, time() + (86400 * 30), "/"); // Cookie expires in 30 days
+            } else {
+                // Optionally, you can unset the cookie if the user is not authenticated
+                setcookie('_path_cookie', '', time() - 3600, "/"); // Unset the cookie
+            }
+            return redirect()->route('account.dashboard');
         }
 
         throw ValidationException::withMessages([

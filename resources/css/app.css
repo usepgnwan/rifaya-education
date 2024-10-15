@@ -23,7 +23,7 @@
 	}
 
 	.select2-container .select2-selection--multiple {
-		@apply box-border overflow-hidden h-4 cursor-pointer block select-none;
+		@apply box-border overflow-y-auto h-4 cursor-pointer block select-none;
 	}
 
 	.select2-container .select2-selection--multiple .select2-selection__rendered {

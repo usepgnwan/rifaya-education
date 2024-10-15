@@ -7,7 +7,8 @@
         @if ($check == 'dashboard')
             <!-- dashboard header -->
             <span>
-                <img src="https://readymadeui.com/readymadeui.svg" alt="logo"  class='lg:w-36 max-lg:w-20 mr-4' />
+                <a href="{{ route('home') }}" @click.prevent="Livewire.navigate('{{ route('home') }}')"><!-- <img src="https://readymadeui.com/readymadeui.svg" alt="logo"  class='lg:w-36 max-lg:w-20 mr-4' /> --> Rifaya Education</a>
+
                 <button  class='button-menu max-lg:right-4 dark:bg-transparent fixed top-2 lg:left-[12.6rem]  z-[100] rounded-full   p-3 w-max- h-opened mt-[2px]'>
                     <!-- <svg class="w-6 h-6 h-open hidden" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -29,7 +30,8 @@
                 </button>
             </span>
         @else
-            <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
+            <a href="{{ route('home') }}" @click.prevent="Livewire.navigate('{{ route('home') }}')">
+                <img src="https://readymadeui.com/readymadeui.svg" alt="logo"
                     class='lg:w-36 max-lg:w-20' />
             </a>
             <div id="collapseMenu" class='sm:w-[72%] lg:w-[72%] ml-auto max-lg:min-w-[300px] lg:!block max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 z-50'>
@@ -110,10 +112,16 @@
 
             @auth
 
-            <div x-data="{ open: false }" class="relative inline-block mt-2">
+            <div x-data="{ open: false }" class="relative inline-block  ">
+            @if (auth()->user()->profile )
+            <img   @click="open = !open" @click.outside="open = false" class="w-7 h-w-7 rounded-full cursor-pointer my-auto max-lg:ml-auto" src="{{ auth()->user()->profile }} " alt="User">
+
+            @else
                 <span @click="open = !open" @click.outside="open = false"
-                    class="dropdown-toggle-button-user icon-[solar--user-circle-bold] cursor-pointer size-6  my-auto max-lg:ml-auto text-white">
+                    class="mt-2 dropdown-toggle-button-user icon-[solar--user-circle-bold] cursor-pointer size-6  my-auto max-lg:ml-auto text-white">
                 </span>
+            @endif
+
 
                 <!-- Dropdown Menu -->
                 <div x-show="open" x-transition
@@ -123,8 +131,8 @@
 
                     <!-- User Information -->
                     <div class="px-4 py-3 text-sm text-gray-900 dark:text-slate-400">
-                        <div>Bonnie Green</div>
-                        <div class="font-medium truncate">name@flowbite.com</div>
+                        <div>{{ auth()->user()->name }}</div>
+                        <div class="text-xs truncate">{{ auth()->user()->username }}</div>
                     </div>
 
                     <!-- Dropdown Links -->

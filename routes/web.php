@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LogoutController;
 use App\Livewire\Dashboard\Blog;
+use App\Livewire\Dashboard\Blog\BlogForm;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\Tes;
 use App\Livewire\Dashboard\Users;
@@ -15,7 +16,7 @@ use App\Livewire\Front\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',Home::class)->name('home');
-Route::get('/login',Login::class)->name('login');
+Route::get('/login',Login::class)->name('login')->middleware('guest');
 Route::get('/blog', Post::class)->name('post.index');
 Route::get('/tentang', About::class)->name('about');
 Route::get('/page/pengajar', TeacherJoin::class)->name('teacher.join');
@@ -24,13 +25,16 @@ Route::get('/blog/artikel/detail/{slug?}', PostDetail::class)->name('post.detail
 Route::get('/blog/bank-soal/detail/{slug?}', PostDetail::class)->name('post.banksoal.detail');
 Route::get('/logout', LogoutController::class)->name('logout');
 
-Route::prefix('account')->group(function () {
-    Route::get('dashboard', Dashboard::class)->name('account.dashboard');
-    Route::get('tes', Tes::class)->name('account.tes');
-    Route::get('dashboard/login', [Tes::class, 'loginView'])->name('account.dashboard.login');
-    Route::get('blog', Blog::class)->name('account.blog');
-    Route::get('users', Users::class)->name('account.users');
+Route::middleware('auth')->group(function () {
+    Route::prefix('account')->group(function () {
+        Route::get('dashboard', Dashboard::class)->name('account.dashboard');
+        Route::get('tes', Tes::class)->name('account.tes');
+        Route::get('dashboard/login', [Tes::class, 'loginView'])->name('account.dashboard.login');
+        Route::get('blog', Blog::class)->name('account.blog');
+        Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
+        Route::get('users', Users::class)->name('account.users');
 
+    });
 });
 
 Route::get('/tes',function(){

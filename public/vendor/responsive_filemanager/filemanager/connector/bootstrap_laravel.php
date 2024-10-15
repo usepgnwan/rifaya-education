@@ -41,17 +41,6 @@ function auth_user() {
         }
         $_SESSION['_path'] =  $app['auth']->check() ? strtolower(str_replace(' ', '_', $app['auth']->user()->name))  . '/': '';
 
-            // Change to set a cookie instead of using session
-        if ($app['auth']->check()) {
-            $path = strtolower(str_replace(' ', '_', $app['auth']->user()->name)) . '/';
-            // Set the cookie with a name of your choice, e.g., '_path_cookie'
-            setcookie('_path_cookie', $path, time() + (86400 * 30), "/"); // Cookie expires in 30 days
-        } else {
-            // Optionally, you can unset the cookie if the user is not authenticated
-            setcookie('_path_cookie', '', time() - 3600, "/"); // Unset the cookie
-        }
-
-
         return $app['auth'];
     }
 

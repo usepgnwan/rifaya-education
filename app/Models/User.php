@@ -21,8 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
+        'username',
+        'profile',
     ];
 
+    protected $with = ['roles'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -39,7 +43,12 @@ class User extends Authenticatable
      * @return array<string, string>
      */
 
-    protected $with =['roles'];
+
+    const STATUSES = [
+        'aktif' => 'Aktif',
+        'non-aktif' => 'Non-aktif',
+        'register' => 'Register',
+    ];
 
     protected function casts(): array
     {

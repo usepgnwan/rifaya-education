@@ -14,22 +14,23 @@ class Post extends Component
     public $kategori = '';
 
     // event dari select
-    #[On('kelas')]
-    public function updateKelas($value){
-        $this->kelas = $value;
-    }
-    #[On('kategori')]
-    public function updateKategori($value){
-        $this->kategori = $value;
-    }
+    // #[On('kelas')]
+    // public function updateKelas($value){
+    //     $this->kelas = $value;
+    // }
+    // #[On('kategori')]
+    // public function updateKategori($value){
+    //     $this->kategori = $value;
+    // }
 
 
     public function mount(){
         if( isset(request()->kategori) &&  request()->kategori != '' ){
-            $this->kategori = Category::where( 'title',request()->kategori)->first()->id;
+            $this->kategori = Category::where( 'title',request()->kategori)->first()->id ?? null;
         }
         if( isset(request()->kelas) &&  request()->kelas != '' ){
-            $this->kategori = Kelas::where( 'title',request()->kelas)->first()->id;
+
+            $this->kelas = Kelas::where( 'title',request()->kelas)->first()->id ?? null;
         }
         if( isset(request()->search) &&  request()->search != '' ){
             $this->search = request()->search;
