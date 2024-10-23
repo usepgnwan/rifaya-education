@@ -7,7 +7,8 @@
         @if ($check == 'dashboard')
             <!-- dashboard header -->
             <span>
-                <a href="{{ route('home') }}" @click.prevent="Livewire.navigate('{{ route('home') }}')"><!-- <img src="https://readymadeui.com/readymadeui.svg" alt="logo"  class='lg:w-36 max-lg:w-20 mr-4' /> --> Rifaya Education</a>
+            <!-- style="background-image: url('{{ asset('asset/img/home/teacher2.png') }}')" -->
+                <a href="{{ route('home') }}" @click.prevent="Livewire.navigate('{{ route('home') }}')"><img src="{{ asset('asset/img/home/logo-rifayas.png') }}" alt="logo"  class='lg:w-36 max-lg:w-20 mr-4' /> </a>
 
                 <button  class='button-menu max-lg:right-4 dark:bg-transparent fixed top-2 lg:left-[12.6rem]  z-[100] rounded-full   p-3 w-max- h-opened mt-[2px]'>
                     <!-- <svg class="w-6 h-6 h-open hidden" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +32,7 @@
             </span>
         @else
             <a href="{{ route('home') }}" @click.prevent="Livewire.navigate('{{ route('home') }}')">
-                <img src="https://readymadeui.com/readymadeui.svg" alt="logo"
+             <img src="{{ asset('asset/img/home/logo-rifayas.png') }}"  alt="logo"
                     class='lg:w-36 max-lg:w-20' />
             </a>
             <div id="collapseMenu" class='sm:w-[72%] lg:w-[72%] ml-auto max-lg:min-w-[300px] lg:!block max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 z-50'>

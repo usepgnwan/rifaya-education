@@ -20,7 +20,7 @@
 
 @if($inline)
     <div class="mb-3">
-        <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-gray-700 dark:text-gray-400">{{ $label }}</label>
+        <label for="{{ $for }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{!! $label !!}</label>
 
         <div class="mt-1 relative rounded-md shadow-sm">
             {{ $slot }}
@@ -37,7 +37,7 @@
 @else
     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start {{ $borderless ? '' : ' sm:border-t ' }} sm:border-gray-200 {{ $paddingless ? '' : ' sm:py-5 ' }}">
         <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-            {{ $label }}
+            {!! $label !!}
         </label>
 
         <div class="mt-1 sm:mt-0 sm:col-span-2">

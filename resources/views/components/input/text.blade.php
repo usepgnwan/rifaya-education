@@ -15,8 +15,8 @@
 <div class="flex rounded-md shadow-sm">
     @if ($leadingAddOn)
         <span class="inline-flex items-center px-3 py-2 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-            {{ $leadingAddOn }}
+            {!! $leadingAddOn !!}
         </span>
     @endif
-    <input {{ $attributes->merge(['class' => 'dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light rounded py-2 flex-1 form-input border px-3 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5' . ($leadingAddOn ? ' rounded-none rounded-r-md' : '')]) }}/>
+    <input {{ $attributes->merge(['class' => 'form-input-rifaya' . ($leadingAddOn ? ' rounded-none rounded-r-md' : '')]) }}/>
 </div>

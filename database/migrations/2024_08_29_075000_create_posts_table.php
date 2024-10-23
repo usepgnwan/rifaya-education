@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('class_id')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('category_id')->nullable();
-            $table->enum('status', ['draft', 'published'])->default('draft');
+            $table->enum('status', ['draft', 'published','reject'])->default('draft');
             $table->enum('type', ['public', 'private', 'purchase'])->default('public');
             $table->timestamps();
         });

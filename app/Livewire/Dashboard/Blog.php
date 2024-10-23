@@ -24,7 +24,7 @@ class Blog extends Component
         'kelas'=> [],
         'created_at'=> '',
     ];
-
+    public $showDeleteModal = false;
     public bool $showFilters = false;
     public function toggleShowFilters()
     {
@@ -38,6 +38,7 @@ class Blog extends Component
     public function updatedFilters(){ $this->resetPage(); }
     public function mount(){
 
+        $this->default_sorts = ['created_at' => 'desc'];
         $this->breadcumb = [
             'Home' => [
                 'active' => true,
@@ -48,6 +49,19 @@ class Blog extends Component
                 'route_name' => ''
             ]
         ];
+    }
+
+    public function deleteSelected()
+    {
+
+
+        $deleteCount = $this->selectedRowsQuery->count();
+
+        $this->selectedRowsQuery->delete();
+
+        $this->showDeleteModal = false;
+        $this->selectPage = false;
+        $this->notify('You\'ve deleted '.$deleteCount.' transactions');
     }
 
     // pengambilan data

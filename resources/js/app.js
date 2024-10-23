@@ -13,6 +13,11 @@ import tinyEditor from './tinyEditor';
 import purecounter from './purecounter';
 import { select, on } from './custom';
 import initSelect2 from './select2';
+
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
+
+window.GLightbox = GLightbox;
 // window.Swiper = Swiper;
 // Initialize Swiper
 document.addEventListener('livewire:initialized', function () {

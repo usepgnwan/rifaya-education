@@ -122,7 +122,7 @@
                                 <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white dark:text-slate-400 bg-gray-700 border-2 border-[#FABE0E] rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>
                             </div>
                             <div class="w-full mt-2  sm:mt-0 lg:mt-3">
-                                <button class="btn-red-octaclass"> Bergabung </button>
+                                <button class="btn-red-octaclass"   @click.prevent="Livewire.navigate('{{ route('register') }}')"> Bergabung </button>
                             </div>
                         </div>
                     </div>

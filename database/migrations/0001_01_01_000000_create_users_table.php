@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
-            $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
+            $table->enum('status', ['aktif', 'non-aktif','register'])->default('aktif');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

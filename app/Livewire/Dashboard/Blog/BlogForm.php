@@ -40,14 +40,15 @@ class BlogForm extends Component
     ];
 
     public $post;
-
+    public $_images = null;
     public function rules()
     {
         if( is_string($this->form['image']) ){
+            $this->_images = $this->form['image'];
             $this->form['image'] = null;
         }
         return [
-            'form.title' => 'required|min:20',
+            'form.title' => 'required|min:4',
             'form.body' => 'required',
             'form.image' =>'nullable|image|mimes:jpg,png,jpeg,svg,gif|max:2048',
             'form.status' => 'required|in:' . collect(Post::STATUSES)->keys()->implode(','),
@@ -55,15 +56,13 @@ class BlogForm extends Component
         ];
     }
 
-    public function messages() {
+    public function validationAttributes () {
         return [
-            'form.title' => 'Judul tidak boleh kosong.',
-            'form.title.min' => 'minimal 20 characters.',
-            'form.body' => 'Content tidak boleh kosong.',
-            'form.status' => 'Status harus dipilih.',
-            'form.type' => 'Type harus dipilih.',
-            'form.image.max' => 'Foto maximum 2mb.',
-            'form.image.mimes' => 'Foto hanya bisa type jpg,png,jpeg, svg,gif.'
+            'form.title' => 'Judul',
+            'form.body' => 'Content',
+            'form.image' => 'Foto',
+            'form.status' => 'Status',
+            'form.type' => 'Tipe',
         ];
     }
 
@@ -124,55 +123,62 @@ class BlogForm extends Component
 
     public function save()
     {
-        $this->validate();
-        $materi = $this->form['materi_id'];
-        $this->form['user_id'] = auth()->user()->id;
-        unset($this->form['materi_id']);
+        try {
 
-        // Handle image upload
-        if (isset($this->form['image']) && is_string($this->form['image']) === false) {
+            $this->validate();
+            $materi = $this->form['materi_id'];
+            $this->form['user_id'] = auth()->user()->id;
+            unset($this->form['materi_id']);
+            // Handle image upload
+            if (isset($this->form['image']) && is_string($this->form['image']) === false && !is_null($this->form['image'])) {
+                // Check if this is an update and the post has an old image
+                if ($this->post && $this->post->image) {
+                    // Check if the old image exists in storage
+                    // change /storage to ''
 
-            // Check if this is an update and the post has an old image
-            if ($this->post && $this->post->image) {
-                // Check if the old image exists in storage
-                // change /storage to ''
+                    $prev_img = str_replace('/storage/', '', $this->post->image);
 
-                $prev_img = str_replace('/storage/', '', $this->post->image);
-
-                if (Storage::disk('public')->exists($prev_img)) {
-                    // Delete the old image
-                    Storage::disk('public')->delete($prev_img );
+                    if (Storage::disk('public')->exists($prev_img)) {
+                        // Delete the old image
+                        Storage::disk('public')->delete($prev_img );
+                    }
                 }
+                // Store the new image
+                $this->form['image'] = $this->form['image']->store('images', 'public');
+
+                // Generate the URL for the stored image
+                $this->form['image'] = Storage::url($this->form['image']);
+            } else {
+                // If no new image is uploaded, retain the existing image URL
+                $this->form['image'] =  $this->_images == 'remove' ? null : ($this->post->image ?? null);
             }
-            // Store the new image
-            $this->form['image'] = $this->form['image']->store('images', 'public');
 
-            // Generate the URL for the stored image
-            $this->form['image'] = Storage::url($this->form['image']);
-        } else {
-            // If no new image is uploaded, retain the existing image URL
-            $this->form['image'] = $this->post->image;
+            if (is_null($this->post)) {
+                // Create a new post
+                Post::create($this->form)->each(function ($user) use ($materi) {
+                    $user->materi()->sync($materi);
+                });
+                $message = 'Succes create Post ';
+            } else {
+                // Update existing post
+                $this->post->fill($this->form);
+                $this->post->save();
+                $this->post->materi()->sync($materi);
+                $message = 'Succes update Post ';
+            }
+
+            // Flash data to the session
+            session()->flash('notify', ['message'=>$message]);
+
+            // Redirect after saving
+            return redirect()->route('account.blog');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+
+            $this->notify('Periksa kembali form isian', 'warning');
+
+            throw $e;
         }
-
-        if (is_null($this->post)) {
-            // Create a new post
-            Post::create($this->form)->each(function ($user) use ($materi) {
-                $user->materi()->sync($materi);
-            });
-            $message = 'Succes create Post ';
-        } else {
-            // Update existing post
-            $this->post->fill($this->form);
-            $this->post->save();
-            $this->post->materi()->sync($materi);
-            $message = 'Succes update Post ';
-        }
-
-        // Flash data to the session
-        session()->flash('notify', $message);
-
-        // Redirect after saving
-        return redirect()->route('account.blog');
     }
 
     public function render()

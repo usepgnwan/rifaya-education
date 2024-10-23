@@ -108,4 +108,29 @@
         </div>
 
     </section>
+    <section class="p-12 mx-auto sm:w-full  lg:flex lg:p-6"  >
+        <div class="flex w-full px-12 m-auto flex-wrap ">
+            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+                1
+                <p class="font-bold text-xl">Calon tutor Melakukan Registrasi</p>
+                Calon Tutor mengisi form pendaftaran di halaman ini
+            </div>
+            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+                2
+                <p class="font-bold text-xl">Menunggu Verifikasi</p>
+                setelah mengisi form pendaftaran maka admin rifaya akan melakukan verifikasi, waktu yang dibutuhkan 4 hari sd 1 minggu
+            </div>
+            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+                3
+                <p class="font-bold text-xl">Di hubungi admin</p>
+                Admin akan memberikan link aktivasi akun guru
+            </div>
+            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+                4
+                <p class="font-bold text-xl">Calon tutor Melakukan Registrasi</p>
+                Calon Tutor mengisi form pendaftaran di halaman ini
+            </div>
+
+        </div>
+    </section>
 </div>

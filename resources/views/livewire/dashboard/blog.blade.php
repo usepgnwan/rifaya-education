@@ -104,7 +104,7 @@
                         <x-table.heading> Image  </x-table.heading>
                         <x-table.heading> Status  </x-table.heading>
                         <x-table.heading> Di Buat Oleh  </x-table.heading>
-                        <x-table.heading> Tanggal dibuat  </x-table.heading>
+                        <x-table.heading  sortable multi-column wire:click="sortBy('created_at')" :direction="$sorts['created_at'] ?? null"> Tanggal dibuat  </x-table.heading>
                     </x-slot>
                     <x-slot name="body">
                     @if ($selectPage)
@@ -162,8 +162,17 @@
                                 @endif
                             </x-table.cell>
                             <x-table.cell>
-                                <div class="flex flex-col   w-20 ">
-                                    <img src="{{ $post->image }}" alt="image not found" class=" object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                                <div  class="flex flex-col   w-20 " >
+                                    <!-- <a href="{{ $post->image }}" class="glightbox" data-gallery="gallery-{{$post->id}}">
+                                        <img src="{{ $post->image }}" alt="image not found" class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
+                                    </a> -->
+                                    @if($post->image)
+                                        <x-style.glithbox href="{{ $post->image }}" data-gallery="gallery-{{$post->id}}" data-title="image not found" data-description="tes" class="glightbox" >
+                                            <x-style.glithbox.img :url="$post->image" alt="image not found"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                        </x-style.glithbox>
+                                    @else
+                                        <p>Image not available</p>
+                                    @endif
                                 </div>
                             </x-table.cell>
                             <x-table.cell>
@@ -200,4 +209,22 @@
                     {{ $posts->links() }}
             </div>
     </div>
+    <!-- Delete Transactions Modal -->
+    <form wire:submit.prevent="deleteSelected">
+    <x-modal.confirmation wire:model.defer="showDeleteModal">
+        <x-slot name="title">Delete User</x-slot>
+
+        <x-slot name="content">
+            <div class="py-8 text-cool-gray-700">Are you sure you? This action is irreversible.</div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-button.secondary wire:click="$set('showDeleteModal', false)">Cancel</x-button.secondary>
+
+            <x-button.primary type="submit">Delete</x-button.primary>
+        </x-slot>
+    </x-modal.confirmation>
+</form>
 </section>
+
+

@@ -27,6 +27,7 @@
     <section class="container  px-6 mx-auto" id="body-section">
         <livewire:front.partials.home-resume :lazy="true" :content="1"></livewire:front.partials.top-articels>
     </section>
+    {{--
     <section class="container mt-12 mx-auto ">
         <div class="w-10/12 sm:w-2/3 mx-auto p-5 flex gap-3">
             <select id="countries" class=" border sm:text-xl text-center text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-80 bg-sky-500 text-white">
@@ -225,7 +226,7 @@
             </div> -->
 
         </div>
-    </section>
+    </section> --}}
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="mb-[-1px] fill-[#FABE0E] dark:fill-gray-800">
         <path fill-opacity="1" d="M0,224L1440,320L1440,320L0,320Z"></path>
     </svg>
@@ -319,7 +320,7 @@
                         <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white dark:text-slate-400 bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>
                     </div>
                     <div class="w-full mt-2 sm:w-52 sm:mt-0 ml-3">
-                        <button class="btn-red-octaclass"> Bergabung </button>
+                        <button class="btn-red-octaclass"  @click.prevent="Livewire.navigate('{{ route('register') }}')" > Bergabung </button>
                     </div>
                 </div>
             </div>

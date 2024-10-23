@@ -37,6 +37,7 @@
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
+                {{--
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.tes*')" :icon="'icon-[bx--data]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>
                     <!-- multi link -->
@@ -97,7 +98,7 @@
                         </svg>
                         <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
                     </a>
-                </li>
+                </li>--}}
             </ul>
         </div>
     </div>

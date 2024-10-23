@@ -23,6 +23,7 @@
         <script src="{{ asset('/vendor/tinymce_mathjax/plugin.js')}}"></script>
         <!-- <script src="{{ asset('/vendor/select2/js/select2.min.js')}}"></script> -->
         <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+        <x-notification />
         @livewireScripts
         @vite(['resources/js/app.js'])
         @stack('scripts')

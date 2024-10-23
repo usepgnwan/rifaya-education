@@ -23,6 +23,7 @@
         "@wiris/mathtype-tinymce5": "^8.10.0",
         "@wiris/mathtype-tinymce6": "^8.10.0",
         "flowbite": "^2.4.1",
+        "glightbox": "^3.3.0",
         "jquery": "^3.7.1",
         "mathjax": "^3.2.2",
         "select2": "^4.1.0-rc.0",

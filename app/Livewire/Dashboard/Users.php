@@ -59,15 +59,12 @@ class Users extends Component
         ];
     }
 
-    public function messages() {
+    public function validationAttributes () {
         return [
-            'request.name.required' => 'Nama tidak boleh kosong.',
-            'request.name.min' => 'minimal 3 characters.',
-            'request.email.required' => 'Email tidak boleh kosong.',
-            'request.email.email' => 'Masukan email yang valid.',
-            'request.email.unique' => 'Email sudah terdaftar atau tidak valid.',
-            'request.roles.required' => 'Roles harus dipilih.',
-            'request.status.in' => 'Status harus dipilih.',
+            'request.name' => 'Nama Pengguna',
+            'request.email' => 'Email',
+            'request.roles' => 'Roles',
+            'request.status' => 'Status',
         ];
     }
     public function mount()
@@ -99,30 +96,38 @@ class Users extends Component
     }
     public function save()
     {
-       $this->validate();
-       $roles = $this->request['roles'];
-       unset($this->request['roles']);
-       if(!$this->editingUser->id){
-            $username = explode('@', $this->request['email'])[0];
-            $this->request['username'] = $username;
-            $this->request['password'] = bcrypt('password');
+       try {
+            $this->validate();
+            $roles = $this->request['roles'];
+            unset($this->request['roles']);
+            if(!$this->editingUser->id){
+                    $username = explode('@', $this->request['email'])[0];
+                    $this->request['username'] = $username;
+                    $this->request['password'] = bcrypt('password');
 
-            $this->editingUser->create($this->request)->each(function ($user) use ($roles) {
-                // Assign roles to the user
-                $user->roles()->sync($roles);
-            });
-       }else{
+                    $this->editingUser->create($this->request)->each(function ($user) use ($roles) {
+                        // Assign roles to the user
+                        $user->roles()->sync($roles);
+                    });
+            }else{
 
-            // Update the user
-            $this->editingUser->fill($this->request);
-            $this->editingUser->save();
+                    // Update the user
+                    $this->editingUser->fill($this->request);
+                    $this->editingUser->save();
 
-            $this->editingUser->roles()->sync($roles);
-            $message = 'Succes update user '.$this->editingUser->name;
-       }
+                    $this->editingUser->roles()->sync($roles);
+                    $message = 'Succes update user '.$this->editingUser->name;
+            }
 
-       $this->notify($message ?? 'Succes create user '. $this->request['name']);
-       $this->showEditModal = false;
+            $this->notify($message ?? 'Succes create user '. $this->request['name']);
+            $this->showEditModal = false;
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+
+            $this->notify('Periksa kembali form isian', 'warning');
+
+            throw $e;
+        }
     }
 
     public function create()
@@ -155,6 +160,7 @@ class Users extends Component
 
         $this->showDeleteModal = false;
 
+        $this->selectPage = false;
         $this->notify('You\'ve deleted '.$deleteCount.' transactions');
     }
     public function resetFilters() { $this->reset('filters'); }

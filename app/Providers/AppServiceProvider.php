@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(255);
-        Component::macro('notify', function ($message) {
-            $this->dispatch('notify', $message);
+        Component::macro('notify', function ($message, $type = 'success') {
+            $this->dispatch('notify', ['message'=>$message, 'type'=> $type]);
         });
         $this->app->bind('auth.user', function () {
             return Auth::user();

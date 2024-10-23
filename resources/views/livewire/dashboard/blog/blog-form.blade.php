@@ -72,21 +72,28 @@
                 <div class="w-full max-md:w-full pl-2 space-y-4">
                     <x-input.group for="Title" :inline="'true'" label="Foto" :error="$errors->first('form.image')"  >
                         <div
-                            x-data="{ uploading: false, progress: 0 }"
+                            x-data="{ uploading: false, progress: 0 ,
+                                    resetFileInput() {
+                                        document.getElementById('file').value = ''; // Reset file input
+                                        $wire.set('form.image', 'remove'); // Clear Livewire model
+                                    }
+                            }"
                             x-on:livewire-upload-start="uploading = true"
                             x-on:livewire-upload-finish="uploading = false; progress = 0;"
                             x-on:livewire-upload-progress="progress = $event.detail.progress" >
                             @if ( $form['image'] )
-
+                                <div class="relative">
+                                <button type="button" class="absolute top-0  @if (is_null($form['image']) || $form['image'] == 'remove') hidden @endif left-2 rounded bg-red-500 p-3 mt-1 text-white" @click="resetFileInput()">X</button>
                                 @if (method_exists($form['image'], 'temporaryUrl'))
                                     @if (method_exists($form['image'], 'getMimeType') && str_starts_with($form['image']->getMimeType(), 'image/'))
-                                        <img class="h-48 object-cover rounded-lg w-96" src="{{ $form['image']->temporaryUrl() }}" alt="Image preview">
+                                        <img class="object-cover mb-3 w-96" src="{{ $form['image']->temporaryUrl() }}" alt="Image preview">
                                     @else
                                        <p class="text-red-500">Invalid file type. Only image files are allowed.</p>
                                     @endif
                                 @else
-                                    <img class="h-48 object-cover rounded-lg w-96" src="{{ $form['image'] }}" alt="Image preview">
+                                    <img class="object-cover mb-3 w-96 @if ($form['image'] =='remove') hidden  @endif" src="{{ $form['image'] }}" alt="Image preview">
                                 @endif
+                                </div>
                             @endif
                             <input type="file" name="file" id="file" wire:model="form.image" accept="image/*">
                             <p class="text-xs text-gray-400 mt-2">PNG, JPG SVG  and GIF are Allowed.</p>
