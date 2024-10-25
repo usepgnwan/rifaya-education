@@ -20,7 +20,7 @@
             }else{
                 this.type = 'bg-yellow-300 text-white';
             }
-             setTimeout(() => { this.removeMessage(message) }, 3000);
+            setTimeout(() => { this.removeMessage(message) }, 3000);
         },
         removeMessage(message) {
             this.messages.splice(this.messages.indexOf(message), 1);
@@ -33,10 +33,11 @@
         }
     }"
     @notify.window="addMessage($event.detail[0]  ?? { message: '{{ $notify['message'] ?? '' }}', type: '{{ $notify['type'] ?? 'success' }}' })"
-    class="fixed inset-0 flex flex-col items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:justify-start space-y-4 z-50"
+ class="fixed top-0 right-0 z-50 px-4 py-6 pointer-events-none"
 >
 
-    <template x-for="(message, messageIndex) in messages" :key="messageIndex" hidden>
+    <template x-for="(message, messageIndex) in messages" :key="messageIndex" hidden >
+
         <div
             x-transition:enter="transform ease-out duration-300 transition"
             x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
@@ -45,14 +46,14 @@
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
             :class="type"
-            class="max-w-sm w-full   shadow-lg rounded-lg pointer-events-auto"
+            class="max-w-sm w-full min-w-96  shadow-lg rounded-lg pointer-events-auto mt-3 "
         >
             <div class="rounded-lg shadow-xs overflow-hidden  ">
                 <div class="p-4">
-                    <div class="flex items-start">
+                    <div class="flex items-start w-full">
                         <div class="flex-shrink-0">
-                             <!-- Success Icon -->
-                             <svg x-show="messageType === 'success'"class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- Success Icon -->
+                            <svg x-show="messageType === 'success'"class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
 

@@ -23,8 +23,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(255);
-        Component::macro('notify', function ($message, $type = 'success') {
-            $this->dispatch('notify', ['message'=>$message, 'type'=> $type]);
+        Component::macro('notify', function ($message, $type = 'success',$type1 = 'notify') {
+            $msg = ['message'=>$message, 'type'=> $type];
+            if($type1 == 'notify'){
+                $this->dispatch('notify', $msg);
+            }else if($type1 == 'flash'){
+                session()->flash('notify', $msg);
+            }
         });
         $this->app->bind('auth.user', function () {
             return Auth::user();

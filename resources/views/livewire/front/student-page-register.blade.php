@@ -14,20 +14,25 @@
             <div class="min-h-96 sm:my-auto w-11/12 sm:w-10/12 mx-auto rounded-2xl sm:py-6 card-bordered-yellow-octaclass shadow-md p-12">
                 <h1 class="font-bold text-2xl">Registrasi</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                <form wire:submit="login" class="w-full mt-2">
+                <form wire:submit="save" class="w-full mt-2">
+                    <div class="mb-2">
+                        <x-input.group for="Nama Lengkap" :inline="'true'" label="Nama Lengkap " :error="$errors->first('form.name')"  >
+                            <x-input.text leadingAddOn='<span class="icon-[et--profile-male]"></span>' :id="__('name')" wire:model="form.name" placeholder="Nama Lengkap" type="input" />
+                        </x-input.group>
+                    </div>
                     <div class="mb-2">
                         <x-input.group for="Email / Username" :inline="'true'" label="Email / Username " :error="$errors->first('form.email')"  >
-                            <x-input.text leadingAddOn='<span class="icon-[fontisto--email]"></span> ' :id="__('email')" wire:model="form.emai" placeholder="Email / Username" type="input" wire:model="form.email"/>
+                            <x-input.text leadingAddOn='<span class="icon-[fontisto--email]"></span> ' :id="__('email')" wire:model="form.email" placeholder="Email / Username" type="input" />
                         </x-input.group>
                     </div>
                     <div class="mb-2">
                         <x-input.group for="Password" :inline="'true'" label="Password " :error="$errors->first('form.password')"  >
-                            <x-input.text leadingAddOn='<span class="icon-[lucide--key-round]"></span>' :id="__('password')" wire:model="form.emai" placeholder="Password" type="password" wire:model="form.password" />
+                            <x-input.text leadingAddOn='<span class="icon-[lucide--key-round]"></span>' :id="__('password')" wire:model="form.password" placeholder="Password" type="password"  />
                         </x-input.group>
                     </div>
                     <div class="mb-2">
                         <x-input.group for="Password" :inline="'true'" label="Ulangi Password " :error="$errors->first('form.repeat_password')"  >
-                            <x-input.text leadingAddOn='<span class="icon-[lucide--key-round]"></span>' :id="__('repeat_password')" wire:model="form.emai" placeholder="Password" type="password" wire:model="form.repeat_password" />
+                            <x-input.text leadingAddOn='<span class="icon-[lucide--key-round]"></span>' :id="__('repeat_password')" wire:model="form.repeat_password" placeholder="Ulangi Password" type="password"  />
                         </x-input.group>
                     </div>
                     <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>

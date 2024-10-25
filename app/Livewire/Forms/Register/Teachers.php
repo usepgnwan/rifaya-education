@@ -53,7 +53,7 @@ trait Teachers
     public function validationAttributes()
     {
         return [
-            'user.name' => 'Nama Pengguna',
+            'user.name' => 'Nama Lengkap',
             'user.email' => 'Alamat Email',
             'user.profile' => 'Foto Profil',
             'profile.no_telp' => 'Nomor Telepon',
@@ -107,7 +107,7 @@ trait Teachers
             $this->reset('experience');
             $this->reset('profile');
 
-            session()->flash('notify', ["message"=>"Registrasi sukses, tim kami akan menghubungi sesegera mungkin 😊😊."]);
+            $this->notify( "Registrasi sukses, tim kami akan menghubungi sesegera mungkin 😊😊.", 'success', 'flash');
             // $this->notify('Registration successful. Please check your email for further instructions.');
                         // Redirect after saving
             return redirect()->route('success.register.teacher')->with('name',  $user->name);

@@ -168,7 +168,7 @@ class BlogForm extends Component
             }
 
             // Flash data to the session
-            session()->flash('notify', ['message'=>$message]);
+            $this->notify($message, 'success', 'flash');
 
             // Redirect after saving
             return redirect()->route('account.blog');
