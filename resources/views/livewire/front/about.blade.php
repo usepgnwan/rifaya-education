@@ -31,24 +31,36 @@
     <section class="px-6 mb-12">
         <div class="mx-auto">
             <div class="grid gap-2.5 lg:pb-8 pb-8">
-                <h2 class="w-full text-center text-gray-900 text-4xl font-bold font-manrope leading-normal">Tentang Rivaya Education</h2>
+                <h2 class="w-full text-center text-4xl font-bold font-manrope leading-normal">Tentang Rivaya Education</h2>
                 <div class="w-full text-center text-gray-600 text-lg font-normal leading-8">Page ini menjelaskan lebih mendalam tentang <i>Rivaya Education </i></div>
             </div>
             <div class="flex flex-col galery ">
                 <div class="w-full mx-auto grid grid-cols-1 gap-0 lg:flex lg:gap-6 gallery">
-                    <div class="md:col-span-4 md:h-[404px] h-[277px]   rounded-3xl">
+                    <!-- <div class="md:col-span-4 md:h-[404px] h-[277px]   rounded-3xl">
                         <img src="https://via.placeholder.com/640x480.png/0066ee?text=nature+Faker+ut" alt="Gallery image" class="gallery-image object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
-                    </div>
-                    <div class="max-lg:w-full w-4/6 text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis deleniti excepturi soluta aspernatur atque exercitationem nostrum, ipsum fugit necessitatibus omnis deserunt eum ea voluptas veniam ipsa corrupti illo explicabo! Voluptas, voluptatibus assumenda! Quos obcaecati, inventore quod quidem sint cumque ratione voluptatem ea dolorem facere quibusdam, fugiat nisi nemo nesciunt earum in aut iure necessitatibus. Neque, in praesentium dolorem, architecto nihil deserunt necessitatibus provident esse nisi, delectus eligendi eos sapiente aliquid! Fugit nisi natus autem. Officiis et, tenetur modi adipisci omnis in! Unde expedita quasi quidem vel aut! Laudantium expedita neque vel, nobis maiores molestias ullam accusantium ex nesciunt numquam tempora earum delectus nulla soluta est architecto! Sint illo numquam quo porro rem, quam inventore praesentium corporis excepturi, repudiandae, nulla perferendis facilis unde mollitia totam nostrum necessitatibus aliquid debitis! Libero id optio quae. Similique laborum molestiae modi non praesentium in minima natus beatae, reprehenderit quod pariatur expedita voluptatibus repudiandae perferendis autem error? Officiis quo fugiat laborum ratione labore accusantium, doloribus itaque illum perspiciatis nobis repellendus fuga dolore obcaecati sint dolorem eligendi architecto eaque magnam eveniet natus? Quasi laudantium deserunt quisquam vero molestias voluptatem ex, expedita, doloribus consectetur corporis aspernatur laboriosam voluptatum consequatur explicabo dolor fuga? Veniam placeat explicabo voluptas? Voluptate, accusantium?
+                    </div> -->
+                    <div class="max-lg:w-full w-full text-justify">
+                    <p class="indent-6 text-justify ">
+                    Rifaya Education adalah lembaga pendidikan terkemuka yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
+                    </p>
+                    <p class="indent-6 text-justify ">
+                    Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses modul-modul edukatif yang memperkaya pengalaman belajar. Kami juga menyediakan latihan kompetensi, seperti persiapan tes dan latihan lainnya, untuk membantu siswa mempersiapkan diri menghadapi berbagai tantangan akademik.
+                    </p>
+
+                    <p class="text-center text-3xl font-bold mt-3"> Visi dan Misi   </p>
+                        <div class="text-justify mt-4">
+                            <span class="text-2xl font-bold"><span class="icon-[tdesign--user-list]"></span> Visi</span> kami adalah menciptakan generasi pelajar yang percaya diri, kritis dan kreatif.
+                            <hr class="dark:border-gray-700 my-4">
+                            <span class="text-2xl font-bold"><span class="icon-[fa6-solid--user-tie]"></span> Misi</span>  kami adalah menyediakan pengalaman belajar yang interaktif, mendukung setiap siswa dengan pendekatan personal, dan menginspirasi mereka untuk mencapai tujuan akademis.
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="lightbox" id="lightbox">
-            <span class="close" id="close">×</span>
-            <img src="" alt="" class="lightbox-image" id="lightbox-image">
-        </div>
+        <section id="faq">
+    <x-partials.front.faq :faq='$faq'></x-partials.front.faq>
+    </section>
 
     </section>
 </div>

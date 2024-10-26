@@ -553,7 +553,26 @@ document.addEventListener('livewire:initialized', function () {
 
 
 
-
+        if( $('.whatsapp-button')){
+            $('.whatsapp-button').click(function (e) {
+                e.preventDefault();
+                let whatsapp = '81312486388';
+                // let whatsapp = '';
+                        if(whatsapp !='' || whatsapp != 'null'){
+                        var walink = 'https://web.whatsapp.com/send',
+                                phone = whatsapp,
+                                text = '%2AHallo Rifaya Education%2A';
+                            /* Smartphone Support */
+                            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                                var walink = 'whatsapp://send';
+                            }
+                            // var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' +
+                            var checkout_whatsapp = walink + '?phone=62'+ phone + '&text=' + text;
+                            /* Whatsapp Window Open */
+                            window.open(checkout_whatsapp, '_blank');
+            }
+            });
+        }
 
 
     });

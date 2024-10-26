@@ -31,6 +31,11 @@ class CategorySeeder extends Seeder
                 "title" => "Kelas Intensif",
                 "created_at" => $now,
                 "updated_at" => $now
+            ],
+            [
+                "title" => "Bank Soal",
+                "created_at" => $now,
+                "updated_at" => $now
             ]
         ]);
     }

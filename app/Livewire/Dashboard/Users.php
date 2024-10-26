@@ -6,6 +6,7 @@ use App\Livewire\DataTable\WithBulkActions;
 use App\Livewire\DataTable\WithCachedRows;
 use App\Livewire\DataTable\WithPerPagePagination;
 use App\Livewire\DataTable\WithSorting;
+use App\Models\MataPelajaran;
 use App\Models\Role;
 use App\Models\User;
 use Livewire\Attributes\Layout;
@@ -22,6 +23,7 @@ class Users extends Component
         'status' => '',
         'created_at' => '',
         'roles' => [],
+        'mapel' => [],
     ];
     protected $queryString = ['sorts'];
 
@@ -173,6 +175,9 @@ class Users extends Component
     {
         // dd($this->perPage);
         $query = User::query()
+            ->with('user_profile')
+            ->with('mata_pelajaran')
+            ->with('user_metodemengajar')
             ->when($this->filters['search'], fn($query, $status) => $query->where('name', 'like', '%' . $status . '%'))
             ->when($this->filters['status'], fn($query, $status) => $query->where('status', '=', $status ))
             ->when($this->filters['created_at'], function($query, $date) {
@@ -183,6 +188,12 @@ class Users extends Component
 
                 $query->whereHas('roles', function ($querys) {
                     return $querys->whereIn('role_id', $this->filters['roles']);
+                });
+            })
+            ->when(!empty($this->filters['mapel']), function($query){
+
+                $query->whereHas('mata_pelajaran', function ($querys) {
+                    return $querys->whereIn('id', $this->filters['mapel']);
                 });
             });
         return $this->applySorting($query);
@@ -202,11 +213,13 @@ class Users extends Component
     public function render()
     {
         $roles = Role::all();
+        $mapel = MataPelajaran::all();
         $this->dispatch('tiny:init', ['editor' => '#editor']);
         return view('livewire.dashboard.users', [
             'users' => $this->rows,
             'breadcumb' => $this->breadcumb,
-            'roles' => $roles
+            'roles' => $roles,
+            'mapel' => $mapel
         ]);
     }
 }

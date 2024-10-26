@@ -56,3 +56,4 @@
 </footer>
 
 
+<div class="fixed bottom-4 z-50 shadow-xl bg-white dark:bg-gray-700 w-14 h-14 right-4 cursor-pointer rounded-full flex items-center justify-center whatsapp-button"> <span class="icon-[logos--whatsapp-icon] text-4xl"></span> </div>

@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('no_telp', 255);
-            $table->date('tanggal_lahir');
+            $table->string('no_telp', 255)->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->text('quote')->nullable();
+            $table->text('nama_kampus')->nullable();
+            $table->integer('tahun_masuk')->nullable();
+            $table->integer('tahun_lulus')->nullable();
+            $table->string('semester')->nullable();
+            $table->text('lembaga_saat_ini')->nullable();
             $table->text('alamat_domisili')->nullable();
             $table->string('kendaraan',255)->nullable();
             $table->text('perangkat_ajar')->nullable();

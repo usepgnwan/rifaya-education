@@ -112,7 +112,7 @@
                     <h3 class="font-bold text-xl">Siswa Terdaftar</h3>
                     <div class="flex flex-wrap  dark:text-slate-400 px-2 text-justify">
                         <div class="w-full flex justify-center  mt-5 mb-4 max-lg:text-sm">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, dolorum inventore ullam.
+                        Bebarapa orang telah mendapatkan manfaat dari les private kami, sekarang giliran kamu untuk dapat belajar bersama kami.
                         </div>
                         <div class="w-full flex justify-center flex-wrap">
                             <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
@@ -140,11 +140,11 @@
                     </ul> -->
                     <livewire:front.partials.top-articels :lazy="true" :title="false" :type="[ 'bank'=>'Bank Soal Terbaru']"></livewire:front.partials.top-articels>
                     <hr class="mt-3 mb-3 dark:border-slate-800">
-                    <a href="" class="btn-next-yellow"> Selanjutnya <span class="icon-[formkit--arrowright] self-center"></span></a>
+                    <a  class="btn-next-yellow" href="{{ route('post.index', ['kategori'=>'Bank Soal']) }}" @click.prevent="Livewire.navigate('{{ route('post.index', ['kategori'=>'Bank Soal']) }}')"> Selanjutnya <span class="icon-[formkit--arrowright] self-center"></span></a>
                 </div>
                 <div class="card-bordered-yellow-octaclass">
                     <h3 class="font-bold text-lg">Try Out</h3>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
@@ -158,7 +158,7 @@
 
                         </div>
                     </div>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
@@ -171,7 +171,7 @@
                             <div><a href="" class="btn-start py-1"> Mulai</a></div>
                         </div>
                     </div>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
@@ -185,7 +185,8 @@
 
                         </div>
                     </div>
-                    <a href="" class="btn-next-yellow"> Selanjutnya <span class="icon-[formkit--arrowright] self-center"></span></a>
+                    <a href="" class="btn-next-yellow hidden"> Selanjutnya <span class="icon-[formkit--arrowright] self-center"></span></a>
+                    belum tersedia
                 </div>
                 <div class="hidden card-bordered-yellow-octaclass">
                     <h3 class="font-bold text-lg">Bank Soal</h3>

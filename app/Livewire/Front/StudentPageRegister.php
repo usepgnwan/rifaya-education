@@ -20,12 +20,17 @@ class StudentPageRegister extends Component
         'repeat_password' => '',
     ];
 
+    public $profile = [
+        'no_telp' => '',
+    ];
+
     public function rules(){
 
         return [
             'form.name' => 'required|min:3',
             'form.email' => 'required|email:dns|unique:users,email',
             'form.password' => 'required|min:6',
+            'profile.no_telp' => 'required|numeric',
             'form.repeat_password' => 'required|same:form.password',
         ];
     }
@@ -36,6 +41,7 @@ class StudentPageRegister extends Component
             'form.email' => 'Alamat Email',
             'form.password' => 'Password',
             'form.repeat_password' => 'Ulangi Password',
+            'profile.no_telp' => 'No. Telp/wa',
 
         ];
     }
@@ -45,12 +51,13 @@ class StudentPageRegister extends Component
             $username = explode('@', $this->form['email'])[0];
             $this->form['username'] = $username;
             $this->form['password'] = bcrypt('password');
-            $this->form['status'] = 'aktif';
+            $this->form['status'] = 'register';
 
             unset($this->form['repeat_password']);
             $user = User::create($this->form);
             $user->roles()->sync([3]);
-            $this->notify('Registrasi Berhasil. lanjut untuk login. ', 'success', 'flash');
+            $user->user_profile()->create($this->profile);
+            $this->notify('Registrasi Berhasil.Tim kami akan menghubungi anda. ', 'success', 'flash');
             $this->reset('form');
             redirect()->route('login');
         }catch (\Illuminate\Validation\ValidationException $e){

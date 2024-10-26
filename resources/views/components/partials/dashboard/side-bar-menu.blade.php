@@ -37,6 +37,18 @@
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
+                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[material-symbols--database-outline]'" class=" w-full ">
+                    <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>
+                    <!-- multi link -->
+                    <x-slot name="link">
+                        <x-partials.dashboard.side-link href="{{ route('account.master.matapelajaran') }}" :active="request()->routeIs('account.master.matapelajaran*')"   class=" pl-11 ">
+                            <span class="ms-3">Mata Pelajaran</span>
+                        </x-partials.dashboard.side-link>
+                        <x-partials.dashboard.side-link href="{{ route('account.master.qa') }}" :active="request()->routeIs('account.master.qa*')"   class=" pl-11 ">
+                            <span class="ms-3">Q&A</span>
+                        </x-partials.dashboard.side-link>
+                    </x-slot>
+                </x-partials.dashboard.side-link>
                 {{--
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.tes*')" :icon="'icon-[bx--data]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>

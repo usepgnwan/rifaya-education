@@ -275,7 +275,7 @@
     <section class="w-full mb-56 ">
         <div class="sm:w-9/12 mx-auto shadow-lg p-6 relative">
             <div class="max-lg:w-full max-lg:p-5 max-w-7xl mt-2 w-full sm:pl-1 pr-[16rem] mx-auto flex content-center flex-wrap ">
-                <h1 class="font-bold text-2xl"><span class="text-[#fabe0e]">  Rifaya Education </span> Juga memiliki Les Private dengan System:</h1>
+                <h1 class="font-bold text-2xl"><span class="text-[#fabe0e]">  Rifaya Education </span> Juga memiliki Les Private dengan System Pembelajaran:</h1>
                 <div class="text-justify mt-4">
                     <span class="text-2xl font-bold"><span class="icon-[pepicons-print--camera]  "></span> Online</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
                     <hr class="dark:border-gray-700 my-4">
@@ -415,9 +415,9 @@
     <section class="w-full mt-12 mb-12">
         <div class=" w-3/4 sm:w-2/3 min-h-52  mx-auto rounded-xl dark:bg-sky-950 dark:text-slate-400 bg-sky-400 h-50 shadow-lg p-4 sm:p-6  ">
             <div class="flex flex-wrap text-white dark:text-slate-400">
-                <div class="w-full flex justify-center sm:text-3xl font-bold text-center text-lg ">Mulai Bergabung bersama kami</div>
+                <div class="w-full flex justify-center sm:text-3xl font-bold text-center text-lg "  @click.prevent="Livewire.navigate('{{ route('register') }}')">Mulai Bergabung bersama kami</div>
                     <div class="w-full flex justify-center text-justify mt-5 mb-4 max-lg:text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem repudiandae ducimus fugit asperiores recusandae vitae ab voluptatum odio, sint quis?
+                           Bebarapa orang telah menggunkan jasa les private kami, sekarang giliran kamu untuk dapat belajar bersama kami.
                     </div>
                     <div class="w-full flex justify-center flex-wrap">
                         <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
@@ -816,7 +816,9 @@
             <div class=" w-full sm:w-9/12 mx-auto grid grid-cols-1 gap-0 lg:flex lg:gap-6 sm:shadow-lg sm:rounded-xl sm:p-9 sm:border-t-2">
                 <div class=" mt-2 lg:w-2/3 sm:px-8 mx-auto flex content-center flex-wrap">
                     <h1 class="text-3xl font-bold text-center sm:text-left mb-2 w-full"> Tentang Penulis</h1>
-                    <p class="text-justify">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit atque unde quidem laboriosam facilis repellendus debitis dolor harum quae impedit dolorum hic sed incidunt perferendis tenetur ipsum animi. Tenetur commodi perspiciatis provident aliquid tempore beatae, assumenda pariatur fugit accusantium impedit,.</p>
+                    <p class="text-justify"> Tentang Penulis
+
+Website ini dibuat dengan tujuan memberikan manfaat bagi para pembaca dan menjangkau semua kalangan yang ingin bersama-sama memajukan pendidikan. Kami berharap konten di sini dapat menjadi sumber inspirasi dan pengetahuan yang berguna. Jika Anda memerlukan informasi lebih lanjut atau memiliki pertanyaan, silakan hubungi kami melalui kontak di bawah ini.</p>
                     <form class="w-full mx-auto mt-5">
                         <div class="relative z-0 w-full mb-5 group">
                             <input type="email" name="floating_email" id="floating_email"
@@ -835,7 +837,8 @@
                     </form>
 
                 </div>
-                <div class="col-start-1 row-start-1 lg:p-4 relative items-center  text-center mx-auto mt-5 h-56 w-56 rounded-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('asset/img/home/rani1.jpg') }}')">
+                <div class="col-start-1 row-start-1 lg:p-4 relative flex justify-center items-center  text-center mx-auto mt-5  w-96   bg-cover bg-center bg-no-repeat" >
+                    <img src="{{ asset('asset/img/home/logo-rifaya1.png') }}" alt="">
                 </div>
             </div>
         </div>

@@ -6,13 +6,13 @@
                 <h1 class="text-center text-[#fabe0e] font-semibold text-3xl">
                     Rifaya Education
                 </h1>
-                <p class="text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure reiciendis fuga, a quia sapiente, aut laboriosam quibusdam sed iusto corporis libero commodi. </p>
+                <p class="text-center">Jadilah bagian dari perjalanan pendidikan yang menginspirasi. Bergabunglah dengan kami untuk membantu siswa mencapai potensi terbaik mereka. Raih kesempatan untuk berbagi pengetahuan dan keterampilan Anda sambil mendapatkan imbalan yang layak. Bergabunglah dengan Rifaya Education!</p>
             </div>
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">
             <div class="min-h-96 sm:my-auto w-11/12 sm:w-10/12 mx-auto rounded-2xl sm:py-6 card-bordered-yellow-octaclass shadow-md p-12">
-                <h1 class="font-bold text-3xl mb-2">Form Registrasi Guru</h1>
-                <p> Page ini dikhususkan bagi calon tutor/guru yang ingin bergabung bersama kami di <i class="text-[#fabe0e]">Rifaya education</i> , isi dulu form dibawah sini yaa 😊😊</p>
+                <h1 class="font-bold text-3xl mb-2">Form Registrasi Tutor</h1>
+                <p> Page ini dikhususkan bagi calon tutor yang ingin bergabung bersama kami di <i class="text-[#fabe0e]">Rifaya education</i> , isi dulu form dibawah sini yaa</p>
                 <form class="w-full mt-4" wire:submit.prevent="register">
                     <div class="mb-2">
                         <x-input.group for="Nama Lengkap" :inline="'true'" label="Nama Lengkap <span class='text-red-500'>*</span>" :error="$errors->first('user.name')"  >
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-2">
                         <x-input.group for="No Telp / Wa" :inline="'true'" label="No Telp / Wa <span class='text-red-500'>*</span>" :error="$errors->first('profile.no_telp')"  >
-                            <x-input.text :id="__('no_telp')" wire:model="profile.no_telp" placeholder="masukan nama" type="number" />
+                            <x-input.text :id="__('no_telp')" wire:model="profile.no_telp" placeholder="No. Telp / Wa" type="number" />
                         </x-input.group>
                     </div>
                     <div class="mb-2">
@@ -44,14 +44,14 @@
                             <x-input.textarea :id="__('profile')" wire:model="profile.alamat_domisili" placeholder="Alamat Domisili"  />
                         </x-input.group>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-2 hidden">
                         <x-input.group for="Pengalaman Kerja" :inline="'true'" label="Pengalaman Kerja " :error="$errors->first('experience.title')"  >
                             <x-input.textarea :id="__('experience')" wire:model="experience.title" placeholder="Deskripsikan secara singkat"  />
                         </x-input.group>
                     </div>
                     <div class="mb-2">
-                        <x-input.group for="Metode Mengajar" :inline="'true'" label="Metode Mengajar" :error="$errors->first('profile.metode_mengajar')"  >
-                            <x-input.textarea :id="__('metode_mengajar')" wire:model="profile.metode_mengajar" placeholder="Deskripsikan secara singkat"  />
+                        <x-input.group for="lembaga_saat_ini" :inline="'true'" label="Apakah Anda mengajar di lembaga bimbel/les lain? Jika Ya, Sebutkan! (optional)" :error="$errors->first('profile.metode_mengajar')"  >
+                            <x-input.textarea :id="__('lembaga_saat_ini')" wire:model="profile.lembaga_saat_ini" placeholder="Deskripsikan secara singkat"  />
                         </x-input.group>
                     </div>
                     <div class="mb-2">
@@ -59,6 +59,64 @@
                         <x-input.textarea :id="__('perangkat')" wire:model="profile.perangkat_ajar" placeholder="deskripsi singkat perangkat yang dimiliki"  />
                         </x-input.group>
                     </div>
+                    <div class="mb-2" >
+                        <x-input.group for="kelas" :inline="'true'" label="Kemampuan Mengajar  (optional)" :error="$errors->first('kelas')"  >
+                            <div wire:ignore>
+                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Kelas -')"  wire:model.live.debounce.300ms="kelas" >
+                                    @foreach ($_kelas as $v )
+                                        <option value="{{ $v->id }}">{{ $v->title }} - {{ $v->jenjang->title }}</option>
+                                    @endforeach
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
+                        <span></span>
+                    </div>
+                    <div class="mb-2" >
+                        <x-input.group for="kendaraan" :inline="'true'" label="Mata Pelajaran Yang dikuasai <span class='text-red-500'>*</span>" :error="$errors->first('mapel')"  >
+                            <div wire:ignore>
+                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Mata Pelajaran -')"  wire:model.live.debounce.300ms="mapel" >
+                                    @foreach ($mata_pelajarans as $v )
+                                        <option value="{{ $v->id }}">{{ $v->title }}</option>
+                                    @endforeach
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
+                    </div>
+
+                    <div class="mb-2" >
+                        <x-input.group for="hari" :inline="'true'" label="Sebutkan jadwal ketersediaan mengajar Anda di Rifaya Education <span class='text-red-500'>*</span>" :error="$errors->first('hari')"  >
+                            <div wire:ignore>
+                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Hari -')"  wire:model.live.debounce.300ms="hari" >
+                                    @foreach (App\Models\User::HARI as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                    @endforeach
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
+                    </div>
+                    <div class="mb-2" >
+                        <x-input.group for="waktu" :inline="'true'" label="Sebutkan jadwal ketersediaan mengajar Anda di Rifaya Education <span class='text-red-500'>*</span>" :error="$errors->first('waktu')"  >
+                            <div wire:ignore>
+                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Jam Ajar -')"  wire:model.live.debounce.300ms="waktu" >
+                                    @foreach (App\Models\User::WAKTU as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                    @endforeach
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
+                    </div>
+
+                    <div class="mb-2">
+                        <x-input.group for="kendaraan" :inline="'true'" label="Metode Mengajar <span class='text-red-500'>*</span>" :error="$errors->first('mentoring')" >
+                            <div wire:ignore>
+                                <x-input.select  :multiple="__('true')" :placeholder="'- Pilih Metode Mengajar -'" wire:model.live.debounce.300ms="mentoring">
+                                    <option value="offline">Offline (datang kerumah)</option>
+                                    <option value="online">Online</option>
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
+                    </div>
+
                     <div class="mb-2">
                         <x-input.group for="kendaraan" :inline="'true'" label="Apakah Memiliki Kendaraan? <span class='text-red-500'>*</span>" :error="$errors->first('profile.kendaraan')"  >
                             <x-input.text :id="__('kendaraan')" wire:model="profile.kendaraan" placeholder="motor/mobil"  />
@@ -67,13 +125,17 @@
                     <div class="mb-4">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apakah Memiliki Sim?</label>
                         <x-input.group for="Title" :inline="'true'" label="sim <span class='text-red-500'>*</span>" :error="$errors->first('profile.sim')"  >
-                            <x-input.radio>
-                                <x-input.radio.item :id="__('radio-1')" :name="__('sim')"  value="1" wire:model.live="profile.sim">Ya</x-input.radio.item>
-                                <x-input.radio.item :id="__('radio-2')" :name="__('sim')"  value="0" wire:model.live="profile.sim">Tidak</x-input.radio.item>
-                            </x-input.radio>
+                            <div class="flex items-center mb-4">
+                                <input id="default-checkbox" type="checkbox" value="Sim A" wire:model.live="profile.sim"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sim A</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input checked id="checked-checkbox" type="checkbox" value="Sim C" wire:model.live="profile.sim" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sim C</label>
+                            </div>
                         </x-input.group>
                         <div class="mb-4 mt-4">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Foto Terkini</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Foto Terkini (optional)</label>
                             <x-input.group for="Title" :inline="'true'" label="Foto" :error="$errors->first('form.image')"  >
                             <div
                                 x-data="{ uploading: false, progress: 0 }"

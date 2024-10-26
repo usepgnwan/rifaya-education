@@ -50,9 +50,14 @@
                                 </x-input.select>
                             </x-input.group>
                         </div>
-                        <x-input.group inline for="filter-created_at" label="Join Date">
-                            <x-input.date wire:model="filters.created_at" id="filter-created_at" placeholder="MM/DD/YYYY" />
-                        </x-input.group>
+                        <div wire:ignore>
+                                <x-input.select wire:model.live="filters.mapel" :multiple="'true'" :placeholder="__('- Pilih mata pelajaran -')">
+
+                                @foreach ($mapel as $key => $value)
+                                    <option value="{{ $value['id'] }}" @if(isset($request['mapel'])     && !empty($request['mapel']) && in_array($value['id'], $request['mapel'])) selected  @endif >{{ $value['title'] }}</option>
+                                @endforeach
+                                </x-input.select>
+                            </div>
                     </div>
 
                     <div class="w-1/2 pl-2 space-y-4">
@@ -65,6 +70,10 @@
                                 @endforeach
                                 </x-input.select>
                             </div>
+
+                            <x-input.group inline for="filter-created_at" label="Join Date">
+                                <x-input.date wire:model="filters.created_at" id="filter-created_at" placeholder="MM/DD/YYYY" />
+                            </x-input.group>
                         </x-input.group>
                         <x-button.link wire:click="resetFilters" class="absolute right-0 bottom-0 p-4 dark:text-slate-300">Reset Filters</x-button.link>
                     </div>
@@ -82,7 +91,10 @@
                         <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null" class="w-full">Nama</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('email')" :direction="$sorts['email'] ?? null">Email</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('username')" :direction="$sorts['username'] ?? null">Username</x-table.heading>
+                        <x-table.heading>No. Telp / Wa</x-table.heading>
                         <x-table.heading>Role</x-table.heading>
+                        <x-table.heading>Mata Pelajaran</x-table.heading>
+                        <x-table.heading >Metode Pengajaran</x-table.heading>
                         <x-table.heading>Status</x-table.heading>
                         <x-table.heading>Profile</x-table.heading>
                         <x-table.heading>Join Date</x-table.heading>
@@ -118,7 +130,10 @@
                             <x-table.cell>
                                 <div class="flex">
                                     <x-button.link wire:click="edit({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[uil--edit]"></span></x-button.link>
-                                    <x-button.link wire:click="edit({{ $values->id }})" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail Profile"></span></x-button.link>
+
+                                    @if(in_array('2',$values->roles->pluck('id')->toArray()))
+                                    <x-button.link title="profile tutor"  href="{{ route('account.users.profile', ['username'  => $values->username]) }} " @click.prevent="Livewire.navigate('{{ route('account.users.profile', ['username'  => $values->username]) }}')" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail Profile"></span></x-button.link>
+                                    @endif
                                 </div>
                             </x-table.cell>
                             <x-table.cell>
@@ -137,11 +152,35 @@
                                 <span class="text-cool-gray-900 font-medium">{{ $values->username }} </span>
                             </x-table.cell>
                             <x-table.cell>
+                                <span class="text-cool-gray-900 font-medium">{{ $values->user_profile->no_telp ?? '-' }} </span>
+                            </x-table.cell>
+                            <x-table.cell>
                                 @if (isset($values->roles))
                                     {{collect($values->roles)->pluck('title')->implode(', ')}}
                                 @endif
                             </x-table.cell>
-
+                            <x-table.cell >
+                                <div  class="flex  flex-wrap w-36">
+                                @forelse ($values->mata_pelajaran as $v )
+                                    <span class="flex mb-1 text-xs rounded px-2 py-1 bg-green-500 text-white ml-1"> {{ $v->title }} </span>
+                                @empty
+                                -
+                                @endforelse
+                                </div>
+                            </x-table.cell>
+                            <x-table.cell>
+                                @forelse ($values->user_metodemengajar as $v )
+                                <div  class="flex flex-row">
+                                        @if($v->title == 'offline')
+                                            <span class="text-xs mb-1 mb rounded px-2 py-1 bg-red-500 text-white text-nowrap"> {{ $v->title }} (Mengajar ke rumah) </span> <br>
+                                        @else
+                                            <span class="text-xs rounded px-2 py-1 bg-green-500 text-white"> {{ $v->title }} </span>
+                                        @endif
+                                </div>
+                                @empty
+                                    -
+                                @endforelse
+                            </x-table.cell>
                             <x-table.cell>
                                 @if ($values->status == 'aktif')
                                     <span class="text-xs rounded px-2 py-1 bg-green-500 text-white"> {{ $values->status }} </span>

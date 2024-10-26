@@ -6,14 +6,14 @@
                 <div class="w-max mx-auto mb-5 text-4xl sm:text-5xl">
                     <h1 class="  text-sky-400 animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-skytext-sky-400 pr-5 text-3xl sm:text-5xl  font-bold">Rifaya Education</h1>
                 </div>
-                <p class=" dark:text-slate-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, suscipit?</p>
+                <p class=" dark:text-slate-400"> Rifaya Education, lembaga les yang mengedepankan pembelajaran interaktif dan menyenangkan.</p>
                 <div class="relative w-full mr-3 mt-4 shadow-lg">
                     <div class="absolute inset-y-0 right-4 flex items-center pl-3.5 pointer-events-none my-auto">
                         <span class="icon-[ion--search-outline] text-xl font-semibold"></span>
                     </div>
                     <input
                         class="formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pr-10 p-4 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-600 dark:placeholder-gray-400  dark:text-slate-400 dark:focus:ring-blue-500  "
-                        name="email_address" placeholder="cari"   x-on:keydown.enter="window.location.href = '/blog?search=' + encodeURIComponent($event.target.value)">
+                        name="email_address" placeholder="cari" x-on:keydown.enter="window.location.href = '/blog?search=' + encodeURIComponent($event.target.value)">
                 </div>
             </div>
             <div class="flex col-start-1 row-start-1 h-72 m-auto sm:h-1/2 sm:mt-[-20px]  lg:mt-24 my-auto sm:pl-10 ">
@@ -233,8 +233,14 @@
     <section class=" p-7 px-6 mx-auto sm:w-full  lg:flex lg:p-6  bg-[#FABE0E] dark:bg-gray-800" id="body-section">
         <div class="container lg:p-12 lg:flex-1 lg:content-center mx-auto lg:max-w-7xl">
             <h1 class=" text-2xl sm:text-3xl font-semibold text-center mb-3">Apa itu <span class="text-white dark:text-white">Rifaya Education</span> </h1>
-            <p class="text-justify lg:text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium voluptatibus ut veniam deleniti quae maxime eaque aliquid reprehenderit magni nobis natus eos, hic tempore, quod neque nisi esse minus dolore reiciendis similique totam nesciunt asperiores. Aliquam obcaecati minima molestias sit error! Quibusdam architecto soluta quae nisi neque voluptatum numquam laudantium sunt rem expedita perspiciatis, similique, necessitatibus ullam repellat quam minus doloremque dignissimos earum, tenetur quas! Beatae commodi odit recusandae provident ad soluta, aliquam doloribus consequatur quibusdam quasi totam non accusamus?
+
+            <p class="indent-6 text-justify ">
+                Rifaya Education adalah lembaga les yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
             </p>
+            <p class="indent-6 text-justify ">
+                Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses modul-modul edukatif yang memperkaya pengalaman belajar. Kami juga menyediakan latihan kompetensi, seperti persiapan tes dan latihan lainnya, untuk membantu siswa mempersiapkan diri menghadapi berbagai tantangan akademik.
+            </p>
+
         </div>
         <div class="hidden lg:flex lg:w-80 lg:h-96 lg:p-4 relative   items-center rounded-xl bg-center bg-contain bg-no-repeat bg-[url('../ ')]">
             <img src="{{ asset('asset/img/home/teacher2.png')}}" class="drop-shadow-2xl ">
@@ -246,11 +252,12 @@
     <section class="w-full mb-56 ">
         <div class="sm:w-9/12 mx-auto shadow-lg p-6 relative">
             <div class="max-lg:w-full max-lg:p-5 max-w-7xl mt-2 w-full sm:pl-1 pr-[16rem] mx-auto flex content-center flex-wrap ">
-                <h1 class="font-bold text-2xl"><span class="text-[#fabe0e]"> Rifaya Education </span> Juga memiliki Les Private dengan System:</h1>
+                <h1 class="font-bold text-2xl"><span class="text-[#fabe0e]"> Rifaya Education </span> Juga memiliki Les Private dengan System Pembelajaran:</h1>
                 <div class="text-justify mt-4">
-                    <span class="text-2xl font-bold"><span class="icon-[pepicons-print--camera]  "></span> Online</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
+                    <span class="text-2xl font-bold"><span class="icon-[pepicons-print--camera]  "></span> Online</span> Pembelajaran dilakukan secara daring melalui aplikasi Google Meet, dengan waktu yang fleksibel sesuai kesepakatan antara tutor dan siswa. Dengan metode ini, siswa dapat belajar dari mana saja tanpa perlu bepergian, namun tetap mendapatkan bimbingan langsung dari tutor secara interaktif
                     <hr class="dark:border-gray-700 my-4">
-                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-edit-16-regular]"></span> Offline</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
+                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-edit-16-regular]"></span> Offline</span> Pembelajaran dilakukan secara tatap muka, di mana tutor akan datang langsung ke lokasi siswa. Waktu pembelajaran juga dapat disesuaikan dengan jadwal yang nyaman bagi siswa, sehingga mereka bisa belajar dengan lebih fokus dan efektif di lingkungan yang akrab dan nyaman.
+
                 </div>
             </div>
             <div class="max-lg:w-full max-lg:p-5 bg-[#fabe0e] dark:bg-gray-800 dark:text-slate-400 lg:p-4 lg:absolute mx-auto mt-5   w-64 lg:rounded-xl lg:shadow-lg lg:right-0 lg:top-2 text-white">
@@ -303,14 +310,15 @@
     </section>
 
     <section id="faq">
-    <x-partials.front.faq :faq='$faq'></x-partials.front.faq>
+        <x-partials.front.faq :faq='$faq'></x-partials.front.faq>
     </section>
+
     <section class="w-full mt-12 mb-12">
         <div class=" w-3/4 sm:w-2/3 min-h-52  mx-auto rounded-xl dark:bg-sky-950 dark:text-slate-400 bg-sky-400 h-50 shadow-lg p-4 sm:p-6  ">
             <div class="flex flex-wrap text-white dark:text-slate-400">
                 <div class="w-full flex justify-center sm:text-3xl font-bold text-center text-lg ">Mulai Bergabung bersama kami</div>
-                <div class="w-full flex justify-center text-justify mt-5 mb-4 max-lg:text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem repudiandae ducimus fugit asperiores recusandae vitae ab voluptatum odio, sint quis?
+                <div class="w-full flex justify-center text-center mt-5 mb-4 max-lg:text-sm">
+                    Bebarapa orang telah mendapatkan manfaat dari les private kami, sekarang giliran kamu untuk dapat belajar bersama kami.
                 </div>
                 <div class="w-full flex justify-center flex-wrap">
                     <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
@@ -320,7 +328,7 @@
                         <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white dark:text-slate-400 bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>
                     </div>
                     <div class="w-full mt-2 sm:w-52 sm:mt-0 ml-3">
-                        <button class="btn-red-octaclass"  @click.prevent="Livewire.navigate('{{ route('register') }}')" > Bergabung </button>
+                        <button type="button" class="btn-red-octaclass" @click.prevent="Livewire.navigate('{{ route('register') }}')"> Bergabung </button>
                     </div>
                 </div>
             </div>
@@ -336,21 +344,21 @@
                 <div class="swiper-wrapper  ">
                     @foreach ($testimoni as $item)
 
-                        <figure class="swiper-slide w-full mx-auto text-center">
-                            <svg class="w-10 h-10 mx-auto mb-3 text-gray-400 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
-                                <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
-                            </svg>
-                            <blockquote>
-                                <p class="text-2xl italic font-medium text-gray-900  dark:text-slate-400">"{{ $item->description  }}"</p>
-                            </blockquote>
-                            <figcaption class="flex flex-wrap items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
-                                <img class="w-14 h-14 rounded-full" src="{{ $item->image  }}" alt="profile picture">
+                    <figure class="swiper-slide w-full mx-auto text-center">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-gray-400 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+                            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+                        </svg>
+                        <blockquote>
+                            <p class="text-2xl italic font-medium text-gray-900  dark:text-slate-400">"{{ $item->description  }}"</p>
+                        </blockquote>
+                        <figcaption class="flex flex-wrap items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                            <img class="w-14 h-14 rounded-full" src="{{ $item->image  }}" alt="profile picture">
 
-                                <cite class="pe-3 w-full font-medium text-gray-900  dark:text-slate-400">{{ $item->name  }}</cite>
-                                <small class="pe-3 w-full font-medium text-gray-900  dark:text-slate-400">{{ $item->from  }}</small>
+                            <cite class="pe-3 w-full font-medium text-gray-900  dark:text-slate-400">{{ $item->name  }}</cite>
+                            <small class="pe-3 w-full font-medium text-gray-900  dark:text-slate-400">{{ $item->from  }}</small>
 
-                            </figcaption>
-                        </figure>
+                        </figcaption>
+                    </figure>
                     @endforeach
 
                 </div>
@@ -363,6 +371,101 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 " class="w-full h-28 fill-[#FABE0E] dark:fill-gray-800">
         <path fill-opacity="1" d="M0,32L80,32C160,32,320,32,480,42.7C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
     </svg>
+    <section class="w-full">
+        <div class=" continer mt-12 mb-12">
+            <div class=" w-full lg:w-9/12 mx-auto flex max-lg:flex-wrap">
+                <div class="lg:p-4 relative items-center rounded-xl text-center mx-auto mt-5">
+                    <img src="{{ asset('asset/img/home/teacher-payment.png')}}" alt="" class="h-80">
+                </div>
+                <div class="w-full mt-2 lg:w-9/12 sm:p-8 mx-2">
+                    <div class="card-bordered-yellow-octaclass ">
+                        <h3 class="font-bold text-xl">Biaya Les Private</h3>
+                        <p> Kami menawarkan les dengan biaya terjangkau dan kualitas yang terjaga dengan rincian biaya sebagai berikut.</p>
+                        <div class="flex flex-wrap  dark:text-slate-400 px-2 text-justify">
+
+                            <div class="w-full flex justify-center flex-wrap">
+                                <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
+
+                                <ul>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div> Paud/TK Rp 85.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div> SD kelas 1-5 Rp. 85.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div> SD kelas 6 Rp. 90.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div> SMP kelas 7-8 Rp 95.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>SMP kelas 9 Rp 100.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>SMA kelas 10-11 Rp 115.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>SMA kelas 12 Rp 125.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>Alumni/UTBK/persiapan tes TNI/POLRI/Sekolah kedinasan Rp 135.000/ 90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>TOEFL Rp 135.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>IELTS Rp 140.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>Mata Kuliah Rp 150.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                    <li class="mb-1">
+                                        <div class="flex">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>Persiapan tes CPNS Rp 155.000/90 menit</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
     <section class="container mb-12 mx-auto ">
         <div class="px-12  title text-leftpx-12  mx-auto">
             <p class="text-xl text-sky-400">Explore</p>
@@ -370,7 +473,7 @@
         <livewire:front.partials.top-articels :lazy="true" :title="true" :type="['artikel' => 'Artikel Terbaru','to' => 'Try Out', 'bank'=>'Bank Soal Terbaru']"></livewire:front.partials.top-articels>
     </section>
     <section class="container mb-12 " id="profile">
-        <livewire:front.partials.contact :lazy="true" ></livewire:front.partials.top-articels>
+        <livewire:front.partials.contact :lazy="true"></livewire:front.partials.top-articels>
     </section>
 
 </div>

@@ -8,7 +8,7 @@
     <title>{{ isset($title) ? $title ." | " .  config('app.name') : config('app.name')  }}</title>
 
     @vite(['resources/css/app.css'])
-
+    @livewireStyles
     <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
 </head>
 
@@ -24,6 +24,9 @@
     <x-partials.footer :check="'dashboard'"></x-partials.footer>
 
     <x-notification />
+    @if(auth()->check())
+    <livewire:partials.change-password></livewire:partials.change-password>
+    @endif
     <script src=" https://cdn.jsdelivr.net/npm/air-datepicker@3.5.3/air-datepicker.min.js "></script>
     <link href=" https://cdn.jsdelivr.net/npm/air-datepicker@3.5.3/air-datepicker.min.css " rel="stylesheet">
 

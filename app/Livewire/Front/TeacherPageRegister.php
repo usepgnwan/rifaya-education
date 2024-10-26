@@ -3,6 +3,8 @@
 namespace App\Livewire\Front;
 
 use App\Livewire\Forms\Register\Teachers;
+use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -19,6 +21,8 @@ class TeacherPageRegister extends Component
     // }
     public function render()
     {
-        return view('livewire.front.teacher-page-register');
+        $mapel = MataPelajaran::all();
+        $_kelas = Kelas::all();
+        return view('livewire.front.teacher-page-register', ['mata_pelajarans' => $mapel, "_kelas" => $_kelas]);
     }
 }

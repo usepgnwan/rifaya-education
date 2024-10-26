@@ -99,7 +99,7 @@
                     <x-partials.front.nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">Tentang</x-partials.front.nav-link>
                     <x-partials.front.nav-link href="{{ route('teacher.join') }}" :active="request()->routeIs('teacher.join')">Jadi Pengajar</x-partials.front.nav-link>
 
-                    <x-partials.front.nav-link href="{{ route('home') }}" :active="request()->routeIs('les')" :class="'lg:hover:text-white lg:hover:bg-sky-400  border-2 max-lg:dark:border-gray-700 dark:border-gray-300 border-sky-400 rounded-full py-1.5 px-4 dark:hover:bg-gray-950 dark:hover:text-white'">Les Private</x-partials.front.nav-link>
+                    <x-partials.front.nav-link href="{{ route('register') }}"  @click.prevent="Livewire.navigate('{{ route('register') }}')" :class="'lg:hover:text-white lg:hover:bg-sky-400  border-2 max-lg:dark:border-gray-700 dark:border-gray-300 border-sky-400 rounded-full py-1.5 px-4 dark:hover:bg-gray-950 dark:hover:text-white'">Les Private</x-partials.front.nav-link>
                 </ul>
             </div>
         @endif
@@ -142,13 +142,12 @@
                             <a href="{{ route('account.dashboard') }}" @click.prevent="Livewire.navigate('{{ route('account.dashboard') }}')"  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            <button type="button" class="w-full text-left block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" @click.prevent="Livewire.dispatch('showModal', {status :true })">Ganti Password</button>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <!-- Sign Out -->

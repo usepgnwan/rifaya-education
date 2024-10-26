@@ -1,7 +1,8 @@
 <div>
-    <section class="w-full h-[20vh] sm:h-[69vh] bg-gray-900 mb-12  bg-[url('https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080')] sm:bg-fixed bg-no-repeat bg-cover bg-center" id="banner">
+    <section class="w-full h-[20vh] relative sm:h-[69vh] bg-gray-900 mb-12 sm:bg-fixed bg-no-repeat bg-cover bg-center" id="banner"  style="background-image: url('{{ asset('asset/img/home/post-blok.jpeg') }}')">
+    <div class="absolute inset-0 bg-yellow-500 dark:bg-gray-900 opacity-50 pointer-events-none"></div>
         <div class="w-full flex justify-center h-full">
-            <nav class="flex content-center  text-sm sm:text-2xl " aria-label="Breadcrumb">
+            <nav class="flex content-center  text-sm sm:text-2xl z-10 " aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li class="inline-flex items-center">
                         <a href="#" class="inline-flex items-center font-medium text-gray-700 hover:text-[#FABE0E] dark:text-gray-400 dark:hover:text-white">
@@ -73,7 +74,7 @@
                     <h3 class="font-bold text-xl">Siswa Terdaftar</h3>
                     <div class="flex flex-wrap  dark:text-slate-400 px-2 text-justify">
                         <div class="w-full flex justify-center  mt-5 mb-4 max-lg:text-sm">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, dolorum inventore ullam.
+                        Bebarapa orang telah mendapatkan manfaat dari les private kami, sekarang giliran kamu untuk dapat belajar bersama kami.
                         </div>
                         <div class="w-full flex justify-center flex-wrap">
                             <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
@@ -105,7 +106,7 @@
                 </div>
                 <div class="card-bordered-yellow-octaclass">
                     <h3 class="font-bold text-lg">Try Out</h3>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
@@ -119,7 +120,7 @@
 
                         </div>
                     </div>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
@@ -132,7 +133,7 @@
                             <div><a href="" class="btn-start py-1"> Mulai</a></div>
                         </div>
                     </div>
-                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3">
+                    <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
                             <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">

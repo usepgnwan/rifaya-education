@@ -2,7 +2,8 @@
     <div class=" w-full sm:w-9/12 mx-auto grid grid-cols-1 gap-0 lg:flex lg:gap-6 sm:shadow-lg sm:rounded-xl sm:p-9 sm:border-t-2">
         <div class=" mt-2 lg:w-2/3 sm:px-8 mx-auto flex content-center flex-wrap">
             <h1 class="text-3xl font-bold text-center sm:text-left mb-2 w-full"> Tentang Penulis</h1>
-            <p class="text-justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit atque unde quidem laboriosam facilis repellendus debitis dolor harum quae impedit dolorum hic sed incidunt perferendis tenetur ipsum animi. Tenetur commodi perspiciatis provident aliquid tempore beatae, assumenda pariatur fugit accusantium impedit,.</p>
+            <p class="text-justify">
+                Website ini dibuat dengan tujuan memberikan manfaat bagi para pembaca dan menjangkau semua kalangan yang ingin bersama-sama memajukan pendidikan. Kami berharap konten di sini dapat menjadi sumber inspirasi dan pengetahuan yang berguna. Jika Anda memerlukan informasi lebih lanjut atau memiliki pertanyaan, silakan hubungi kami melalui kontak di bawah ini.</p>
             <form class="w-full mx-auto mt-5">
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="email" name="floating_email" id="floating_email"
@@ -20,7 +21,8 @@
                     class="text-white   dark:bg-gray-800 bg-[#FABE0E] hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  dark:hover:bg-[#FABE0E] dark:focus:ring-[#FABE0E]">Kirim Pesan</button>
             </form>
         </div>
-        <div class="col-start-1 row-start-1 lg:p-4 relative items-center  text-center mx-auto mt-5 h-56 w-56 rounded-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('asset/img/home/teacher-hai.png') }}')">
+        <div class="col-start-1 row-start-1 lg:p-4 relative flex justify-center items-center  text-center mx-auto mt-5  w-96   bg-cover bg-center bg-no-repeat" >
+            <img src="{{ asset('asset/img/home/logo-rifaya1.png') }}" alt="">
         </div>
     </div>
 </div>

@@ -25,7 +25,7 @@
     <section class="p-12 mx-auto sm:w-full  lg:flex lg:p-6 dark:bg-gray-800" id="body-section">
         <div class="container lg:p-12 lg:flex-1   mx-auto lg:max-w-7xl">
             <h1 class=" text-2xl sm:text-3xl font-semibold text-center mb-3">Menjadi Mitra Pengajar di <span class="text-[#FABE0E] dark:text-[#FABE0E]">Rifaya Education</span> </h1>
-            <p class="text-justify lg:text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium voluptatibus ut veniam deleniti quae maxime eaque aliquid reprehenderit magni nobis natus eos, hic tempore, quod neque nisi esse minus dolore reiciendis similique totam nesciunt asperiores. Aliquam obcaecati minima molestias sit error! Quibusdam architecto soluta quae nisi neque voluptatum numquam laudantium sunt rem expedita perspiciatis, similique, necessitatibus ullam repellat quam minus doloremque dignissimos earum, tenetur quas! Beatae commodi odit recusandae provident ad soluta, aliquam doloribus consequatur quibusdam quasi totam non accusamus?
+            <p class="text-justify lg:text-justify">Jadilah bagian dari perjalanan pendidikan yang menginspirasi. Bergabunglah dengan kami untuk membantu siswa mencapai potensi terbaik mereka. Raih kesempatan untuk berbagi pengetahuan dan keterampilan Anda sambil mendapatkan imbalan yang layak. Bergabunglah dengan Rifaya Education!
             </p>
             <div class="w-full mt-5  mx-auto  ml-3 text-center">
                 <a href="{{ route('teacher.register') }}" @click.prevent="Livewire.navigate('{{ route('teacher.register') }}')" class="btn-red-octaclass w-2/3 sm:w-1/5 bg-[#198754] hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300   px-12 p-3"> Daftar </a>
@@ -40,9 +40,9 @@
             <div class="max-lg:w-full max-lg:p-5 max-w-7xl mt-2 w-full sm:pl-1 pr-[16rem] mx-auto flex content-center flex-wrap ">
                 <h1 class="font-bold text-2xl"> <span class="text-[#fabe0e]"> Rifaya Education </span> Les Private memiliki dua System pengajaran:</h1>
                 <div class="text-justify mt-4">
-                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-swap-20-filled]"></span> Online</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
+                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-swap-20-filled]"></span> Online</span> Pembelajaran dilakukan secara daring melalui aplikasi Google Meet, dengan waktu yang fleksibel sesuai kesepakatan antara tutor dan siswa. Dengan metode ini, siswa dapat belajar dari mana saja tanpa perlu bepergian, namun tetap mendapatkan bimbingan langsung dari tutor secara interaktif
                     <hr class="dark:border-gray-700 my-4">
-                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-edit-16-regular]"></span> Offline</span> consectetur adipisicing elit. Commodi quos quo labore error blanditiis possimus animi quaerat molestiae dolorum numquam similique voluptate itaque sapiente, ad, repellendus necessitatibus? Corrupti, ea beatae.
+                    <span class="text-2xl font-bold"><span class="icon-[fluent--people-edit-16-regular]"></span> Offline</span> Pembelajaran dilakukan secara tatap muka, di mana tutor akan datang langsung ke lokasi siswa. Waktu pembelajaran juga dapat disesuaikan dengan jadwal yang nyaman bagi siswa, sehingga mereka bisa belajar dengan lebih fokus dan efektif di lingkungan yang akrab dan nyaman.
 
                 </div>
             </div>
@@ -100,7 +100,37 @@
         </div>
         <div class="container lg:p-12 lg:flex-1 lg:content-center  mx-auto lg:max-w-7xl">
             <h1 class=" text-2xl sm:text-3xl font-semibold text-center mb-3">Siapa saja yang bisa menjadi <span class="text-[#FABE0E] dark:text-[#FABE0E]">Mitra Pengajar ?</span> </h1>
-            <p class="text-justify lg:text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium voluptatibus ut veniam deleniti quae maxime eaque aliquid
+            <p class="text-justify lg:text-center">
+            Kami membuka kesempatan bagi siapa saja yang ingin menjadi bagian dari tim pengajar kami, dengan kriteria sebagai berikut:
+
+            <ul>
+                <li class="mb-1">
+                    <div class="flex">
+                        <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                        <div>Tutor berpengalaman atau individu yang sedang mencari pengalaman mengajar</div>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <div class="flex">
+                        <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                        <div>Mahasiswa sedang menempuh jenjang kuliah dengan minimal semester 5 dari berbagai jurusan</div>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <div class="flex">
+                        <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                        <div>Mampu berkomitmen, bekerja keras, bertanggung jawab dan selalu berupaya memberikan yang terbaik</div>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <div class="flex">
+                        <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                        <div> Menjunjung tinggi kepercayaan dan profesionalisme dalam mendidik siswa</div>
+                    </div>
+                </li>
+            </ul>
+
+
             </p>
             <div class="w-full mt-5  mx-auto  ml-3 text-center">
                 <a href="{{ route('teacher.register') }}" @click.prevent="Livewire.navigate('{{ route('teacher.register') }}')" class="btn-red-octaclass px-12 p-3 w-2/3 sm:w-1/5 bg-[#198754] hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 "> Daftar </a>
@@ -109,26 +139,26 @@
 
     </section>
     <section class="p-12 mx-auto sm:w-full  lg:flex lg:p-6"  >
-        <div class="flex w-full px-12 m-auto flex-wrap ">
-            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+        <div class="flex w-full  m-auto max-lg:flex-wrap ">
+            <div class="w-1/2 max-lg:w-full mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
                 1
                 <p class="font-bold text-xl">Calon tutor Melakukan Registrasi</p>
                 Calon Tutor mengisi form pendaftaran di halaman ini
             </div>
-            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+            <div class="w-1/2 max-lg:w-full mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
                 2
                 <p class="font-bold text-xl">Menunggu Verifikasi</p>
                 setelah mengisi form pendaftaran maka admin rifaya akan melakukan verifikasi, waktu yang dibutuhkan 4 hari sd 1 minggu
             </div>
-            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+            <div class="w-1/2 max-lg:w-full mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
                 3
                 <p class="font-bold text-xl">Di hubungi admin</p>
-                Admin akan memberikan link aktivasi akun guru
+                Admin akan memberikan link aktivasi akun Tutor
             </div>
-            <div class="w-1/2 mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
+            <div class="w-1/2 max-lg:w-full mb-6 first-line:tracking-widest first-letter:text-8xl first-letter:float-left first-letter:font-semibold">
                 4
-                <p class="font-bold text-xl">Calon tutor Melakukan Registrasi</p>
-                Calon Tutor mengisi form pendaftaran di halaman ini
+                <p class="font-bold text-xl">Calon tutor Mendapatkan Murid</p>
+                Admin kami akan menginfokan calon tutor tentang muridnya, yang sesuai dengan profile tutor
             </div>
 
         </div>

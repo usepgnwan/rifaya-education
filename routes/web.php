@@ -4,8 +4,12 @@ use App\Http\Controllers\LogoutController;
 use App\Livewire\Dashboard\Blog;
 use App\Livewire\Dashboard\Blog\BlogForm;
 use App\Livewire\Dashboard\Dashboard;
+use App\Livewire\Dashboard\Faq;
+use App\Livewire\Dashboard\Faq\FaqForm;
+use App\Livewire\Dashboard\MataPelajaran as DashboardMataPelajaran;
 use App\Livewire\Dashboard\Tes;
 use App\Livewire\Dashboard\Users;
+use App\Livewire\Dashboard\Users\Profile;
 use App\Livewire\Front\About;
 use App\Livewire\Front\Home;
 use App\Livewire\Front\PostDetail;
@@ -15,6 +19,7 @@ use App\Livewire\Front\Login;
 use App\Livewire\Front\Page\RegistrasiTeacher;
 use App\Livewire\Front\Post;
 use App\Livewire\Front\StudentPageRegister;
+use App\Models\MataPelajaran;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',Home::class)->name('home');
@@ -38,7 +43,12 @@ Route::middleware('auth')->group(function () {
         Route::get('blog', Blog::class)->name('account.blog');
         Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
         Route::get('users', Users::class)->name('account.users');
-
+        Route::get('/users/profile/{username?}', Profile::class)->name('account.users.profile');
+        Route::prefix('master')->group(function () {
+            Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');
+            Route::get('qa', Faq::class)->name('account.master.qa');
+            Route::get('/qa/{action?}/{id?}', FaqForm::class)->name('account.master.qa.action');
+        });
     });
 });
 

@@ -53,6 +53,22 @@ class User extends Authenticatable
         'register' => 'Register',
     ];
 
+    const HARI = [
+        'senin' => 'Senin',
+        'selasa' => 'Selasa',
+        'rabu' => 'Rabu',
+        'kamis' => 'Kamis',
+        'jumat' => 'Jumat',
+        'sabtu' => 'Sabtu',
+        'minggu' => 'Minggu',
+    ];
+    const WAKTU = [
+
+        '08 sd 12' => '08 sd 12',
+        '10 sd 15' => '10 sd 15',
+        '10 sd 17' => '10 sd 17',
+        '13 sd 17' => '13 sd 17',
+    ];
     protected function casts(): array
     {
         return [
@@ -74,5 +90,29 @@ class User extends Authenticatable
     public function user_experiences(): HasMany
     {
         return $this->HasMany(user_experience::class,'user_id');
+    }
+
+    public function mata_pelajaran(): BelongsToMany
+    {
+        return $this->belongsToMany(MataPelajaran::class, 'user_matapelajarans', 'user_id', 'matapelajaran_id');
+    }
+
+    public function user_metodemengajar(): HasMany
+    {
+        return $this->HasMany(user_metodemengajar::class,'user_id');
+    }
+    public function kelas(): belongsToMany
+    {
+        return $this->belongsToMany(kelas::class, 'user_kelas');
+    }
+
+
+    public function user_waktu(): HasMany
+    {
+        return $this->HasMany(user_waktu::class,'user_id');
+    }
+    public function user_jam_ajar(): HasMany
+    {
+        return $this->HasMany(user_jam_ajar::class,'user_id');
     }
 }

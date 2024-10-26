@@ -7,13 +7,13 @@
                 <h1 class="text-center text-[#fabe0e] font-semibold text-3xl">
                     Rifaya Education
                 </h1>
-                <p class="text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure reiciendis fuga, a quia sapiente, aut laboriosam quibusdam sed iusto corporis libero commodi. </p>
+                <p class="text-center">Selamat datang di Rifaya Education, lembaga les  yang mengedepankan pembelajaran interaktif dan menyenangkan! Kami percaya bahwa setiap siswa memiliki potensi yang unik, dan kami hadir untuk membantunya berkembang dengan cara yang terbaik. </p>
             </div>
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">
             <div class="min-h-96 sm:my-auto w-11/12 sm:w-10/12 mx-auto rounded-2xl sm:py-6 card-bordered-yellow-octaclass shadow-md p-12">
                 <h1 class="font-bold text-2xl">Login</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> -->
                 <form wire:submit="login" class="w-full mt-2">
                     <div class="mb-5">
 

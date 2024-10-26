@@ -1,7 +1,7 @@
 @props(['active' => false])
 @php
     $classes = "dark:text-slate-400 lg:hover:text-[#007bff] text-sm  block font-semibold text-[15px] ";
-    $classes .= ($active ?? false) ? 'text-[#007bff] ' : 'text-gray-500 lg:text-white ';
+    $classes .= ($active ?? false) ? 'text-[#007bff] dark:text-[#007bff]' : 'text-gray-500 lg:text-white ';
 @endphp
 
 

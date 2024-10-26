@@ -8,7 +8,7 @@
     </div>
     <div class="lg:p-12 lg:flex-1 lg:items-center ">
         <h1 class=" text-2xl sm:text-3xl font-semibold text-center">Ada apa saja di <span class="text-[#fabe0e]"> Rifaya Education </span> ?</h1>
-        <p class="text-center lg:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, amet?
+        <p class="text-center  ">kami juga tersedia beberapa artikel dan media pembelajaran
         </p>
         <div class="h-52 mt-2 lg:hidden  flex  p-4 relative bg-yellow-300 items-center rounded-xl bg-center bg-cover bg-[url('../asset/img/test.jpg')]  ">
             <div
