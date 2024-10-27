@@ -37,7 +37,7 @@
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
-                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[material-symbols--database-outline]'" class=" w-full ">
+                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.master*')" :icon="'icon-[material-symbols--database-outline]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>
                     <!-- multi link -->
                     <x-slot name="link">

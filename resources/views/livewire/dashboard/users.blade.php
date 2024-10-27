@@ -88,6 +88,7 @@
                         </x-table.heading>
                         <x-table.heading class="pr-0 w-8">No.</x-table.heading>
                         <x-table.heading>.::.</x-table.heading>
+                        <x-table.heading>Profile</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null" class="w-full">Nama</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('email')" :direction="$sorts['email'] ?? null">Email</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('username')" :direction="$sorts['username'] ?? null">Username</x-table.heading>
@@ -96,7 +97,6 @@
                         <x-table.heading>Mata Pelajaran</x-table.heading>
                         <x-table.heading >Metode Pengajaran</x-table.heading>
                         <x-table.heading>Status</x-table.heading>
-                        <x-table.heading>Profile</x-table.heading>
                         <x-table.heading>Join Date</x-table.heading>
 
                     </x-slot>
@@ -133,7 +133,16 @@
 
                                     @if(in_array('2',$values->roles->pluck('id')->toArray()))
                                     <x-button.link title="profile tutor"  href="{{ route('account.users.profile', ['username'  => $values->username]) }} " @click.prevent="Livewire.navigate('{{ route('account.users.profile', ['username'  => $values->username]) }}')" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail Profile"></span></x-button.link>
+                                    <x-button.link title="download cv" href="{{ $values->user_profile->cv  ?? ''}}" target="_blank" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white">
+                                    <span class="icon-[prime--file-pdf]  text-xl inline-block"></span>
+                                    </x-button.link>
                                     @endif
+                                </div>
+                            </x-table.cell>
+
+                            <x-table.cell>
+                                <div class="flex flex-col gallery w-20 ">
+                                    <img src="{{ $values->profile }}" alt="image not found" class="gallery-image object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
                                 </div>
                             </x-table.cell>
                             <x-table.cell>
@@ -187,11 +196,6 @@
                                 @else
                                 <span class="text-xs rounded px-2 py-1 bg-red-500 text-white text-nowrap"> {{ $values->status }} </span>
                                 @endif
-                            </x-table.cell>
-                            <x-table.cell>
-                                <div class="flex flex-col gallery w-20 ">
-                                    <img src="{{ $values->profile }}" alt="image not found" class="gallery-image object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
-                                </div>
                             </x-table.cell>
                             <x-table.cell>
                                 {{ $values->created_at }}

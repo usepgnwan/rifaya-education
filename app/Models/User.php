@@ -103,16 +103,16 @@ class User extends Authenticatable
     }
     public function kelas(): belongsToMany
     {
-        return $this->belongsToMany(kelas::class, 'user_kelas');
+        return $this->belongsToMany(Kelas::class, 'user_kelas');
     }
 
 
     public function user_waktu(): HasMany
     {
-        return $this->HasMany(user_waktu::class,'user_id');
+        return $this->HasMany(User_waktu::class,'user_id');
     }
     public function user_jam_ajar(): HasMany
     {
-        return $this->HasMany(user_jam_ajar::class,'user_id');
+        return $this->HasMany(User_jam_ajar::class,'user_id');
     }
 }

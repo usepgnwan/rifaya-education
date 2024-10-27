@@ -6,7 +6,14 @@
                 <h1 class="text-center text-[#fabe0e] font-semibold text-3xl">
                     Rifaya Education
                 </h1>
-                <p class="text-center">Jadilah bagian dari perjalanan pendidikan yang menginspirasi. Bergabunglah dengan kami untuk membantu siswa mencapai potensi terbaik mereka. Raih kesempatan untuk berbagi pengetahuan dan keterampilan Anda sambil mendapatkan imbalan yang layak. Bergabunglah dengan Rifaya Education!</p>
+                <p class="text-center">
+                    Jadilah bagian dari perjalanan pendidikan yang menginspirasi. Bergabunglah dengan kami untuk membantu siswa mencapai potensi terbaik mereka. Raih kesempatan untuk berbagi pengetahuan dan keterampilan Anda sambil mendapatkan imbalan yang layak. Bergabunglah dengan Rifaya Education!
+                    <br>
+                </p>
+                <div class=" w-56  mx-auto">
+
+                    <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
+                </div>
             </div>
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">
@@ -97,7 +104,7 @@
                     <div class="mb-2" >
                         <x-input.group for="waktu" :inline="'true'" label="Sebutkan jadwal ketersediaan mengajar Anda di Rifaya Education <span class='text-red-500'>*</span>" :error="$errors->first('waktu')"  >
                             <div wire:ignore>
-                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Jam Ajar -')"  wire:model.live.debounce.300ms="waktu" >
+                                <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Jam Mengajar -')"  wire:model.live.debounce.300ms="waktu" >
                                     @foreach (App\Models\User::WAKTU as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
                                     @endforeach
@@ -107,9 +114,9 @@
                     </div>
 
                     <div class="mb-2">
-                        <x-input.group for="kendaraan" :inline="'true'" label="Metode Mengajar <span class='text-red-500'>*</span>" :error="$errors->first('mentoring')" >
+                        <x-input.group for="kendaraan" :inline="'true'" label="System Pembelajaran <span class='text-red-500'>*</span>" :error="$errors->first('mentoring')" >
                             <div wire:ignore>
-                                <x-input.select  :multiple="__('true')" :placeholder="'- Pilih Metode Mengajar -'" wire:model.live.debounce.300ms="mentoring">
+                                <x-input.select  :multiple="__('true')" :placeholder="'- Pilih System Pembelajaran -'" wire:model.live.debounce.300ms="mentoring">
                                     <option value="offline">Offline (datang kerumah)</option>
                                     <option value="online">Online</option>
                                 </x-input.select>
