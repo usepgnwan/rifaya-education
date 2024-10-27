@@ -301,7 +301,7 @@
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div> Durasi di sesuaikan dengan kesepakatan bersama atau dengan seminimal mungkin 60menit</div>
+                            <div> Durasi belajar yaitu 1,5 jam/90 menit</div>
                         </div>
                     </li>
                     <li class="mb-1">

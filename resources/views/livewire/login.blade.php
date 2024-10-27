@@ -8,6 +8,9 @@
                     Rifaya Education
                 </h1>
                 <p class="text-center">Selamat datang di Rifaya Education, lembaga les  yang mengedepankan pembelajaran interaktif dan menyenangkan! Kami percaya bahwa setiap siswa memiliki potensi yang unik, dan kami hadir untuk membantunya berkembang dengan cara yang terbaik. </p>
+                <div class=" w-56  mx-auto">
+                    <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
+                </div>
             </div>
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">

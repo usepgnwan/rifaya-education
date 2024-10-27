@@ -238,7 +238,7 @@
                 Rifaya Education adalah lembaga les yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
             </p>
             <p class="indent-6 text-justify ">
-                Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses modul-modul edukatif yang memperkaya pengalaman belajar. Kami juga menyediakan latihan kompetensi, seperti persiapan tes dan latihan lainnya, untuk membantu siswa mempersiapkan diri menghadapi berbagai tantangan akademik.
+                Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses artikel edukatif yang memperkaya pengalaman belajar.
             </p>
 
         </div>
@@ -266,37 +266,32 @@
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Termasuk biaya transportasi Pengajar bagi les private Offline </div>
+                            <div> Durasi belajar yaitu 1,5 jam/90 menit</div>
                         </div>
                     </li>
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Termasuk biaya daring untuk Pengajar bagi les private Online </div>
+                            <div>Apabila ada request materi/ kurikulum tertentu, siswa dapat memberitahukan admin terlebih dahulu agar disesuaikan dengan guru yang akan kami kirimkan</div>
                         </div>
                     </li>
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div> Durasi di sesuaikan dengan kesepakatan bersama atau dengan seminimal mungkin 60menit</div>
+                            <div>Jadwal ditentukan oleh siswa, apabila berhalangan, jadwal dapat diganti</div>
                         </div>
                     </li>
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Menggunakan video conference yang disesuaikan dengan durasi pengajaran</div>
+                            <div>Mengkonfirmasi tidak les paling lambat 1 jam sebelum jam les yang disepakati. Apalagi siswa terlambat mengkonfirmasi tidak les sedangkan guru sudah diperjalanan/sudah sampai rumah maka harus membayar biaya ganti ongkos sebesar Rp15.000</div>
                         </div>
                     </li>
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Tersedia untuk berbagai jenjang pendidikan dengan pengajar yang berkualitas </div>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <div class="flex">
-                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Dilakukan coaching pertemuan tutor dengan siswa dan orang tua</div>
+                            <div>
+                            Jumlah pertemuan tidak mengikat sehingga disesuaikan kebutuhan siswa</div>
                         </div>
                     </li>
 
@@ -385,7 +380,6 @@
 
                             <div class="w-full flex justify-center flex-wrap">
                                 <div class=" flex  -space-x-4 rtl:space-x-reverse justify-center mt-1">
-
                                 <ul>
                                     <li class="mb-1">
                                         <div class="flex">
@@ -463,6 +457,19 @@
                                 </div>
                             </div>
                         </div>
+                        <p> Biaya les program kelompok⬇️</p>
+                        <div class="flex flex-wrap  dark:text-slate-400 px-2 text-justify">
+
+                            <div class="w-full flex  flex-wrap">
+                                <div class=" flex   rtl:space-x-reverse   mt-1">
+                                <div class="flex w-full">
+                                            <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
+                                            <div>Disesuaikan dengan jumlah siswa, kurikulum, jenjang (chat admin)</div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
     </section>

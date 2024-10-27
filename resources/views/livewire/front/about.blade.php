@@ -44,7 +44,7 @@
                     Rifaya Education adalah lembaga pendidikan terkemuka yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
                     </p>
                     <p class="indent-6 text-justify ">
-                    Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses modul-modul edukatif yang memperkaya pengalaman belajar. Kami juga menyediakan latihan kompetensi, seperti persiapan tes dan latihan lainnya, untuk membantu siswa mempersiapkan diri menghadapi berbagai tantangan akademik.
+                    Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses artikel edukatif yang memperkaya pengalaman belajar.
                     </p>
 
                     <p class="text-center text-3xl font-bold mt-3"> Visi dan Misi   </p>

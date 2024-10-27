@@ -86,7 +86,7 @@
                     <li class="mb-1">
                         <div class="flex">
                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                            <div>Sistem pembayar jelas</div>
+                            <div>Sistem pembayaran jelas</div>
                         </div>
                     </li>
                 </ul>

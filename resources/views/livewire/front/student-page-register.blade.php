@@ -6,8 +6,11 @@
                 <div class="mx-auto h-72 bg-contain bg-no-repeat w-96  "  style="background-image: url('{{ asset('asset/img/home/login.png') }}')"></div>
                 <h1 class="text-center text-[#fabe0e] font-semibold text-3xl">
                     Rifaya Education
-                </h1>terdepan
+                </h1>
                 <p class="text-center">Selamat datang di Rifaya Education, lembaga les  yang mengedepankan pembelajaran interaktif dan menyenangkan! Kami percaya bahwa setiap siswa memiliki potensi yang unik, dan kami hadir untuk membantunya berkembang dengan cara yang terbaik. </p>
+                <div class=" w-56  mx-auto">
+                    <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
+                </div>
             </div>
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">
@@ -26,7 +29,7 @@
                         </x-input.group>
                     </div>
                     <div class="mb-2">
-                        <x-input.group for="Email / Username" :inline="'true'" label="Email / Username " :error="$errors->first('form.email')"  >
+                        <x-input.group for="Email" :inline="'true'" label="Email " :error="$errors->first('form.email')"  >
                             <x-input.text leadingAddOn='<span class="icon-[fontisto--email]"></span> ' :id="__('email')" wire:model="form.email" placeholder="Email / Username" type="input" />
                         </x-input.group>
                     </div>

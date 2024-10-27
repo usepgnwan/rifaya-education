@@ -141,9 +141,13 @@
                             </x-table.cell>
 
                             <x-table.cell>
-                                <div class="flex flex-col gallery w-20 ">
+                                <!-- <div class="flex flex-col gallery w-20 ">
                                     <img src="{{ $values->profile }}" alt="image not found" class="gallery-image object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
-                                </div>
+                                </div> -->
+
+                                <x-style.glithbox href="{{ $values->profile }}"   data-title="{{ $values->name }}"  class="glightbox" >
+                                        <x-style.glithbox.img :url="$values->profile" alt="image not found"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                </x-style.glithbox>
                             </x-table.cell>
                             <x-table.cell>
                                 <span href="#" class="inline-flex space-x-2 truncate text-sm leading-5">
@@ -309,19 +313,19 @@
 @push('scripts')
 
 <script data-navigate-once>
-document.addEventListener('livewire:update', () => {
-    const galleryImages = document.querySelectorAll('.gallery-image');
-    cosole.log(galleryImages)
-    if (galleryImages.length > 0) {
-        galleryImages.forEach(image => {
-            // Add your logic here for handling .gallery-image elements
-            console.log('Gallery image found:', image);
-            // Example: image.style.filter = 'grayscale(0)';
-        });
-    } else {
-        console.log('No gallery images found');
-    }
-});
+// document.addEventListener('livewire:update', () => {
+//     const galleryImages = document.querySelectorAll('.gallery-image');
+//     cosole.log(galleryImages)
+//     if (galleryImages.length > 0) {
+//         galleryImages.forEach(image => {
+//             // Add your logic here for handling .gallery-image elements
+//             console.log('Gallery image found:', image);
+//             // Example: image.style.filter = 'grayscale(0)';
+//         });
+//     } else {
+//         console.log('No gallery images found');
+//     }
+// });
     document.addEventListener('livewire:navigated', (component) => {
          console.log(component)
         const urlObject = new URL(component.originalTarget.URL);
