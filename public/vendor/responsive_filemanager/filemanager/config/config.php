@@ -217,7 +217,7 @@ $config = array(
     | in Megabytes
     |
     */
-    'MaxSizeUpload' => 10,
+    'MaxSizeUpload' => 100,
 
     /*
     |--------------------------------------------------------------------------
@@ -378,10 +378,10 @@ $config = array(
 
     // defines size limit for paste in MB / operation
     // set 'FALSE' for no limit
-    'copy_cut_max_size'                       => 100,
+    'copy_cut_max_size'                       => FALSE,
     // defines file count limit for paste / operation
     // set 'FALSE' for no limit
-    'copy_cut_max_count'                      => 200,
+    'copy_cut_max_count'                      => FALSE,
     //IF any of these limits reached, operation won't start and generate warning
 
     //**********************

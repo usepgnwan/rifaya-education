@@ -15,7 +15,7 @@
         </div>
         <div class="w-full sm:w-1/2 sm:h-screen flex  overflow-y-auto sm:py-7 ">
             <div class="min-h-96 sm:my-auto w-11/12 sm:w-10/12 mx-auto rounded-2xl sm:py-6 card-bordered-yellow-octaclass shadow-md p-12">
-                <h1 class="font-bold text-2xl">Registrasi</h1>
+                <h1 class="font-bold text-2xl">Registrasi Siswa</h1>
                 <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> -->
                 <form wire:submit="save" class="w-full mt-2">
                     <div class="mb-2">

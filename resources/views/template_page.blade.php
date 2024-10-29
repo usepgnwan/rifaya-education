@@ -32,7 +32,7 @@
                 </button>
                 <ul class='justify-end  max-lg:transition-all max-lg:ease-in-out max-lg:delay-75 lg:flex lg:items-center lg:ml-14 lg:gap-x-3 max-lg:space-y-3 max-lg:fixed  dark:bg-gray-800 lg:dark:bg-transparent max-lg:bg-[#FABE0E] max-lg:w-1/2  max-lg:top-0 max-lg:right-[-520px] max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 '>
                     <li class='mb-6 hidden max-lg:block'>
-                        <a href="/index.html"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
+                        <a href="{{ route('home') }}"><img src="{{ asset('asset/img/home/logo-rifayas.png') }}" alt="logo"
                                 class='w-36' />
                         </a>
                     </li>

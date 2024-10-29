@@ -70,8 +70,8 @@
                     <hr class=" mt-10  dark:border-slate-800 mb-5 ">
                     <div class="flex justify-between">
                         <div class="px-4 text-sm flex">
-                            <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="User">
-                            <div class="p-1 lg:px-4 text-xs  lg:text-sm ">Rani Oktaviani</div>
+                            <img id="avatarButton" class="w-7 h-w-7 rounded-full cursor-pointer " src="{{$detail->user->profile}}" alt="User">
+                            <div class="p-1 lg:px-4 text-xs  lg:text-sm ">{{ $detail->user->name }}</div>
                         </div>
 
                         <div class="  lg:px-4 text-xs lg:text-sm   py-1  flex justify-center items-center ">

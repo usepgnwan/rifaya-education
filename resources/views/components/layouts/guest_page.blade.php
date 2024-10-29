@@ -8,6 +8,16 @@
 
         <link rel="icon" href="{{ asset('asset/img/home/logo-rifaya.png') }}" type="image/x-icon">
         @vite(['resources/css/app.css'])
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXP4219XLM"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FXP4219XLM');
+        </script>
     </head>
     <body class=" dark:text-slate-400  dark:bg-gray-700">
         {{ $slot }}

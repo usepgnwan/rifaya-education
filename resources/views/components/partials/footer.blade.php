@@ -56,5 +56,5 @@
 </footer>
 
 
-<a href="{{ route('register') }}" class="btn-next-yellow mt-2 fixed bottom-20 bg-[#FABE0E] border border-gray-300 shadow-lg text-white dark:bg-gray-800 dark:text-gray-200  right-4 z-50">Daftar Les Private</a>
+<a href="{{ route('register') }}" class="btn-next-yellow mt-2 fixed bottom-20 bg-[#DC5A39] border border-gray-300 shadow-lg text-white dark:bg-gray-800 dark:text-gray-200  right-4 z-50">Daftar Les Private</a>
 <div class="fixed bottom-4 z-50 shadow-xl bg-white dark:bg-gray-700 w-14 h-14 right-4 cursor-pointer rounded-full flex items-center justify-center whatsapp-button"> <span class="icon-[logos--whatsapp-icon] text-4xl"></span> </div>

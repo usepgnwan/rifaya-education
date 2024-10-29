@@ -11,6 +11,16 @@
         @livewireStyles
         <!-- <script src="{{ asset('/vendor/select2/css/select2.min.css')}}"></script> -->
          <link rel="stylesheet" href="{{ asset('/vendor/tinymce/skins/ui/oxide-dark/content.css')}}">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXP4219XLM"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FXP4219XLM');
+        </script>
     </head>
     <body class=" dark:text-slate-400  dark:bg-gray-700">
        <x-partials.navigations-home :check="'home'"></x-partials.navigations-home>

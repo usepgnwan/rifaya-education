@@ -11,6 +11,18 @@
     @vite(['resources/css/app.css'])
     @livewireStyles
     <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S3Y0M49BQ"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXP4219XLM"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FXP4219XLM');
+    </script>
+
 </head>
 
 <body class=" dark:text-slate-400  dark:bg-gray-700">

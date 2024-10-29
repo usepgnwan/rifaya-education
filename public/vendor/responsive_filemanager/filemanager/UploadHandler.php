@@ -1505,7 +1505,7 @@ class UploadHandler
 
 
 
-            $thumbResult = create_img($targetFile, $targetFileThumb, 122, 91);
+            $thumbResult = create_img($targetFile, $targetFileThumb, 1220,null,'auto');
 
             if ( $thumbResult!==true)
             {

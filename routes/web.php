@@ -18,14 +18,17 @@ use App\Livewire\Front\TeacherPageRegister;
 use App\Livewire\Front\Login;
 use App\Livewire\Front\Page\RegistrasiTeacher;
 use App\Livewire\Front\Post;
+use App\Livewire\Front\Sop;
 use App\Livewire\Front\StudentPageRegister;
 use App\Models\MataPelajaran;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',Home::class)->name('home');
 Route::get('/login',Login::class)->name('login')->middleware('guest');
+Route::get('/daftar/siswa',StudentPageRegister::class)->name('register.siswa')->middleware('guest');
 Route::get('/registrasi',StudentPageRegister::class)->name('register')->middleware('guest');
 Route::get('/blog', Post::class)->name('post.index');
+Route::get('/sop/tutor-rifaya-education', Sop::class)->name('sop.index');
 Route::get('/tentang', About::class)->name('about');
 Route::get('/page/pengajar', TeacherJoin::class)->name('teacher.join');
 Route::get('/page/pengajar/daftar', TeacherPageRegister::class)->name('teacher.register');
