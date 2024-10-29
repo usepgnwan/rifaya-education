@@ -10,7 +10,7 @@ use Livewire\Component;
 class StudentPageRegister extends Component
 {
 
-    #[Title('Registrasi')]
+    #[Title('Les Private Siswa')]
     #[Layout('components.layouts.guest_page')]
 
     public $form = [

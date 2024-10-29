@@ -6,7 +6,9 @@
 
         <title>{{  isset($title) ? $title ." | " .  config('app.name') : config('app.name')  }}</title>
 
-        <link rel="icon" href="{{ asset('asset/img/home/logo-rifaya.png') }}" type="image/x-icon">
+        <meta name="description" content="{{ isset($title) ? $title : config('app.name')  }}">
+        <link rel="icon" href="{{ asset('asset/img/home/logo-rifaya.png') }}" type="image/png">
+
         @vite(['resources/css/app.css'])
 
         <!-- Google tag (gtag.js) -->

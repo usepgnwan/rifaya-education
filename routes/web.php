@@ -22,6 +22,14 @@ use App\Livewire\Front\Sop;
 use App\Livewire\Front\StudentPageRegister;
 use App\Models\MataPelajaran;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
+
+Route::get('/generate-sitemap', function () {
+    SitemapGenerator::create(config('app.url'))
+        ->writeToFile(public_path('sitemap.xml'));
+    return "Sitemap generated successfully!";
+});
+
 
 Route::get('/',Home::class)->name('home');
 Route::get('/login',Login::class)->name('login')->middleware('guest');

@@ -43,3 +43,41 @@
     ```
       'pagination_theme' => 'tailwind',
     ```
+- adding seo with sitemap
+    ```
+    composer require spatie/laravel-sitemap
+    ```
+    [x] on layout adding meta tag 
+        ``` 
+        <meta name="description" content="{{ isset($title) ? $title : config('app.name')  }}"> 
+        ```
+    [x] on web.php adding 
+        ```
+        use Spatie\Sitemap\SitemapGenerator;
+
+        Route::get('/generate-sitemap', function () {
+            SitemapGenerator::create(config('app.url'))
+                ->writeToFile(public_path('sitemap.xml'));
+            return "Sitemap generated successfully!";
+        });
+            
+        ```
+        note : first access this url domain.com/generate-sitemap for adding sitemap.xml
+    [x] sitemap success generate change to :
+        ```
+        <?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                <url>
+                    <loc>https://yourdomain.com</loc>
+                    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+                    <changefreq>daily</changefreq>
+                    <priority>1.0</priority>
+                </url>
+                <!-- More URLs -->
+            </urlset>  
+        ```
+    [x] Open or create a robots.txt file in the public directory and add the sitemap URL:
+    ```
+    Sitemap: https://yourdomain.com/sitemap.xml
+
+    ```
