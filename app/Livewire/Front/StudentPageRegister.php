@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -16,22 +18,28 @@ class StudentPageRegister extends Component
     public $form = [
         'name' => '',
         'email' => '',
-        'password' => '',
-        'repeat_password' => '',
+        // 'password' => '',
+        // 'repeat_password' => '',
     ];
 
     public $profile = [
         'no_telp' => '',
+        'alamat_domisili' => '',
     ];
+
+    public $mapel = [];
+    public $kelas = [];
 
     public function rules(){
 
         return [
             'form.name' => 'required|min:3',
             'form.email' => 'required|email:dns|unique:users,email',
-            'form.password' => 'required|min:6',
+            // 'form.password' => 'required|min:6',
             'profile.no_telp' => 'required|numeric',
-            'form.repeat_password' => 'required|same:form.password',
+            'profile.alamat_domisili' => 'required',
+            'mapel' => 'array|min:1',
+            // 'form.repeat_password' => 'required|same:form.password',
         ];
     }
     public function validationAttributes()
@@ -39,9 +47,11 @@ class StudentPageRegister extends Component
         return [
             'form.name' => 'Nama Pengguna',
             'form.email' => 'Alamat Email',
-            'form.password' => 'Password',
-            'form.repeat_password' => 'Ulangi Password',
+            // 'form.password' => 'Password',
+            // 'form.repeat_password' => 'Ulangi Password',
             'profile.no_telp' => 'No. Telp/wa',
+            'mapel' => 'Mata Pelajaran',
+            'profile.alamat_domisili' => 'Alamat Domisili',
 
         ];
     }
@@ -55,11 +65,14 @@ class StudentPageRegister extends Component
 
             unset($this->form['repeat_password']);
             $user = User::create($this->form);
+            $user->kelas()->sync($this->kelas);
+            $user->mata_pelajaran()->sync($this->mapel);
             $user->roles()->sync([3]);
             $user->user_profile()->create($this->profile);
             $this->notify('Registrasi Berhasil.Tim kami akan menghubungi anda. ', 'success', 'flash');
             $this->reset('form');
-            redirect()->route('login');
+            // redirect()->route('login');
+            session()->flash('success', $user->name);
         }catch (\Illuminate\Validation\ValidationException $e){
             $this->notify('Periksa kembali formulir anda','warning');
             throw $e;
@@ -67,6 +80,9 @@ class StudentPageRegister extends Component
     }
     public function render()
     {
-        return view('livewire.front.student-page-register');
+        $mapel = MataPelajaran::all();
+        $_kelas = Kelas::all();
+        return view('livewire.front.student-page-register'
+       , ['mata_pelajarans' => $mapel, "_kelas" => $_kelas]);
     }
 }
