@@ -41,6 +41,8 @@ class Users extends Component
     public array $breadcumb = [];
     public $showDeleteModal = false;
     public $showEditModal = false;
+    public $type = [];
+    public $label_type = [];
     public User $editingUser;
 
     #[On('description')]
@@ -69,8 +71,19 @@ class Users extends Component
             'request.status' => 'Status',
         ];
     }
-    public function mount()
+    public function mount($type = null)
     {
+        if(!in_array($type,['teacher','student'])){
+            abort(404);
+        }
+
+        $this->label_type = $type;
+        if($type == 'teacher'){
+            $this->type = [1,2,4];
+        }else if($type == 'student'){
+            $this->type = [3];
+        }
+
         $this->editingUser = $this->makeBlankTransaction();
         $this->default_sorts = ['created_at' => 'desc'];
         $this->dispatch('tiny:init', ['editor' => '#editor']);
@@ -178,11 +191,17 @@ class Users extends Component
             ->with('user_profile')
             ->with('mata_pelajaran')
             ->with('user_metodemengajar')
+
             ->when($this->filters['search'], fn($query, $status) => $query->where('name', 'like', '%' . $status . '%'))
             ->when($this->filters['status'], fn($query, $status) => $query->where('status', '=', $status ))
             ->when($this->filters['created_at'], function($query, $date) {
                 $formattedDate = \Carbon\Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
                 return $query->whereDate('created_at', $formattedDate);
+            })
+            ->when(!empty($this->type), function($query){
+                $query->whereHas('roles', function ($querys) {
+                    return $querys->whereIn('role_id', $this->type);
+                });
             })
             ->when(!empty($this->filters['roles']), function($query){
 
@@ -212,7 +231,7 @@ class Users extends Component
     // }
     public function render()
     {
-        $roles = Role::all();
+        $roles = Role::whereIn('id',$this->type)->get();
         $mapel = MataPelajaran::all();
         $this->dispatch('tiny:init', ['editor' => '#editor']);
         return view('livewire.dashboard.users', [

@@ -1,6 +1,6 @@
 <section>
     <div>
-        <h1 class="text-2xl font-semibold text-gray-900 mb-2">Users</h1>
+        <h1 class="text-2xl font-semibold text-gray-900 mb-2">Users {{ ucfirst($label_type)  ?? ''}}</h1>
         <x-partials.dashboard.breadcumb :data="$breadcumb"> </x-partials.dashboard.breadcumb>
 
         <div class="py-4 space-y-4">

@@ -24,8 +24,11 @@
                 <x-partials.dashboard.side-link href="{{ route('account.tes') }}" :active="request()->routeIs('account.tes')" :icon="'icon-[streamline--pie-chart-solid]'" class="hidden">
                     <span class="ms-3">Tes</span>
                 </x-partials.dashboard.side-link>
-                <x-partials.dashboard.side-link href="{{ route('account.users') }}" :active="request()->routeIs('account.users')" :icon="'icon-[ph--user-list]'">
-                    <span class="ms-3">Users</span>
+                <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'teacher']) }}" :active="request()->routeIs('account.users')   && request()->route('type') === 'teacher'" :icon="'icon-[ph--user-list]'">
+                    <span class="ms-3">Guru</span>
+                </x-partials.dashboard.side-link>
+                <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'student']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'student'" :icon="'icon-[mdi--account-school-outline]'">
+                    <span class="ms-3">Siswa</span>
                 </x-partials.dashboard.side-link>
 
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[streamline--pie-chart-solid]'" class=" w-full ">

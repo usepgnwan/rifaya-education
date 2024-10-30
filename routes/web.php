@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard/login', [Tes::class, 'loginView'])->name('account.dashboard.login');
         Route::get('blog', Blog::class)->name('account.blog');
         Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
-        Route::get('users', Users::class)->name('account.users');
+        Route::get('users/{type?}', Users::class)->name('account.users');
         Route::get('/users/profile/{username?}', Profile::class)->name('account.users.profile');
         Route::prefix('master')->group(function () {
             Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');
