@@ -24,7 +24,32 @@
 
     gtag('config', 'G-FXP4219XLM');
     </script>
-
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Beranda",
+            "item": "https://rifayaeducation.com/"
+            },
+            {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Artikel",
+            "item": "https://rifayaeducation.com/blog"
+            },
+            {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Les Private",
+            "item": "https://rifayaeducation.com/daftar/siswa"
+            }
+        ]
+        }
+    </script>
 </head>
 
 <body class=" dark:text-slate-400  dark:bg-gray-700">

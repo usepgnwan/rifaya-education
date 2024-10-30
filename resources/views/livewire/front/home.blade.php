@@ -366,8 +366,22 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 " class="w-full h-28 fill-[#FABE0E] dark:fill-gray-800">
         <path fill-opacity="1" d="M0,32L80,32C160,32,320,32,480,42.7C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
     </svg>
-    <section class="w-full">
+    <section class="w-full mb-12 mt-12">
         <div class=" continer mt-12 mb-12">
+            <div class="w-full lg:w-9/12 mx-auto text-center">
+                <h3 class="text-3xl font-bold "> Mata Pelajaran Kami Mencakup</h3>
+                <p> Mata pelajaran yang tersedia dengan tutor kami yang berpengalaman.</p>
+                <div class="  dark:text-slate-400 mt-2 text-justify flex mb-1  gap-1 flex-wrap">
+                    @foreach ($mapel as $v )
+                    <div class="pill-yellow-octaclass text-lg px-3 rounded-2xl mb-2">
+                        <div class="px-1 font-sm">{{$v->title}}</div>
+                    </div>
+                    @endforeach
+                    <div class="pill-yellow-octaclass text-lg px-3 rounded-2xl mb-2">
+                        <div class="px-1 font-sm">Lainnya</div>
+                    </div>
+                </div>
+            </div>
             <div class=" w-full lg:w-9/12 mx-auto flex max-lg:flex-wrap">
                 <div class="lg:p-4 relative items-center rounded-xl text-center mx-auto mt-5">
                     <img src="{{ asset('asset/img/home/teacher-payment.png')}}" alt="" class="h-80">
@@ -473,7 +487,7 @@
                     </div>
                 </div>
     </section>
-    <section class="container mb-12 mx-auto ">
+    <section class="container mb-12 mt-12 mx-auto ">
         <div class="px-12  title text-leftpx-12  mx-auto">
             <p class="text-xl text-sky-400">Explore</p>
         </div>

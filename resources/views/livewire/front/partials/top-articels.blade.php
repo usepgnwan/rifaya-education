@@ -39,6 +39,15 @@
                                             </p>
                                         </div>
                                         <div class="flex mb-1  gap-1 px-4 overflow-auto">
+                                            @if (isset($item->kategori))
+                                                @if ($item->kategori->id == 5)
+                                                    <div class="pill-yellow-octaclass text-xs px-3 rounded-2xl mb-2">
+                                                        <div class="flex">
+                                                            <div class="px-1 font-sm">Rifaya Education</div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endif
                                             @if (isset($item->kelas))
                                                 <div class="pill-yellow-octaclass text-xs px-3 rounded-2xl mb-2">
                                                     <div class="flex">

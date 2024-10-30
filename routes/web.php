@@ -33,8 +33,8 @@ Route::get('/generate-sitemap', function () {
 
 Route::get('/',Home::class)->name('home');
 Route::get('/login',Login::class)->name('login')->middleware('guest');
-Route::get('/daftar/siswa',StudentPageRegister::class)->name('register.siswa')->middleware('guest');
-Route::get('/registrasi',StudentPageRegister::class)->name('register')->middleware('guest');
+// Route::get('/daftar/siswa',StudentPageRegister::class)->name('register.siswa')->middleware('guest');
+Route::get('/daftar/siswa',StudentPageRegister::class)->name('register')->middleware('guest');
 Route::get('/blog', Post::class)->name('post.index');
 Route::get('/sop/tutor-rifaya-education', Sop::class)->name('sop.index');
 Route::get('/tentang', About::class)->name('about');

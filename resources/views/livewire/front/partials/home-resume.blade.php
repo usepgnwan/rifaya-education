@@ -1,6 +1,6 @@
 @if($content ==1)
 <div class="sm:w-full  lg:flex lg:p-6 lg:max-w-full ">
-    <div class="hidden lg:flex lg:w-1/2 lg:h-96 lg:p-4 relative bg-yellow-300 items-center rounded-xl bg-center bg-cover bg-[url('../asset/img/test.jpg')]">
+    <div class="hidden lg:flex lg:w-1/2 lg:h-96 lg:p-4 relative bg-yellow-300 items-center rounded-xl bg-center bg-cover  " style="background-image: url('{{ asset('asset/img/home/post-blok.jpeg') }}')">
         <div
             class="animate-ping-slow h-16 w-16 m-auto cursor-pointer bg-white/20 backdrop-blur-sm flex rounded-full scale-90">
             <p class="m-auto icon-[charm--media-play]  text-4xl ml-5 text-white/80 "> </p>
@@ -10,7 +10,7 @@
         <h1 class=" text-2xl sm:text-3xl font-semibold text-center">Ada apa saja di <span class="text-[#fabe0e]"> Rifaya Education </span> ?</h1>
         <p class="text-center  ">kami juga tersedia beberapa artikel dan media pembelajaran
         </p>
-        <div class="h-52 mt-2 lg:hidden  flex  p-4 relative bg-yellow-300 items-center rounded-xl bg-center bg-cover bg-[url('../asset/img/test.jpg')]  ">
+        <div class="h-52 mt-2 lg:hidden  flex  p-4 relative bg-yellow-300 items-center rounded-xl bg-center bg-cover" style="background-image: url('{{ asset('asset/img/home/post-blok.jpeg') }}')">
             <div
                 class="animate-ping-slow h-10 w-10 m-auto cursor-pointer bg-white/20 backdrop-blur-sm flex rounded-full scale-90">
                 <p class="m-auto icon-[charm--media-play]  text-2xl ml-3 sm:ml-5 text-white/80 "> </p>

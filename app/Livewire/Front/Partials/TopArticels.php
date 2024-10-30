@@ -38,20 +38,48 @@ class TopArticels extends Component
         foreach($this->type as $k => $title){
             $_type[$k]['title'] = $title;
             $_type[$k]['status'] = $this->title;
-            if($k == 'artikel'){
-                $data = $post->where('category_id','=','1')
+            $promo = $post
                         ->with(['kelas.jenjang' => function ($query) {
                             $query->select('id', 'title');
                         }])
                         ->with(['materi' => function ($query) {
                             $query->select('id', 'title');
                         }])
+                        ->with(['kategori' => function ($query) {
+                            $query->select('id', 'title');
+                        }])
+                        ->where(function ($query) {
+                            $query->whereHas('kategori', function ($query) {
+                                $query->where('id', '=', 5);
+                            });
+                        })
+                        ->inRandomOrder()->limit(2)->get();
+            if($k == 'artikel'){
+
+                $data = $post->where('category_id','=','1')
+                        ->with(['kelas.jenjang' => function ($query) {
+                            $query->select('id', 'title');
+                        }])
+                        ->with(['kategori' => function ($query) {
+                            $query->select('id', 'title');
+                        }])
+                        ->with(['materi' => function ($query) {
+                            $query->select('id', 'title');
+                        }])
+                        // ->where(function ($query) {
+                        //     $query->whereHas('materi', function ($query) {
+                        //         $query->where('id', '<>', 6);
+                        //     })->orWhereDoesntHave('materi');
+                        // })
                         ->inRandomOrder()->limit(6)->get();
 
 
             }else if($k == 'to'){
                 $data = $post->where('category_id','=','2')
                 ->with(['kelas.jenjang' => function ($query) {
+                    $query->select('id', 'title');
+                }])
+                ->with(['kategori' => function ($query) {
                     $query->select('id', 'title');
                 }])
                 ->with(['materi' => function ($query) {
@@ -63,11 +91,19 @@ class TopArticels extends Component
                 ->with(['kelas.jenjang' => function ($query) {
                     $query->select('id', 'title');
                 }])
+                ->with(['kategori' => function ($query) {
+                    $query->select('id', 'title');
+                }])
                 ->with(['materi' => function ($query) {
                     $query->select('id', 'title');
                 }])
                 ->latest()->limit(6)->get();
             }
+
+            if ($promo && $k == 'artikel') {
+                $data = $promo->merge($data); // Add the promo post at the beginning of the collection
+            }
+
             $_type[$k]['data'] = $data ?? [];
         }
 

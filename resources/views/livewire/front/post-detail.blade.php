@@ -201,4 +201,9 @@
 
 })
     </script>
+
+<div class="lightbox" id="lightbox">
+    <span class="close" id="close">×</span>
+    <img src="" alt="" class="lightbox-image" id="lightbox-image">
+</div>
 </div>
