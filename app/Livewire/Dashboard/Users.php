@@ -119,11 +119,8 @@ class Users extends Component
                     $username = explode('@', $this->request['email'])[0];
                     $this->request['username'] = $username;
                     $this->request['password'] = bcrypt('password');
-
-                    $this->editingUser->create($this->request)->each(function ($user) use ($roles) {
-                        // Assign roles to the user
-                        $user->roles()->sync($roles);
-                    });
+                    $user = $this->editingUser->create($this->request);
+                    $user->roles()->sync($roles);
             }else{
 
                     // Update the user
@@ -161,6 +158,7 @@ class Users extends Component
         if ($this->editingUser->isNot($user)) $this->editingUser = $user;
         $this->request['name']  = $this->editingUser->name;
         $this->request['email'] = $this->editingUser->email;
+        $this->request['username'] = $this->editingUser->username;
         $this->request['status'] = $this->editingUser->status;
         $this->request['roles'] = array_column($this->editingUser->roles->toArray(),'id');
         $this->showEditModal = true;

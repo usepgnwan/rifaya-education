@@ -21,6 +21,7 @@ class Blog extends Component
         'status'=> [],
         'materi'=> [],
         'kategori'=> [],
+        'type'=> [],
         'kelas'=> [],
         'created_at'=> '',
     ];
@@ -78,6 +79,11 @@ class Blog extends Component
             $query->whereHas('kelas', function ($querys) {
                 return $querys->whereIn('id', $this->filters['kelas']);
             });
+        })
+        ->when(!empty($this->filters['type']), function($query){
+
+                return $query->whereIn('type', $this->filters['type']);
+
         })
         ->when(!empty($this->filters['materi']), function($query){
             $query->whereHas('materi', function ($querys) {

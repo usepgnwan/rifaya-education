@@ -49,7 +49,8 @@ class TopArticels extends Component
                             $query->select('id', 'title');
                         }])
                         ->where(function ($query) {
-                            $query->whereHas('kategori', function ($query) {
+                            $query->where('type', '<>', 'private')
+                            ->whereHas('kategori', function ($query) {
                                 $query->where('id', '=', 5);
                             });
                         })
@@ -60,6 +61,9 @@ class TopArticels extends Component
                         ->with(['kelas.jenjang' => function ($query) {
                             $query->select('id', 'title');
                         }])
+                        ->where(function ($query) {
+                            $query->where('type', '<>', 'private');
+                        })
                         ->with(['kategori' => function ($query) {
                             $query->select('id', 'title');
                         }])

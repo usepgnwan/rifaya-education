@@ -55,6 +55,7 @@ class Post extends Component
         ->when($this->kategori, function ($query) {
             return $query->where('category_id', $this->kategori);
         })
+        ->where('type', '<>', 'private')
         ->latest()->paginate(12);
 
         return view('livewire.front.partials.post', compact('data'));

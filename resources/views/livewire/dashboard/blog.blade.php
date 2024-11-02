@@ -84,6 +84,16 @@
                                 </x-input.select>
                             </div>
                         </x-input.group>
+
+                        <x-input.group inline for="filter-amount-min" label="Kategori">
+                            <div wire:ignore>
+                                <x-input.select wire:model.live="filters.type" :multiple="'true'" :placeholder="__('- Pilih Kategori -')">
+                                     @foreach (App\Models\Post::Type as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                    @endforeach
+                                </x-input.select>
+                            </div>
+                        </x-input.group>
                         <x-button.link wire:click="resetFilters" class="absolute right-0 bottom-0 p-4 dark:text-slate-300 mt-5">Reset Filters</x-button.link>
                     </div>
             </div>
@@ -103,6 +113,7 @@
                         <x-table.heading> Materi  </x-table.heading>
                         <x-table.heading> Image  </x-table.heading>
                         <x-table.heading> Status  </x-table.heading>
+                        <x-table.heading> Type  </x-table.heading>
                         <x-table.heading> Di Buat Oleh  </x-table.heading>
                         <x-table.heading  sortable multi-column wire:click="sortBy('created_at')" :direction="$sorts['created_at'] ?? null"> Tanggal dibuat  </x-table.heading>
                     </x-slot>
@@ -133,7 +144,7 @@
                             <x-table.cell>
                                 <div class="flex">
                                     <x-button.link  href="{{ route('account.blog.action', ['action'=>'edit', 'slug'=> $post->slug]) }}" @click.prevent="Livewire.navigate('{{ route('account.blog.action', ['action'=>'edit', 'slug'=> $post->slug]) }}')" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[uil--edit]"></span></x-button.link>
-                                    <x-button.link wire:click="edit({{ $post->id }})" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail Profile"></span></x-button.link>
+                                    <x-button.link target="_blank" href="{{ route('post.detail', ['slug'=>$post->slug]) }}" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail post"></span></x-button.link>
                                 </div>
                             </x-table.cell>
                             <x-table.cell>
@@ -182,6 +193,15 @@
                                 <span class="text-xs rounded px-2 py-1 bg-yellow-500 text-white text-nowrap"> {{ $post->status }} </span>
                                 @else
                                 <span class="text-xs rounded px-2 py-1 bg-red-500 text-white text-nowrap"> {{ $post->status }} </span>
+                                @endif
+                            </x-table.cell>
+                            <x-table.cell>
+                                @if ($post->type == 'public')
+                                    <span class="text-xs rounded px-2 py-1 bg-green-500 text-white"> {{ $post->type }} </span>
+                                @elseif ($post->type == 'private')
+                                <span class="text-xs rounded px-2 py-1 bg-yellow-500 text-white text-nowrap"> {{ $post->type }} </span>
+                                @else
+                                <span class="text-xs rounded px-2 py-1 bg-red-500 text-white text-nowrap"> {{ $post->type }} </span>
                                 @endif
                             </x-table.cell>
                             <x-table.cell>
