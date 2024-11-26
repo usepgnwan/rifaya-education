@@ -81,3 +81,22 @@
     Sitemap: https://yourdomain.com/sitemap.xml
 
     ```
+
+## install slug 
+
+```
+composer require cviebrock/eloquent-sluggable
+php artisan vendor:publish --provider="Cviebrock\EloquentSluggable\ServiceProvider"
+```
+set on model 
+```
+use Cviebrock\EloquentSluggable\Sluggable;
+public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+```

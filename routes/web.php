@@ -21,6 +21,7 @@ use App\Livewire\Front\Post;
 use App\Livewire\Front\Sop;
 use App\Livewire\Front\StudentPageRegister;
 use App\Models\MataPelajaran;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Spatie\Sitemap\SitemapGenerator;
 
@@ -68,3 +69,11 @@ Route::get('/tes',function(){
     return view('welcome');
 })->name('tes');
 
+
+Route::get('/clear-cache', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return 'Cache cleared successfully!';
+});
