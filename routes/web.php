@@ -52,14 +52,19 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard', Dashboard::class)->name('account.dashboard');
         Route::get('tes', Tes::class)->name('account.tes');
         Route::get('dashboard/login', [Tes::class, 'loginView'])->name('account.dashboard.login');
-        Route::get('blog', Blog::class)->name('account.blog');
-        Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
-        Route::get('users/{type?}', Users::class)->name('account.users');
+        // access only admin & contributor
+        Route::middleware(['roles:1,4'])->group(function(){
+            Route::get('blog', Blog::class)->name('account.blog');
+            Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
+            Route::get('users/{type?}', Users::class)->name('account.users');
+        });
         Route::get('/users/profile/{username?}', Profile::class)->name('account.users.profile');
-        Route::prefix('master')->group(function () {
-            Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');
-            Route::get('qa', Faq::class)->name('account.master.qa');
-            Route::get('/qa/{action?}/{id?}', FaqForm::class)->name('account.master.qa.action');
+        Route::middleware(['roles:1'])->group(function(){
+            Route::prefix('master')->group(function () {
+                Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');
+                Route::get('qa', Faq::class)->name('account.master.qa');
+                Route::get('/qa/{action?}/{id?}', FaqForm::class)->name('account.master.qa.action');
+            });
         });
     });
 });

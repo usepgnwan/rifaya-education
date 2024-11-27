@@ -24,13 +24,15 @@
                 <x-partials.dashboard.side-link href="{{ route('account.tes') }}" :active="request()->routeIs('account.tes')" :icon="'icon-[streamline--pie-chart-solid]'" class="hidden">
                     <span class="ms-3">Tes</span>
                 </x-partials.dashboard.side-link>
+                @can('hasRole', [1])
                 <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'teacher']) }}" :active="request()->routeIs('account.users')   && request()->route('type') === 'teacher'" :icon="'icon-[ph--user-list]'">
                     <span class="ms-3">Guru</span>
                 </x-partials.dashboard.side-link>
                 <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'student']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'student'" :icon="'icon-[mdi--account-school-outline]'">
                     <span class="ms-3">Siswa</span>
                 </x-partials.dashboard.side-link>
-
+                @endcan
+                @can('hasRole', [1,3])
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[streamline--pie-chart-solid]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Blog</x-slot> </span>
                     <!-- multi link -->
@@ -40,6 +42,8 @@
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
+                @endcan
+                @can('hasRole', [1])
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.master*')" :icon="'icon-[material-symbols--database-outline]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>
                     <!-- multi link -->
@@ -52,6 +56,7 @@
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
+                @endcan
                 {{--
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.tes*')" :icon="'icon-[bx--data]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Master</x-slot> </span>

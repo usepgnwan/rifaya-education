@@ -28,6 +28,8 @@
             <x-errors :errorCode="__('406')" :msg="__('<span class=font-bold>Mohon maaf</span><br> Saat ini pendaftaran kami ditutup sementara karena tingginya antusiasme para tutor yang mendaftar.<br> Kami memerlukan waktu untuk memverifikasi data tutor yang sudah masuk.
             <br><br>
             Terima kasih atas pengertiannya.')"></x-errors>
+        @elseif ($statusCode == 401)
+            <x-errors :errorCode="__('401')" :msg="__('Halaman tidak tersedia')"></x-errors>
         @endif
         <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
         <script src="{{ asset('/vendor/tinymce/tinymce.min.js')}}"></script>

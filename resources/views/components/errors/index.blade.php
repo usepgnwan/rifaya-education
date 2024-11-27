@@ -12,7 +12,12 @@ $img = $errorCode .'.png';
     <p class=" text-xl max-lg:text-sm mb-3  ">{!!$msg!!}</p>
     <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
 </div>
-
+@elseif ($errorCode == 401)
+<div class="w-full mt-14 mb-32 min-h-96 max-lg:mb-20 max-lg:p-2 flex justify-center items-center flex-col text-center">
+    <img src="{{ url('asset/img/errors/'.$img) }}" class='lg:w-96 max-lg:w-56 mb-3'>
+    <p class=" text-xl max-lg:text-sm mb-3  ">{!!$msg!!}</p>
+    <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
+</div>
 @else
 <div class="w-full mt-14 mb-32 min-h-96 max-lg:mb-20 max-lg:p-2 flex justify-center items-center flex-col text-center">
     <img src="{{ url('asset/img/errors/'.$img) }}" class='lg:w-96 max-lg:w-56 '>
