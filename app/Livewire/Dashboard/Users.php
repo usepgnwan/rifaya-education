@@ -73,7 +73,7 @@ class Users extends Component
     }
     public function mount($type = null)
     {
-        if(!in_array($type,['teacher','student'])){
+        if(!in_array($type,['teacher','student','mapping'])){
             abort(404);
         }
 
@@ -82,6 +82,9 @@ class Users extends Component
             $this->type = [1,2,4];
         }else if($type == 'student'){
             $this->type = [3];
+        }else if($type == 'mapping'){
+            $this->type = [2];
+            $this->filters['status'] = 'aktif';
         }
 
         $this->editingUser = $this->makeBlankTransaction();

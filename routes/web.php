@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\LogoutController;
+use App\Livewire\Dashboard\Absensi;
 use App\Livewire\Dashboard\Blog;
 use App\Livewire\Dashboard\Blog\BlogForm;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\Faq;
 use App\Livewire\Dashboard\Faq\FaqForm;
+use App\Livewire\Dashboard\MappingSiswa;
 use App\Livewire\Dashboard\MataPelajaran as DashboardMataPelajaran;
+use App\Livewire\Dashboard\RekapAbsensi;
 use App\Livewire\Dashboard\Tes;
 use App\Livewire\Dashboard\Users;
 use App\Livewire\Dashboard\Users\Profile;
@@ -57,8 +60,13 @@ Route::middleware('auth')->group(function () {
             Route::get('blog', Blog::class)->name('account.blog');
             Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
             Route::get('users/{type?}', Users::class)->name('account.users');
+            Route::get('mapping/users', MappingSiswa::class)->name('account.mapping.users');
         });
         Route::get('/users/profile/{username?}', Profile::class)->name('account.users.profile');
+        Route::prefix('absensi')->group(function(){
+            Route::get('/harian', Absensi::class)->name('account.absensi.harian');
+            Route::get('/rekap', RekapAbsensi::class)->name('account.absensi.rekap');
+        });
         Route::middleware(['roles:1'])->group(function(){
             Route::prefix('master')->group(function () {
                 Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');

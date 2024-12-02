@@ -1,6 +1,10 @@
 <section>
     <div>
-        <h1 class="text-2xl font-semibold text-gray-900 mb-2">Users {{ ucfirst($label_type)  ?? ''}}</h1>
+        <h1 class="text-2xl font-semibold text-gray-900 mb-2">Users {{ ucfirst($label_type)  ?? ''}}
+        @if ($label_type == 'mapping')
+            Guru & Siswa
+        @endif
+        </h1>
         <x-partials.dashboard.breadcumb :data="$breadcumb"> </x-partials.dashboard.breadcumb>
 
         <div class="py-4 space-y-4">
@@ -10,9 +14,11 @@
                     <div class="w-10/12">
                     <x-input.text  wire:model.live.debounce.300ms="filters.search" placeholder="users..." />
                     </div>
+                    @if (in_array(($label_type),['teacher','mapping']))
                     <div x-data class="justify-self-end">
                         <x-button.green  wire:click="toggleShowFilters"> <span class="icon-[mdi--filter]"></span> </x-button.primary>
                     </div>
+                    @endif
                 </div>
 
                 <div class="space-x-2 flex items-center max-lg:w-full" wire:ignore>
@@ -89,13 +95,17 @@
                         <x-table.heading class="pr-0 w-8">No.</x-table.heading>
                         <x-table.heading>.::.</x-table.heading>
                         <x-table.heading>Profile</x-table.heading>
-                        <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null" class="w-full">Nama</x-table.heading>
+                        <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null" class="w-full">Nama @if (($label_type) == 'mapping') Guru @endif</x-table.heading>
+                        @if (($label_type) != 'mapping')
                         <x-table.heading sortable multi-column wire:click="sortBy('email')" :direction="$sorts['email'] ?? null">Email</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('username')" :direction="$sorts['username'] ?? null">Username</x-table.heading>
                         <x-table.heading>No. Telp / Wa</x-table.heading>
                         <x-table.heading>Role</x-table.heading>
-                        <x-table.heading>Mata Pelajaran</x-table.heading>
-                        <x-table.heading >Metode Pengajaran</x-table.heading>
+                        @endif
+                        @if (($label_type) == 'teacher')
+                            <x-table.heading>Mata Pelajaran</x-table.heading>
+                            <x-table.heading >Metode Pengajaran</x-table.heading>
+                        @endif
                         <x-table.heading>Status</x-table.heading>
                         <x-table.heading>Join Date</x-table.heading>
 
@@ -129,9 +139,10 @@
                             </x-table.cell>
                             <x-table.cell>
                                 <div class="flex">
+                                    @if (($label_type) != 'mapping')
                                     <x-button.link wire:click="edit({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[uil--edit]"></span></x-button.link>
-
-                                    @if(in_array('2',$values->roles->pluck('id')->toArray()))
+                                    @endif
+                                    @if(in_array('2',$values->roles->pluck('id')->toArray()) && ($label_type) == 'teacher')
                                     <x-button.link title="profile tutor"  href="{{ route('account.users.profile', ['username'  => $values->username]) }} " @click.prevent="Livewire.navigate('{{ route('account.users.profile', ['username'  => $values->username]) }}')" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white"><span class="icon-[bxs--user-detail]" title="Detail Profile"></span></x-button.link>
                                     <x-button.link title="download cv" href="{{ $values->user_profile->cv  ?? ''}}" target="_blank" class="bg-blue-500 mx-1 px-2 py-1 rounded text-white">
                                     <span class="icon-[prime--file-pdf]  text-xl inline-block"></span>
@@ -156,7 +167,7 @@
                                     </p>
                                 </span>
                             </x-table.cell>
-
+                            @if (($label_type) != 'mapping')
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->email }} </span>
                             </x-table.cell>
@@ -172,6 +183,8 @@
                                     {{collect($values->roles)->pluck('title')->implode(', ')}}
                                 @endif
                             </x-table.cell>
+                            @endif
+                            @if (($label_type) == 'teacher')
                             <x-table.cell >
                                 <div  class="flex  flex-wrap w-36">
                                 @forelse ($values->mata_pelajaran as $v )
@@ -194,6 +207,7 @@
                                     -
                                 @endforelse
                             </x-table.cell>
+                            @endif
                             <x-table.cell>
                                 @if ($values->status == 'aktif')
                                     <span class="text-xs rounded px-2 py-1 bg-green-500 text-white"> {{ $values->status }} </span>
@@ -242,7 +256,7 @@
         <!-- Save Transaction Modal -->
         <form wire:submit.prevent="save">
                 <x-modal.dialog wire:model.defer="showEditModal">
-                    <x-slot name="title">Edit Transaction</x-slot>
+                    <x-slot name="title">Edit {{ ucfirst($label_type)  ?? ''}}</x-slot>
 
                     <x-slot name="content">
                         <x-input.group :inline="'true'" for="email" label="Email" :error="$errors->first('request.email')">
@@ -266,7 +280,6 @@
                         <div >
                             <x-input.group :inline="'true'" for="status" label="status" :error="$errors->first('request.status')">
                                 <div wire:ignore>
-
                                     <x-input.select  wire:model.live.debounce.300ms="request.status" :placeholder="__('- Pilih Status -')">
                                     <option value="">- Pilih Status -</option>
                                     @foreach (App\Models\User::STATUSES as $value => $label)
@@ -283,7 +296,7 @@
                                     <x-input.select  wire:model.live.debounce.300ms="request.roles" :multiple="'true'" :placeholder="__('- Pilih roles -')">
 
                                     @foreach ($roles as $key => $value)
-                                        <option value="{{ $value['id'] }}" @if(isset($request['roles'])     && !empty($request['roles']) && in_array($value['id'], $request['roles'])) selected  @endif >{{ $value['title'] }}</option>
+                                        <option value="{{ $value['id'] }}" @if(isset($request['roles']) && !empty($request['roles']) && in_array($value['id'], $request['roles'])) selected  @endif >{{ $value['title'] }}</option>
                                     @endforeach
                                     </x-input.select>
                                 </div>

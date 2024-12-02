@@ -320,21 +320,11 @@ document.addEventListener('livewire:initialized', function () {
             const mediaQuery = window.matchMedia('(max-width: 992px)'); // max-lg breakpoint
 
             function changeMenu(e) {
-                let menu = select('#drawer-disabled-backdrop')
-                if (document.querySelector('.button-menu')) {
 
-                    let menubtn = select('.button-menu')
-                    if (e.matches) {
-                        menubtn.classList.remove('h-opened')
-                        menubtn.querySelector('.h-open').classList.remove('hidden')
-                        menubtn.querySelector('.h-close').classList.add('hidden')
-                        menu.classList.add('-translate-x-full')
-                    } else {
-                        menubtn.classList.add('h-opened')
-                        menubtn.querySelector('.h-open').classList.add('hidden')
-                        menubtn.querySelector('.h-close').classList.remove('hidden')
-                        menu.classList.remove('-translate-x-full')
-                    }
+                let menu = select('#drawer-disabled-backdrop')
+                const buttonMenu = document.querySelector('.button-menu');
+                if (e.matches && buttonMenu) {
+                    buttonMenu.click();
                 }
             }
             changeMenu(mediaQuery)

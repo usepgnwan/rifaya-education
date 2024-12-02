@@ -31,6 +31,9 @@
                 <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'student']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'student'" :icon="'icon-[mdi--account-school-outline]'">
                     <span class="ms-3">Siswa</span>
                 </x-partials.dashboard.side-link>
+                <x-partials.dashboard.side-link href="{{ route('account.mapping.users') }}" :active="request()->routeIs('account.mapping.users*')" :icon="'icon-[hugeicons--study-desk]'">
+                     <span class="ms-3">Mapping Absensi</span>
+                </x-partials.dashboard.side-link>
                 @endcan
                 @can('hasRole', [1,3])
                 <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[streamline--pie-chart-solid]'" class=" w-full ">
@@ -39,6 +42,20 @@
                     <x-slot name="link">
                         <x-partials.dashboard.side-link href="{{ route('account.blog') }}" :active="request()->routeIs('account.blog*')"   class=" pl-11 ">
                             <span class="ms-3">Blog</span>
+                        </x-partials.dashboard.side-link>
+                    </x-slot>
+                </x-partials.dashboard.side-link>
+                @endcan
+                @can('hasRole', [1,2])
+                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.absensi*')" :icon="'icon-[ri--draft-line]'" class=" w-full ">
+                    <span class="ms-3" > <x-slot name="title">Absensi</x-slot> </span>
+                    <!-- multi link -->
+                    <x-slot name="link">
+                        <x-partials.dashboard.side-link href="{{ route('account.absensi.harian') }}" :active="request()->routeIs('account.absensi.harian*')"   class=" pl-11 ">
+                            <span class="ms-3">Harian</span>
+                        </x-partials.dashboard.side-link>
+                        <x-partials.dashboard.side-link href="{{ route('account.absensi.rekap') }}" :active="request()->routeIs('account.absensi.rekap*')"   class=" pl-11 ">
+                            <span class="ms-3">Upload Rekap</span>
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>
