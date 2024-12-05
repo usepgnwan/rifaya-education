@@ -65,6 +65,50 @@
         <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
         <x-notification />
 
+        <a href="{{ route('register') }}" class="btn-next-yellow mt-2 fixed bottom-20 bg-[#DC5A39] border border-gray-300 shadow-lg text-white dark:bg-gray-800 dark:text-gray-200  right-4 z-50">Daftar Les Private</a>
+        <div
+            x-data="affiliateBanner()"
+            x-init="checkCookie()"
+            x-show="isVisible"
+            class="fixed inset-0 z-50 shadow-xl bg-transparent flex flex-wrap justify-center items-center cursor-pointer h-screen w-screen screen-affiliate"
+        >
+            <div class="absolute inset-0 bg-black opacity-35 h-full close-affiliate" @click="closeAffiliate()"></div>
+            <div class="relative">
+                <div class="absolute top-0 right-0 close-affiliate" @click="closeAffiliate()">
+                    <div class="flex items-center">
+                        <span class="icon-[line-md--close-circle] size-16"></span>
+                    </div>
+                </div>
+                <div>
+                    <img src="{{ asset('asset/img/home/affiliate.png') }}" class="max-lg:h-80 h-[510px]" alt="affiliate">
+                </div>
+                <div class="flex justify-center">
+                    <button class="text-2xl px-6 rounded-full p-2 bg-purple-700 text-white border border-solid border-purple-700 hover:bg-purple-600 hover:text-white max-lg:text-lg">Cek ketentuan & syarat disni</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function affiliateBanner() {
+                return {
+                    isVisible: true,
+                    checkCookie() {
+                        // Check if the cookie exists
+                        if (document.cookie.split('; ').find(row => row.startsWith('affiliate=close'))) {
+                            this.isVisible = false; // Hide the banner
+                        }
+                    },
+                    closeAffiliate() {
+                        // Set the cookie to hide the banner
+                        const date = new Date();
+                        date.setTime(date.getTime() + 3 * 60 * 60 * 1000); // 3 hours expiration
+                        document.cookie = `affiliate=close; expires=${date.toUTCString()}; path=/`;
+                        this.isVisible = false; // Hide the banner
+                    }
+                };
+            }
+        </script>
+
 
         @livewireScripts
         @vite(['resources/js/app.js'])

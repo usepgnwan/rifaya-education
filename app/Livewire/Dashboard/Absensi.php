@@ -183,7 +183,10 @@ class Absensi extends Component
     public function getRowsQueryProperty()
     {
         // dd($this->perPage);
-        $query = ModelsAbsensi::query();
+        $query = ModelsAbsensi::query()
+        ->when(!in_array(1, auth()->user()->roles->pluck('id')->toArray()), function($query){
+            $query->where('teacher_id','=', auth()->user()->id );
+        });
 
         return $this->applySorting($query);
     }

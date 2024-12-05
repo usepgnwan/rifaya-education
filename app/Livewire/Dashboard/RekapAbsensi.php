@@ -195,8 +195,20 @@ class RekapAbsensi extends Component
     public function getRowsQueryProperty()
     {
         // dd($this->perPage);
-        $query = rekap_absensi::query();
-
+        $query = rekap_absensi::query()
+        ->when(!in_array(1, auth()->user()->roles->pluck('id')->toArray()), function($query){
+            $query->where('teacher_id','=', auth()->user()->id );
+        })
+        ->when(!empty($this->filters['search']), function($query){
+            $query->whereHas('mapping', function ($query) {
+                $query->whereHas('student', function($q) {
+                    $q->where('name', 'like', '%' . $this->filters['search'] . '%');
+                })
+                ->orWhereHas('teacher', function($q) {
+                    $q->where('name', 'like', '%' . $this->filters['search'] . '%');
+                });
+            });
+        });
         return $this->applySorting($query);
     }
 

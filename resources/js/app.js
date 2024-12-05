@@ -229,15 +229,19 @@ document.addEventListener('livewire:initialized', function () {
                 //     }
                 // });
                 // Close lightbox when close button is clicked
+                if(closeButton){
+
                 closeButton.addEventListener('click', () => {
                     lightbox.style.display = 'none';
                 });
-                // Close lightbox when clicking outside the image
                 lightbox.addEventListener('click', e => {
                     if (e.target === lightbox) {
                         lightbox.style.display = 'none';
                     }
                 });
+                }
+                // Close lightbox when clicking outside the image
+
             }
 
             // document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -491,6 +495,35 @@ document.addEventListener('livewire:initialized', function () {
                 const modal = new Modal($targetEl, options, instanceOptions);
                 return modal;
             };
+
+            // on('click', '.close-affiliate', function(){
+            //     select('.screen-affiliate').remove();
+            //       // Example usage:
+            //     setCookie('affiliate', 'close', 90); // Cookie expires in 30 minutes
+            // },true);
+
+            function setCookie(name, value, timeoutMinutes) {
+                const date = new Date();
+                // Set expiration time in minutes
+                date.setTime(date.getTime() + timeoutMinutes * 60 * 1000);
+                const expires = `expires=${date.toUTCString()}`;
+                document.cookie = `${name}=${value}; ${expires}; path=/`;
+            }
+
+            if(getCookie('affiliate') != null){
+                select('.screen-affiliate').remove();
+            }
+            function getCookie(name) {
+                const cookieArr = document.cookie.split('; ');
+                for (const cookie of cookieArr) {
+                    const [key, value] = cookie.split('=');
+                    if (key === name) {
+                        return value;
+                    }
+                }
+                return null; // Cookie not found
+            }
+
         })();
 
         window.addEventListener('popstate', () => {

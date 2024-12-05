@@ -7,18 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class rekap_absensi extends Model
+class UserAffiliate extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
-    protected $with = ['mapping'];
 
-    public function mapping() : BelongsTo{
-        return $this->belongsTo(MappingSiswa::class,'mapping_siswa_id');
-    }
-
-    public function pendapatan(): HasOne{
-        return $this->hasOne(Pendapatan::class);
+    public function users_affiliate() : HasOne{
+        return $this->hasOne(User::class ,'user_id');
     }
 }

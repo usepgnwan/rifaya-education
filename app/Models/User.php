@@ -29,7 +29,7 @@ class User extends Authenticatable
         'profile',
     ];
 
-    protected $with = ['roles'];
+    protected $with = ['roles','my_affiliate'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -114,5 +114,9 @@ class User extends Authenticatable
     public function user_jam_ajar(): HasMany
     {
         return $this->HasMany(User_jam_ajar::class,'user_id');
+    }
+
+    public function my_affiliate(): HasOne{
+        return $this->hasOne(UserAffiliate::class );
     }
 }

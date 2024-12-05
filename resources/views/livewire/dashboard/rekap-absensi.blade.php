@@ -40,10 +40,13 @@
                         </x-table.heading>
                         <x-table.heading class="pr-0 w-8">No.</x-table.heading>
                         <x-table.heading>.::.</x-table.heading>
-                        <x-table.heading sortable multi-column wire:click="sortBy('name_student')" :direction="$sorts['name_student'] ?? null" class="w-full">Nama Siswa</x-table.heading>
-                        <x-table.heading sortable multi-column wire:click="sortBy('name_student')" :direction="$sorts['name_student'] ?? null" class="w-full">Fee Transfer</x-table.heading>
+                        @can('hasRole', [1])
+                        <x-table.heading class="w-full">Nama Guru</x-table.heading>
+                        @endcan
+                        <x-table.heading class="w-full">Nama Siswa</x-table.heading>
+                        <x-table.heading >Fee Transfer</x-table.heading>
                         <x-table.heading>Kelas</x-table.heading>
-                        <x-table.heading sortable multi-column wire:click="sortBy('mata_pelajaran')" :direction="$sorts['mata_pelajaran'] ?? null" class="w-full">Mata Pelajaran</x-table.heading>
+                        <x-table.heading class="w-full">Mata Pelajaran</x-table.heading>
                         <x-table.heading>Tanggal Awal</x-table.heading>
                         <x-table.heading>Tanggal Akhir</x-table.heading>
                         <x-table.heading>Jadwal Terlaksana</x-table.heading>
@@ -86,6 +89,11 @@
                                     </x-button.link>
                                 </div>
                             </x-table.cell>
+                            @can('hasRole', [1])
+                            <x-table.cell>
+                                <span class="text-cool-gray-900 font-medium">{{ $values->mapping->teacher->name }} </span>
+                            </x-table.cell>
+                            @endcan
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->mapping->student->name }} </span>
                             </x-table.cell>
