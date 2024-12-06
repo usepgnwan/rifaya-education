@@ -83,7 +83,7 @@
                     <img src="{{ asset('asset/img/home/affiliate.png') }}" class="max-lg:h-80 h-[510px]" alt="affiliate">
                 </div>
                 <div class="flex justify-center">
-                    <button class="text-2xl px-6 rounded-full p-2 bg-purple-700 text-white border border-solid border-purple-700 hover:bg-purple-600 hover:text-white max-lg:text-lg">Cek ketentuan & syarat disni</button>
+                    <a href="{{ route('affiliate') }}" class="text-2xl px-6 rounded-full p-2 bg-purple-700 text-white border border-solid border-purple-700 hover:bg-purple-600 hover:text-white max-lg:text-lg">Cek ketentuan & syarat disni</a>
                 </div>
             </div>
         </div>

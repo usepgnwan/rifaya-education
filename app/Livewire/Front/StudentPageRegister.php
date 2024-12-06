@@ -5,6 +5,7 @@ namespace App\Livewire\Front;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
 use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -18,6 +19,7 @@ class StudentPageRegister extends Component
     public $form = [
         'name' => '',
         'email' => '',
+        'user_affiliate_id' => null
         // 'password' => '',
         // 'repeat_password' => '',
     ];
@@ -30,6 +32,21 @@ class StudentPageRegister extends Component
     public $mapel = [];
     public $kelas = [];
 
+    public function mount($token = null){
+        if(!is_null($token)){
+            try {
+                // Decrypt the value
+                $decryptedValue = Crypt::decrypt($token);
+                $user = User::whereHas('my_affiliate',function($q) use ($decryptedValue){
+                    return $q->where('user_affiliate_id','=',$decryptedValue);
+                })->FirstOrFail();
+                $this->form['user_affiliate_id'] = $decryptedValue;
+            } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                // Handle the decryption error
+                abort(404);
+            }
+        }
+    }
     public function rules(){
 
         return [
@@ -62,7 +79,6 @@ class StudentPageRegister extends Component
             $this->form['username'] = $username;
             $this->form['password'] = bcrypt('password');
             $this->form['status'] = 'register';
-
             unset($this->form['repeat_password']);
             $user = User::create($this->form);
             $user->kelas()->sync($this->kelas);

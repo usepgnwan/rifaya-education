@@ -27,6 +27,7 @@ class User extends Authenticatable
         'status',
         'username',
         'profile',
+        'user_affiliate_id',
     ];
 
     protected $with = ['roles','my_affiliate'];

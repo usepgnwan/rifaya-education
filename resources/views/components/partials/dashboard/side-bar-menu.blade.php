@@ -54,9 +54,11 @@
                     <span class="ms-3" > <x-slot name="title">Pendapatan</x-slot> </span>
                     <!-- multi link -->
                     <x-slot name="link">
+                        @can('hasRole', [1,2])
                         <x-partials.dashboard.side-link href="{{ route('account.salary', ['type' => 'tuttor']) }}" :active="request()->routeIs('account.salary*') && request()->route('type') === 'tuttor' "   class=" pl-11 ">
                             <span class="ms-3">Fee Tutor</span>
                         </x-partials.dashboard.side-link>
+                        @endcan
                         @can('hasRole', [1,5])
                             <x-partials.dashboard.side-link href="{{ route('account.salary', ['type' => 'affiliate']) }}" :active="request()->routeIs('account.salary*') && request()->route('type') === 'affiliate' " class=" pl-11 ">
                                 <span class="ms-3">Affiliate</span>

@@ -129,7 +129,7 @@
                 </div>
                 <div class="card-bordered-yellow-octaclass">
                     <h3 class="font-bold text-xl">Bank Soal</h3>
-                    <div class="w-full h-48 bg-cover bg-center mt-2 mb-2 bg-[url('https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080')] rounded-xl"></div>
+                    <div class="w-full h-48 bg-cover bg-center mt-2 mb-2 bg-[url('https://rifayaeducation.com/asset/img/home/post-blok.jpeg')] rounded-xl"></div>
                     <!-- <ul class="mt-2 w-full">
                         <li class="btn-exam">
                             <a class="block text-sky-600 dark:text-slate-400 ">Download Soal OSN Matematika SMA Tahun 2023 Tingkat Kota Kabupaten </a>
@@ -146,7 +146,7 @@
                     <h3 class="font-bold text-lg">Try Out</h3>
                     <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
-                            <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
+                            <img src="" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
                                 <h5 class="w-full font-bold">To Olimpiade</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
@@ -160,7 +160,7 @@
                     </div>
                     <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
-                            <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
+                            <img src="" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
                                 <h5 class="w-full font-bold">To Olimpiade</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="relative w-full card-try-out border-b dark:border-b-slate-800 mb-3 mt-3 py-3 hidden">
                         <div class="flex mt-2">
-                            <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzgzNzV8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjpExMTczNjB8&ixlib=rb-4.0.3&q=80&w=1080" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
+                            <img src="" class="w-20 sm:w-16 h-20 sm:h-16 bg-cover bg-center" alt="">
                             <div class="px-3">
                                 <h5 class="w-full font-bold">To Olimpiade</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>

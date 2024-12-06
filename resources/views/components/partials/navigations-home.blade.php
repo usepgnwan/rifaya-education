@@ -98,7 +98,7 @@
                     </li>
                     <x-partials.front.nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">Tentang</x-partials.front.nav-link>
                     <x-partials.front.nav-link href="{{ route('teacher.join') }}" :active="request()->routeIs('teacher.join')">Jadi Pengajar</x-partials.front.nav-link>
-                    <x-partials.front.nav-link href="{{ route('teacher.join') }}" :active="request()->routeIs('teacher.join')">Affiliate</x-partials.front.nav-link>
+                    <x-partials.front.nav-link href="{{ route('affiliate') }}" :active="request()->routeIs('affiliate')">Affiliate</x-partials.front.nav-link>
 
                     <x-partials.front.nav-link href="{{ route('register') }}"  @click.prevent="Livewire.navigate('{{ route('register') }}')" :class="'lg:hover:text-white lg:hover:bg-sky-400  border-2 max-lg:dark:border-gray-700 dark:border-gray-300 border-sky-400 rounded-full py-1.5 px-4 dark:hover:bg-gray-950 dark:hover:text-white'">Les Private</x-partials.front.nav-link>
                 </ul>
