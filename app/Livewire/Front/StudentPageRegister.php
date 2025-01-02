@@ -26,6 +26,7 @@ class StudentPageRegister extends Component
 
     public $profile = [
         'no_telp' => '',
+        'asal_sekolah' => '',
         'alamat_domisili' => '',
     ];
 
@@ -55,6 +56,7 @@ class StudentPageRegister extends Component
             // 'form.password' => 'required|min:6',
             'profile.no_telp' => 'required|numeric',
             'profile.alamat_domisili' => 'required',
+            'profile.asal_sekolah' => 'required',
             'mapel' => 'array|min:1',
             // 'form.repeat_password' => 'required|same:form.password',
         ];
@@ -69,6 +71,7 @@ class StudentPageRegister extends Component
             'profile.no_telp' => 'No. Telp/wa',
             'mapel' => 'Mata Pelajaran',
             'profile.alamat_domisili' => 'Alamat Domisili',
+            'profile.asal_sekolah' => 'Asal Sekolah',
 
         ];
     }

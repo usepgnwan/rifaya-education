@@ -2,11 +2,11 @@
     <section class=" dark:bg-gray-800 bg-[#FABE0E] ">
         <div class="container mx-auto lg:mx-auto lg:mt-0  p-5 w-full lg:min-h-[69vh] max-lg:min-h-[85vh]  grid grid-cols-1 gap-0 lg:flex lg:gap-6">
             <div class="lg:flex-[1 1 70%] sm:px-14 text-center lg:w-full sm:mt-[-400px] lg:mt-24">
-                <p class="text-4xl sm:mt-20 sm:text-5xl tracking-wide font-bold  dark:text-slate-400 ">Mulai <span class="text-sky-400 dark:"> Belajarmu </span> Bersama </p>
+                <p class="text-4xl sm:mt-20 sm:text-5xl tracking-wide font-bold  dark:text-slate-400 ">Cari Les Private di   <span class="text-sky-400 dark:"> Bandung ? </span> Yuk, Les di </p>
                 <div class="w-max mx-auto mb-5 text-4xl sm:text-5xl">
                     <h1 class="  text-sky-400 animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-skytext-sky-400 pr-5 text-3xl sm:text-5xl  font-bold">Rifaya Education</h1>
                 </div>
-                <p class=" dark:text-slate-400"> Rifaya Education, lembaga les yang mengedepankan pembelajaran interaktif dan menyenangkan.</p>
+                <p class=" dark:text-slate-400"> Les Private berasal dari Bandung, kami mengedepankan pembelajaran interaktif dan menyenangkan.</p>
                 <div class="relative w-full mr-3 mt-4 shadow-lg">
                     <div class="absolute inset-y-0 right-4 flex items-center pl-3.5 pointer-events-none my-auto">
                         <span class="icon-[ion--search-outline] text-xl font-semibold"></span>
@@ -235,7 +235,7 @@
             <h1 class=" text-2xl sm:text-3xl font-semibold text-center mb-3">Apa itu <span class="text-white dark:text-white">Rifaya Education</span> </h1>
 
             <p class="indent-6 text-justify ">
-                Rifaya Education adalah lembaga les yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
+                Rifaya Education adalah lembaga les yang berasal dari kota bandung kami berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
             </p>
             <p class="indent-6 text-justify ">
                 Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses artikel edukatif yang memperkaya pengalaman belajar.

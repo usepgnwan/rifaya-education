@@ -7,7 +7,7 @@
                 <h1 class="text-center text-[#fabe0e] font-semibold text-3xl">
                     Rifaya Education
                 </h1>
-                <p class="text-center">Selamat datang di Rifaya Education, lembaga les  yang mengedepankan pembelajaran interaktif dan menyenangkan! Kami percaya bahwa setiap siswa memiliki potensi yang unik, dan kami hadir untuk membantunya berkembang dengan cara yang terbaik. </p>
+                <p class="text-center">Selamat datang di Rifaya Education, kami adalah lembaga les private di bandung yang mengedepankan pembelajaran interaktif dan menyenangkan! Kami percaya bahwa setiap siswa memiliki potensi yang unik, dan kami hadir untuk membantunya berkembang dengan cara yang terbaik. </p>
                 <div class=" w-56  mx-auto">
                     <x-button.link href="{{ route('home') }}" class="btn-next-yellow mt-2 ">Kembali ke halaman utama</x-input.link>
                 </div>

@@ -5,7 +5,7 @@
         <div class="relative w-full sm:w-2/4 p-5 ">
             <img src="{{ asset('asset/img/home/logo-rifayas.png') }}" alt="logo" class='lg:w-36 max-lg:w-24' />
             <!-- <h4 class=" font-bold mb-2 text-3xl text-[#FABE0E]">Rifaya Education</h4> -->
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id nostrum cum iure excepturi voluptate explicabo libero? </p>
+            <p>Jl Cipedes Kota Bandung  </p>
             <div class="mt-12 sm:absolute bottom-10 flex gap-2 text-[#FABE0E] text-xl">
                 <a href="" class="hover:flex hover:items-center hover:text-white hover:bg-[#FABE0E] hover:rounded-full hover:w-8 hover:h-8 hover:justify-center"><span class="icon-[line-md--instagram]"></span></a>
                 <a href="" class="hover:flex hover:items-center hover:text-white hover:bg-[#FABE0E] hover:rounded-full hover:w-8 hover:h-8 hover:justify-center"><span class="icon-[mdi--whatsapp]"></span></a>
@@ -44,7 +44,10 @@
                     <a href="{{ route('register') }}" class="hover:underline">Daftar Les Private</a>
                 </li>
                 <li class="mb-4">
-                    <a href="{{ route('teacher.register') }}" class="hover:underline">Daftar Tutor</a>
+                    <a href="{{ route('teacher.register') }}" class="hover:underline">Daftar Tutor / Guru Les</a>
+                </li>
+                <li class="mb-4">
+                    <a href="{{ route('affiliate.registrasi') }}" class="hover:underline">Daftar Affiliator</a>
                 </li>
             </ul>
         </div>

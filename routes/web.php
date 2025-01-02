@@ -61,10 +61,12 @@ Route::middleware('auth')->group(function () {
         Route::get('tes', Tes::class)->name('account.tes');
         Route::get('dashboard/login', [Tes::class, 'loginView'])->name('account.dashboard.login');
         // access only admin & contributor
+        Route::middleware(['roles:1,5'])->group(function(){
+            Route::get('users/{type?}', Users::class)->name('account.users');
+        });
         Route::middleware(['roles:1'])->group(function(){
             Route::get('blog', Blog::class)->name('account.blog');
             Route::get('/blog/{action?}/{slug?}', BlogForm::class)->name('account.blog.action');
-            Route::get('users/{type?}', Users::class)->name('account.users');
             Route::get('mapping/users', MappingSiswa::class)->name('account.mapping.users');
         });
         Route::middleware(['roles:1,2,5'])->group(function(){

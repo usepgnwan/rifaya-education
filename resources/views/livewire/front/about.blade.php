@@ -32,7 +32,7 @@
         <div class="mx-auto">
             <div class="grid gap-2.5 lg:pb-8 pb-8">
                 <h2 class="w-full text-center text-4xl font-bold font-manrope leading-normal">Tentang Rivaya Education</h2>
-                <div class="w-full text-center text-gray-600 text-lg font-normal leading-8">Page ini menjelaskan lebih mendalam tentang <i>Rivaya Education </i></div>
+                <div class="w-full text-center text-gray-600 text-lg font-normal leading-8">Page ini menjelaskan lebih mendalam tentang <i>Rivaya Education (Les Private di Bandung)</i></div>
             </div>
             <div class="flex flex-col galery ">
                 <div class="w-full mx-auto grid grid-cols-1 gap-0 lg:flex lg:gap-6 gallery">
@@ -41,7 +41,7 @@
                     </div> -->
                     <div class="max-lg:w-full w-full text-justify">
                     <p class="indent-6 text-justify ">
-                    Rifaya Education adalah lembaga pendidikan terkemuka yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
+                    Rifaya Education adalah lembaga les private di bandung yang berkomitmen untuk memberikan pengalaman belajar yang interaktif, inovatif, dan menyenangkan bagi setiap siswa. Kami meyakini bahwa setiap anak memiliki potensi yang istimewa dan unik, serta membutuhkan pendekatan belajar yang sesuai untuk mengembangkan kemampuan terbaiknya. Dengan metode pengajaran yang berfokus pada partisipasi aktif, Rifaya Education menghadirkan lingkungan belajar yang inspiratif dan mendorong siswa untuk menggali pengetahuan dengan cara yang menyenangkan dan bermakna.
                     </p>
                     <p class="indent-6 text-justify ">
                     Selain itu, Rifaya Education juga menyediakan berbagai artikel pembelajaran yang dirancang untuk mendukung proses belajar yang lebih menarik dan efektif. Melalui menu blog pada situs kami, siswa dan orang tua dapat mengakses artikel edukatif yang memperkaya pengalaman belajar.

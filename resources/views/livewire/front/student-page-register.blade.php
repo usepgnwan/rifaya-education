@@ -71,6 +71,11 @@
                         </x-input.group>
                     </div>
                     <div class="mb-2">
+                        <x-input.group for="Asal Sekolah" :inline="'true'" label="Asal Sekolah <span class='text-red-500'>*</span>" :error="$errors->first('profile.asal_sekolah')"  >
+                            <x-input.textarea :id="__('profile')" wire:model="profile.asal_sekolah" placeholder="Contoh : SMPN BANDUNG "  />
+                        </x-input.group>
+                    </div>
+                    <div class="mb-2">
                         <x-input.group for="Alamat Domisili" :inline="'true'" label="Alamat Domisili <span class='text-red-500'>*</span>" :error="$errors->first('profile.alamat_domisili')"  >
                             <x-input.textarea :id="__('profile')" wire:model="profile.alamat_domisili" placeholder="Alamat Domisili"  />
                         </x-input.group>

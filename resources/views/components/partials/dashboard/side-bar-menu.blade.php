@@ -29,7 +29,20 @@
                     <span class="ms-3">Guru</span>
                 </x-partials.dashboard.side-link>
                 <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'student']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'student'" :icon="'icon-[mdi--account-school-outline]'">
-                    <span class="ms-3">Siswa</span>
+                        <span class="ms-3">  Daftar Siswa    </span>
+                </x-partials.dashboard.side-link>
+               @endcan
+               @can('hasRole', [5])
+               @if ( (auth()->user()->my_affiliate) != NULL)
+                <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'student']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'student'" :icon="'icon-[hugeicons--user-switch]'">
+                        <span class="ms-3">  Daftar Siswa Affiliator  </span>
+                </x-partials.dashboard.side-link>
+               @endif
+
+               @endcan
+               @can('hasRole', [1])
+               <x-partials.dashboard.side-link href="{{ route('account.users', ['type' => 'affiliator']) }}" :active="request()->routeIs('account.users') && request()->route('type') === 'affiliator'" :icon="'icon-[icon-park-outline--data-user]'">
+                    <span class="ms-3">  User Affiliator </span>
                 </x-partials.dashboard.side-link>
                 <x-partials.dashboard.side-link href="{{ route('account.mapping.users') }}" :active="request()->routeIs('account.mapping.users*')" :icon="'icon-[hugeicons--study-desk]'">
                      <span class="ms-3">Mapping Absensi</span>
@@ -50,7 +63,7 @@
                 </x-partials.dashboard.side-link>
                 @endcan
                 @can('hasRole', [1,2,5])
-                <x-partials.dashboard.side-link :multi="'true'"   :active="request()->routeIs('account.salary*')" :icon="'icon-[streamline--pie-chart-solid]'" class=" w-full ">
+                <x-partials.dashboard.side-link :multi="'true'"   :active="request()->routeIs('account.salary*')" :icon="'icon-[fluent-mdl2--money]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Pendapatan</x-slot> </span>
                     <!-- multi link -->
                     <x-slot name="link">
@@ -68,7 +81,7 @@
                 </x-partials.dashboard.side-link>
                 @endcan
                 @can('hasRole', [1,3])
-                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[streamline--pie-chart-solid]'" class=" w-full ">
+                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.blog*')" :icon="'icon-[dashicons--welcome-write-blog]'" class=" w-full ">
                     <span class="ms-3" > <x-slot name="title">Blog</x-slot> </span>
                     <!-- multi link -->
                     <x-slot name="link">

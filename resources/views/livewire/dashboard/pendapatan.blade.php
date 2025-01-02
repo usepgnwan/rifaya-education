@@ -236,27 +236,29 @@
                             <x-table.cell>
 
 
-                            @if ($type =='tuttor')
+                            @can('hasRole', [1])
                             Gross Income:
                             <x-style.glithbox href="{{ $values->foto_gross_income }}"   data-title="Gross Income"  class="glightbox" >
-                                        <x-style.glithbox.img :url="$values->foto_gross_income"    class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                        <x-style.glithbox.img :url="$values->foto_gross_income"    class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 h-20" />
                             </x-style.glithbox>
+                            @endcan
+                            @if ($type =='tuttor')
                             Fee Tutor:
                             <x-style.glithbox href="{{ $values->foto }}"   data-title="fee tutor"  class="glightbox" >
-                                        <x-style.glithbox.img :url="$values->foto"    class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                        <x-style.glithbox.img :url="$values->foto"    class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 h-20" />
                             </x-style.glithbox>
                             @endif
                             @if ($type == 'tuttor')
                             @can('hasRole', [1])
                             Fee Affiliate :
                             <x-style.glithbox href="{{ $values->foto_affiliate }}"   data-title="fee affiliate"  class="glightbox" >
-                                        <x-style.glithbox.img :url="$values->foto_affiliate"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                        <x-style.glithbox.img :url="$values->foto_affiliate"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 h-20" />
                             </x-style.glithbox>
                             @endcan
                             @else
                             Fee Affiliate :
                             <x-style.glithbox href="{{ $values->foto_affiliate }}"   data-title="fee affiliate"  class="glightbox" >
-                                        <x-style.glithbox.img :url="$values->foto_affiliate"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
+                                        <x-style.glithbox.img :url="$values->foto_affiliate"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 h-20" />
                             </x-style.glithbox>
                             @endif
 

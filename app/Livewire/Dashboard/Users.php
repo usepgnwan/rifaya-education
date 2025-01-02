@@ -9,6 +9,7 @@ use App\Livewire\DataTable\WithSorting;
 use App\Models\MataPelajaran;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -44,7 +45,7 @@ class Users extends Component
     public $type = [];
     public $label_type = [];
     public User $editingUser;
-
+    public $my_affiliate = null;
     #[On('description')]
     public function updateDescription($content)
     {
@@ -73,8 +74,24 @@ class Users extends Component
     }
     public function mount($type = null)
     {
-        if(!in_array($type,['teacher','student','mapping'])){
+        if(!in_array($type,['teacher','student','mapping','affiliator'])){
             abort(404);
+        }
+
+        if(in_array($this->type, ['teacher','mapping','affiliator'])){
+            if (!Gate::allows('hasRole', [1])) {
+                abort(401);
+            }
+        }
+
+        if(is_null(auth()->user()->my_affiliate)  ){
+            if(!Gate::allows('hasRole', [1])){
+                abort(401);
+            }
+        }else{
+             if (Gate::allows('hasRole', [5])) {
+                $this->my_affiliate =auth()->user()->my_affiliate->user_affiliate_id;
+            }
         }
 
         $this->label_type = $type;
@@ -85,6 +102,8 @@ class Users extends Component
         }else if($type == 'mapping'){
             $this->type = [2];
             $this->filters['status'] = 'aktif';
+        }else if($type =='affiliator'){
+            $this->type = [5];
         }
 
         $this->editingUser = $this->makeBlankTransaction();
@@ -194,6 +213,7 @@ class Users extends Component
             ->with('user_metodemengajar')
 
             ->when($this->filters['search'], fn($query, $status) => $query->where('name', 'like', '%' . $status . '%'))
+            ->when($this->my_affiliate != null, fn($query, $status) => $query->where('user_affiliate_id', '=',$this->my_affiliate ))
             ->when($this->filters['status'], fn($query, $status) => $query->where('status', '=', $status ))
             ->when($this->filters['created_at'], function($query, $date) {
                 $formattedDate = \Carbon\Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
@@ -216,6 +236,10 @@ class Users extends Component
                     return $querys->whereIn('id', $this->filters['mapel']);
                 });
             });
+            // ->when($this->type == 'affiliator', function($q){
+            //     dd($q);
+            //     return $q;
+            // });
         return $this->applySorting($query);
     }
 
@@ -232,7 +256,10 @@ class Users extends Component
     // }
     public function render()
     {
-        $roles = Role::whereIn('id',$this->type)->get();
+
+        $roles = Role::when($this->label_type !='affiliator', function($query){
+           return  $query->whereIn('id',$this->type);
+        })->get();
         $mapel = MataPelajaran::all();
         $this->dispatch('tiny:init', ['editor' => '#editor']);
         return view('livewire.dashboard.users', [

@@ -4,6 +4,9 @@
         @if ($label_type == 'mapping')
             Guru & Siswa
         @endif
+        @can('hasRole',[5])
+        Affiliator
+        @endcan
         </h1>
         <x-partials.dashboard.breadcumb :data="$breadcumb"> </x-partials.dashboard.breadcumb>
 
@@ -28,6 +31,7 @@
                         <option value="50">50</option>
                         <option value="100">100</option>
                     </x-input.select>
+                    @can('hasRole',[1])
 
                     <x-dropdown label="Bulk Actions" class="hidden">
                         <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
@@ -39,6 +43,8 @@
                         </x-dropdown.item>
                     </x-dropdown>
                     <x-button.primary wire:click="create"><x-icon.plus /> New</x-button.primary>
+
+                    @endcan
                 </div>
             </div>
 
@@ -89,26 +95,44 @@
             <div class="flex-col space-y-4">
                 <x-table>
                     <x-slot name="head">
+                        @can('hasRole',[1])
                         <x-table.heading class="pr-0 w-8">
                             <x-input.checkbox wire:model.live="selectPage" />
                         </x-table.heading>
+                        @endcan
                         <x-table.heading class="pr-0 w-8">No.</x-table.heading>
+                        @can('hasRole',[1])
                         <x-table.heading>.::.</x-table.heading>
                         <x-table.heading>Profile</x-table.heading>
-                        <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null" class="w-full">Nama @if (($label_type) == 'mapping') Guru @endif</x-table.heading>
+                        @endcan
+                        <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null"  >Nama @if (($label_type) == 'mapping') Guru @endif</x-table.heading>
+                        @can('hasRole',[1])
                         @if (($label_type) != 'mapping')
                         <x-table.heading sortable multi-column wire:click="sortBy('email')" :direction="$sorts['email'] ?? null">Email</x-table.heading>
                         <x-table.heading sortable multi-column wire:click="sortBy('username')" :direction="$sorts['username'] ?? null">Username</x-table.heading>
                         <x-table.heading>No. Telp / Wa</x-table.heading>
+                        @endcan
                         <x-table.heading>Role</x-table.heading>
                         @endif
+                        @can('hasRole',[1])
+                        @if (($label_type) == 'teacher' || ($label_type) == 'student')
+                        @if (($label_type) == 'student')
+                        <x-table.heading class="text-left">Asal Sekolah</x-table.heading>
+                        @endif
+                        <x-table.heading>Kelas</x-table.heading>
+                        <x-table.heading>Mata Pelajaran</x-table.heading>
+                        @endif
                         @if (($label_type) == 'teacher')
-                            <x-table.heading>Mata Pelajaran</x-table.heading>
                             <x-table.heading >Metode Pengajaran</x-table.heading>
                         @endif
                         <x-table.heading>Status</x-table.heading>
-                        <x-table.heading>Join Date</x-table.heading>
+                        @endif
+                        @if (($label_type) == 'student')
+                        <x-table.heading class="text-left">Code Affiliate</x-table.heading>
+                        @endif
+                        <x-table.heading class="text-left">Alamat Domisili</x-table.heading>
 
+                        <x-table.heading class="text-left">Join Date</x-table.heading>
                     </x-slot>
 
                     <x-slot name="body">
@@ -128,15 +152,17 @@
                         @endif
 
                         @forelse ($users as $k => $values)
-
                         <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $values->id }}" wire:target="filters.search,perPage,gotoPage, previousPage, nextPage">
 
+                            @can('hasRole',[1])
                             <x-table.cell class="pr-0">
                                 <x-input.checkbox wire:model.live="selected" value="{{ $values->id }}" />
                             </x-table.cell>
+                            @endcan
                             <x-table.cell class="pr-0">
                                 {{$k+$users->firstItem()}}
                             </x-table.cell>
+                            @can('hasRole',[1])
                             <x-table.cell>
                                 <div class="flex">
                                     @if (($label_type) != 'mapping')
@@ -150,7 +176,6 @@
                                     @endif
                                 </div>
                             </x-table.cell>
-
                             <x-table.cell>
                                 <!-- <div class="flex flex-col gallery w-20 ">
                                     <img src="{{ $values->profile }}" alt="image not found" class="gallery-image object-contain rounded-3xl hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full">
@@ -160,6 +185,7 @@
                                         <x-style.glithbox.img :url="$values->profile" alt="image not found"  class=" object-contain  hover:grayscale transition-all duration-700 ease-in-out mx-auto lg:col-span-4 md:col-span-6 w-full h-full" />
                                 </x-style.glithbox>
                             </x-table.cell>
+                            @endcan
                             <x-table.cell>
                                 <span href="#" class="inline-flex space-x-2 truncate text-sm leading-5">
                                     <p class="text-cool-gray-600 truncate">
@@ -167,6 +193,7 @@
                                     </p>
                                 </span>
                             </x-table.cell>
+                            @can('hasRole',[1])
                             @if (($label_type) != 'mapping')
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->email }} </span>
@@ -184,7 +211,25 @@
                                 @endif
                             </x-table.cell>
                             @endif
-                            @if (($label_type) == 'teacher')
+                            @if (($label_type) == 'teacher' || ($label_type) == 'student')
+
+                            @if (($label_type) == 'student')
+                            <x-table.cell>
+                                {{ $values->user_profile->asal_sekolah ?? '' }}
+                            </x-table.cell>
+                            @endif
+
+                            <x-table.cell >
+                                @forelse ($values->kelas as $v )
+                                {{$v->title}} - {{$v->jenjang->title}} <br>
+                                @empty
+                                        -
+                                @endforelse
+
+                            </x-table.cell>
+
+
+
                             <x-table.cell >
                                 <div  class="flex  flex-wrap w-36">
                                 @forelse ($values->mata_pelajaran as $v )
@@ -194,6 +239,8 @@
                                 @endforelse
                                 </div>
                             </x-table.cell>
+                            @endif
+                            @if (($label_type) == 'teacher')
                             <x-table.cell>
                                 @forelse ($values->user_metodemengajar as $v )
                                 <div  class="flex flex-row">
@@ -214,6 +261,15 @@
                                 @else
                                 <span class="text-xs rounded px-2 py-1 bg-red-500 text-white text-nowrap"> {{ $values->status }} </span>
                                 @endif
+                            </x-table.cell>
+                            @endcan
+                            @if (($label_type) == 'student')
+                            <x-table.cell>
+                                {{ $values->user_affiliate_id }}
+                            </x-table.cell>
+                            @endif
+                            <x-table.cell>
+                                {{  $values->user_profile->alamat_domisili ??'' }}
                             </x-table.cell>
                             <x-table.cell>
                                 {{ $values->created_at }}
