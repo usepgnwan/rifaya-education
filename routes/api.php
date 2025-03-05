@@ -20,7 +20,7 @@ Route::post('/github-webhook', function () {
     $output = shell_exec('ls -l ./../deploy.sh 2>&1'); // Check script permissions
     Log::info("File permissions: $output");
 
-    $output = shell_exec('./../deploy.sh 2>&1'); // Capture errors
+    $output = shell_exec('./../deploy.sh'); // Capture errors
     Log::info("Shell Output: $output");
 
     if (is_null($output) || trim($output) === "") { 
