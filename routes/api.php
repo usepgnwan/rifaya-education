@@ -12,12 +12,20 @@ echo "jajaja";
 });
 
 Route::post('/github-webhook', function () {
-    Log::info('GitHub Webhook Received: ');  
-    $output = shell_exec('./../deploy.sh');
-    if(is_null($output) || $output == ""){ 
-       return response()->json(['message' => 'Webhook failed deploys','output' => $output], 500); // tesss
+    Log::info('GitHub Webhook Received: ');
+    
+    $output = shell_exec('whoami 2>&1'); // Check user running the script
+    Log::info("Executing as: $output");
+
+    $output = shell_exec('ls -l ../deploy.sh 2>&1'); // Check script permissions
+    Log::info("File permissions: $output");
+
+    $output = shell_exec('../deploy.sh 2>&1'); // Capture errors
+    Log::info("Shell Output: $output");
+
+    if (is_null($output) || trim($output) === "") { 
+        return response()->json(['message' => 'Webhook failed deploys', 'output' => $output], 500);
     }
-    Log::info($output); 
-    Log::info('Deployment Output:', ['output' => $output]);
-   return response()->json(['message' => 'Webhook received','output' => $output]);
+
+    return response()->json(['message' => 'Webhook received', 'output' => $output]);
 });
