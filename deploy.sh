@@ -7,4 +7,4 @@ php artisan config:cache         # Clear and cache configurations (optional)
 php artisan route:cache          # Cache routes (optional)  
 
 # Log output for debugging
-echo "Deployment completed successfully" >> /home/u504186664/domains/rifayaeducation.com/public_html/deploy.log
+echo "Deployment completed successfully running" >> /home/u504186664/domains/rifayaeducation.com/public_html/deploy.log 
