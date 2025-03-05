@@ -56,6 +56,7 @@ Route::prefix('success')->group(function(){
     Route::get('register/teacher', RegistrasiTeacher::class)->name('success.register.teacher');
 });
 Route::middleware('auth')->group(function () {
+    ddd
     Route::prefix('account')->group(function () {
         Route::get('dashboard', Dashboard::class)->name('account.dashboard');
         Route::get('tes', Tes::class)->name('account.tes');
