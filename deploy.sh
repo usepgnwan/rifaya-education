@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/u504186664/domains/rifayaeducation.com/public_html  # Navigate to your project directory
+cd /home/u504186664/domains/rifayaeducation.com/public_html  # Navigate to your project directory 
 git pull origin main              # Pull the latest code from the main branch
 composer install --ignore-platform-reqs # Install any new dependencies
 php artisan migrate              # Run any new migrations (optional)
