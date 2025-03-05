@@ -106,6 +106,8 @@
                         <x-table.heading>Profile</x-table.heading>
                         @endcan
                         <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null"  >Nama @if (($label_type) == 'mapping') Guru @endif</x-table.heading>
+                        
+                        <x-table.heading class="text-left">Alamat Domisili</x-table.heading>
                         @can('hasRole',[1])
                         @if (($label_type) != 'mapping')
                         <x-table.heading sortable multi-column wire:click="sortBy('email')" :direction="$sorts['email'] ?? null">Email</x-table.heading>
@@ -130,7 +132,6 @@
                         @if (($label_type) == 'student')
                         <x-table.heading class="text-left">Code Affiliate</x-table.heading>
                         @endif
-                        <x-table.heading class="text-left">Alamat Domisili</x-table.heading>
 
                         <x-table.heading class="text-left">Join Date</x-table.heading>
                     </x-slot>
@@ -192,6 +193,10 @@
                                         {{ $values->name }}
                                     </p>
                                 </span>
+                            </x-table.cell>
+                            
+                            <x-table.cell>
+                                {{  $values->user_profile->alamat_domisili ??'' }}
                             </x-table.cell>
                             @can('hasRole',[1])
                             @if (($label_type) != 'mapping')
@@ -268,9 +273,6 @@
                                 {{ $values->user_affiliate_id }}
                             </x-table.cell>
                             @endif
-                            <x-table.cell>
-                                {{  $values->user_profile->alamat_domisili ??'' }}
-                            </x-table.cell>
                             <x-table.cell>
                                 {{ $values->created_at }}
                             </x-table.cell>

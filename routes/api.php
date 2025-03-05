@@ -10,3 +10,14 @@ Route::get('/user', function (Request $request) {
 Route::get('tes', function(){
 echo "jajaja";
 });
+
+Route::post('/github-webhook', function () {
+    Log::info('GitHub Webhook Received: ');  
+    $output = shell_exec('./../deploy.sh');
+    if(is_null($output) || $output == ""){ 
+       return response()->json(['message' => 'Webhook failed deploys','output' => $output], 500); // tesss
+    }
+    Log::info($output); 
+    Log::info('Deployment Output:', ['output' => $output]);
+   return response()->json(['message' => 'Webhook received','output' => $output]);
+});

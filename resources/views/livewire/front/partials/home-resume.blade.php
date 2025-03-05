@@ -46,7 +46,8 @@
 <div class="container mx-auto w-full sm:w-2/3 min-h-52 flex flex-wrap justify-between  px-1">
     <div class="text-center w-1/2 pt-5 sm:p-6 text-white dark:text-slate-400">
         <h1 class="text-3xl sm:text-6xl font-bold"><span class="icon-[ph--student-light]"></span>
-        <span class="purecounter" data-purecounter-start="0" data-purecounter-end="{{$siswa}}">{{$siswa}} </span> ++</span>
+        {{-- <span class="purecounter" data-purecounter-start="0" data-purecounter-end="{{$siswa}}">{{$siswa}} </span> ++</span> --}}
+        <span class="purecounter" data-purecounter-start="0" data-purecounter-end="150">150 </span> ++</span>
     </h1>
         <h2 class="text-lg sm:text-3xl  ">Siswa Terdaftar</h2>
     </div>

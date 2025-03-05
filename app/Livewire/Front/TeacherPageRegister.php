@@ -22,7 +22,7 @@ class TeacherPageRegister extends Component
     public function render()
     {
 
-        abort(406, 'Page Expired');
+        // abort(406, 'Page Expired');
         $mapel = MataPelajaran::all();
         $_kelas = Kelas::all();
         return view('livewire.front.teacher-page-register', ['mata_pelajarans' => $mapel, "_kelas" => $_kelas]);

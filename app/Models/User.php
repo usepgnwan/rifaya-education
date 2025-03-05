@@ -69,6 +69,7 @@ class User extends Authenticatable
         '10 sd 15' => '10 sd 15',
         '10 sd 17' => '10 sd 17',
         '13 sd 17' => '13 sd 17',
+        '17 sd 20' => '17 sd 20',
     ];
     protected function casts(): array
     {
