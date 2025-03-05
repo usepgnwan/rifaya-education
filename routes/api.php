@@ -13,7 +13,7 @@ Route::post('/github-webhook', function () {
         Log::error("deploy.sh does not exist at the expected path.");
         return response()->json(['message' => 'deploy.sh file not found'], 500);
     }
-
+// testing
     Log::info('GitHub Webhook Received: ');
     
     $output = shell_exec('whoami 2>&1'); // Check user running the script
