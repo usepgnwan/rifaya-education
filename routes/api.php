@@ -7,7 +7,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
- 
+//  trigger webhooks
 Route::post('/github-webhook', function () {
     if (!file_exists('/home/u504186664/domains/rifayaeducation.com/public_html/deploy.sh')) {
         Log::error("deploy.sh does not exist at the expected path.");
