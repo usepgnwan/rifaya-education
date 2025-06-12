@@ -191,13 +191,13 @@ class MappingKelasSiswa extends Component
     public function render()
     {
         $sekolah = Sekolah::get();
-        $mapel = MataPelajaran::get();
+        // $mapel = MataPelajaran::get();
         $kelas = Kelas::get(); 
         return view('livewire.dashboard.mapping-kelas-siswa',[
             'data' => $this->rows,
             'sekolah' => $sekolah,
             'kelas' => $kelas,
-            'mapel' => $mapel,
+            // 'mapel' => $mapel,
         ]);
     }
 }
