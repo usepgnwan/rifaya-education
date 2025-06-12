@@ -1,6 +1,6 @@
 <section class="w-full relative " id="dashboard">
     <!-- drawer component -->
-    <div id="drawer-disabled-backdrop" class="fixed top-[64px] left-0 h-screen p-4 overflow-y-auto transition-transform  bg-[#FABE0E] max-lg:w-64 sm:w-1/5 dark:bg-gray-800 z-20 ">
+    <div id="drawer-disabled-backdrop" class="fixed top-[64px] left-0 h-screen p-4 overflow-y-auto transition-transform  bg-[#FABE0E] max-lg:w-64 sm:w-1/5 dark:bg-gray-800 z-20 max-h-screen ">
         <div class="w-full flex flex-wrap justify-center p-2 hidden">
             <div class="w-full flex justify-center mx-auto ">
                 @if (auth()->user()->profile )
@@ -101,6 +101,21 @@
                         </x-partials.dashboard.side-link>
                         <x-partials.dashboard.side-link href="{{ route('account.master.qa') }}" :active="request()->routeIs('account.master.qa*')"   class=" pl-11 ">
                             <span class="ms-3">Q&A</span>
+                        </x-partials.dashboard.side-link>
+                    </x-slot>
+                </x-partials.dashboard.side-link>
+                <x-partials.dashboard.side-link :multi="'true'"  href="{{ route('home') }}" :active="request()->routeIs('account.mapping*')" :icon="'icon-[material-symbols--database-outline]'" class=" w-full ">
+                    <span class="ms-3" > <x-slot name="title">Buat Penilaian</x-slot> </span>
+                    <!-- multi link -->
+                    <x-slot name="link">
+                        <x-partials.dashboard.side-link href="{{ route('account.mapping.sekolah') }}" :active="request()->routeIs('account.mapping.sekolah*')"   class=" pl-11 ">
+                            <span class="ms-3">Asal Sekolah</span>
+                        </x-partials.dashboard.side-link>
+                        <x-partials.dashboard.side-link href="{{ route('account.mapping.siswa') }}" :active="request()->routeIs('account.mapping.siswa*')"   class=" pl-11 ">
+                            <span class="ms-3">Tambah Siswa</span>
+                        </x-partials.dashboard.side-link>
+                        <x-partials.dashboard.side-link href="{{ route('account.mapping.kelas-siswa') }}" :active="request()->routeIs('account.mapping.kelas-siswa*')"   class=" pl-11 ">
+                            <span class="ms-3">Buat Kelas & Nilai</span>
                         </x-partials.dashboard.side-link>
                     </x-slot>
                 </x-partials.dashboard.side-link>

@@ -26,6 +26,9 @@ use App\Livewire\Front\Page\RegistrasiTeacher;
 use App\Livewire\Front\Post;
 use App\Livewire\Front\Sop;
 use App\Livewire\Front\StudentPageRegister;
+use App\Livewire\Dashboard\MappingKelasSiswa;
+use App\Livewire\Dashboard\Sekolah;
+use App\Livewire\Dashboard\SiswaSekolah;
 use App\Models\MataPelajaran;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -82,6 +85,11 @@ Route::middleware('auth')->group(function () {
                 Route::get('matapelajaran', DashboardMataPelajaran::class)->name('account.master.matapelajaran');
                 Route::get('qa', Faq::class)->name('account.master.qa');
                 Route::get('/qa/{action?}/{id?}', FaqForm::class)->name('account.master.qa.action');
+            });
+            Route::prefix('mapping')->group(function () {
+                Route::get('sekolah', Sekolah::class)->name('account.mapping.sekolah');
+                Route::get('siswa', SiswaSekolah::class)->name('account.mapping.siswa');
+                Route::get('buat-kelas', MappingKelasSiswa::class)->name('account.mapping.kelas-siswa');
             });
         });
     });
