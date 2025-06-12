@@ -10,6 +10,7 @@ use App\Models\MappingKelasSiswa;
 use App\Models\MappingLabelNilai;
 use App\Models\MataPelajaran;
 use App\Models\Siswa;
+use App\Models\NilaiAkhirSiswa;
 use Illuminate\Support\Facades\DB;
 class Tambahnilai extends Component
 {
@@ -18,6 +19,7 @@ class Tambahnilai extends Component
     public ModelMSekolah $dataMAP;
     public $listsiswa =[];
     public $listlabelnilai =[];
+    public $listNilai = [];
     public $request =[
         "siswa_id"=> null,
         "mapping_sekolah_id"=>null
@@ -47,6 +49,87 @@ class Tambahnilai extends Component
 
        $this->listsiswa = collect($siswas)->toArray();
        $this->listlabelnilai =MappingLabelNilai::where('mapping_sekolah_id',$id)->with('mapel')->get(); 
+
+        // "mapping_sekolah_id" => 1
+        // "siswa_id" => 
+       foreach ($siswas as $key => $value) {
+            // dd($value);
+            foreach($this->listlabelnilai->toArray() as $v){
+                $this->createNilai($value['mapping_sekolah_id'],$value['siswa_id'],$v['id']);
+            }
+       }
+
+       $_nilai = [];
+       $n = NilaiAkhirSiswa::get();
+       foreach($n as $v){
+            if(!isset($_nilai[$v['siswa_id']])) $_nilai[$v['siswa_id']] =[];
+            $_nilai[$v['siswa_id']][$v['mapping_label_nilai_id']] =$v->toArray();
+       }
+       $this->listNilai = $_nilai; 
+    //    dd($this->listNilai);
+    }
+    public function changeNilai($id, $type, $id_siswa, $mapping_label_nilai_id,$kelas){
+        // dd($this->listNilai[$id_siswa][$mapping_label_nilai_id][$type]);
+        $c8= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/Hjz24B9ijWwHzwRk6'>https://forms.gle/Hjz24B9ijWwHzwRk6</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
+
+        $c7= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/GodUeKKz3WYWkYo98'> https://forms.gle/GodUeKKz3WYWkYo98</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
+
+        $aman = "Bagi yang sudah AMAN, tidak perlu mengerjakan tugas perbaikan, dikarenakan keterbatasan waktu dan kesibukkan pendampingan siswa yang perbaikan. Informasi ini sudah bisa menjadi bukti ketuntasan.";
+        
+        
+        $update = NilaiAkhirSiswa::find($id);
+        $data = [
+            $type => $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type]
+        ];
+  
+        if($kelas === "VII" && $type =="type" && $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type] == 2){
+            $data['catatan'] = $c7;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['catatan'] = $c7;
+        }else if($kelas === "VIII" && $type =="type" && $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type] == 2){
+            $data['catatan'] = $c8;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['catatan'] = $c8;
+        }
+
+        if($kelas === "VII" && $type =="nilai" && $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type] <= 79){
+            $data['catatan'] = $c7;
+             $data['type'] =  2;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['catatan'] = $c7;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['type'] = 2;
+        }else if($kelas === "VIII" && $type =="nilai" && $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type] <= 79){
+            $data['catatan'] =  $c8;
+             $data['type'] =  2;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['catatan'] = $c8;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['type'] = 2;
+        }
+        
+        if ($type =="nilai" && $this->listNilai[$id_siswa][$mapping_label_nilai_id][$type] >= 80){
+            $data['catatan'] =  $aman;
+            $data['type'] =  1;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['catatan'] = $aman;
+             $this->listNilai[$id_siswa][$mapping_label_nilai_id]['type'] = 1;
+        }
+         
+    
+
+        if($update){
+            $update->fill($data)->save();
+            $this->notify('Sukses update data');
+        }else{ 
+            return  $this->notify('gagal update data','warning');
+        } 
+    }
+    public function createNilai($mapping_sekolah_id, $id_siswa,$mapping_label_nilai_id){
+       
+        $nilai = NilaiAkhirSiswa::where("mapping_label_nilai_id",$mapping_label_nilai_id )->where("mapping_sekolah_id",$mapping_sekolah_id)->where("siswa_id",$id_siswa )->first();
+      
+        if($nilai == null){
+            $_NEW = [
+                "mapping_label_nilai_id" => $mapping_label_nilai_id,
+                "mapping_sekolah_id" => $mapping_sekolah_id,
+                "siswa_id" => $id_siswa, 
+            ];
+            NilaiAkhirSiswa::create($_NEW);
+        } 
     }
 
     public $showEditModal =false;
@@ -59,8 +142,7 @@ class Tambahnilai extends Component
        try {
             // $this->validate();  
             // dd($this->request);
-            MappingKelasSiswa::create($this->request);
-            
+            MappingKelasSiswa::create($this->request); 
             $this->siswa($this->dataMAP->id); 
             $this->notify($message ?? 'Succes tambah siswa ' );
             $this->showEditModal = false;
