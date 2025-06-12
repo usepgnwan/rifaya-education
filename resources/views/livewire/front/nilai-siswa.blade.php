@@ -43,7 +43,7 @@
                                     Notifikasi
                                 </td>  
                                 <td scope="row" class="px-6 py-4 text-lg font-medium   text-wrap text-gray-900 whitespace-nowrap dark:text-white" >
-                                    @if ( $val->nilai == 1)
+                                    @if ( $val->type == 1)
                                         SELAMAT, NILAI ASAT KAMU AMAN!
                                     @else
                                         NILAI ASAT KAMU PERLU DITINGKATKAN!
