@@ -25,6 +25,8 @@ use App\Livewire\Front\Login;
 use App\Livewire\Front\Page\RegistrasiTeacher;
 use App\Livewire\Front\Post;
 use App\Livewire\Front\Sop;
+use App\Livewire\Front\NilaiSiswa;
+use App\Livewire\Dashboard\Tambahnilai;
 use App\Livewire\Front\StudentPageRegister;
 use App\Livewire\Dashboard\MappingKelasSiswa;
 use App\Livewire\Dashboard\Sekolah;
@@ -55,6 +57,11 @@ Route::get('/page/pengajar/daftar', TeacherPageRegister::class)->name('teacher.r
 Route::get('/blog/artikel/detail/{slug?}', PostDetail::class)->name('post.detail');
 Route::get('/blog/bank-soal/detail/{slug?}', PostDetail::class)->name('post.banksoal.detail');
 Route::get('/logout', LogoutController::class)->name('logout');
+
+
+
+Route::get('/data/nilai-siswa', NilaiSiswa::class)->name('nilai.siswa');
+
 Route::prefix('success')->group(function(){
     Route::get('register/teacher', RegistrasiTeacher::class)->name('success.register.teacher');
 });
@@ -89,7 +96,8 @@ Route::middleware('auth')->group(function () {
             Route::prefix('mapping')->group(function () {
                 Route::get('sekolah', Sekolah::class)->name('account.mapping.sekolah');
                 Route::get('siswa', SiswaSekolah::class)->name('account.mapping.siswa');
-                Route::get('buat-kelas', MappingKelasSiswa::class)->name('account.mapping.kelas-siswa');
+                Route::get('buat-kelas', MappingKelasSiswa::class)->name('account.mapping.kelas-siswa'); 
+                Route::get('/tambah-nilai/{id?}', Tambahnilai::class)->name('account.mapping.kelas-siswa-nilai');
             });
         });
     });

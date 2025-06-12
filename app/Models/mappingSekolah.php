@@ -25,4 +25,7 @@ class mappingSekolah extends Model
         return $this->belongsToMany(MataPelajaran::class, 'detailms_mapel');
     }
 
+    public function siswa() {
+        return $this->hasMany(MappingKelasSiswa::class,'siswa_id');
+    }
 }

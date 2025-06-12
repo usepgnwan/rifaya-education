@@ -42,7 +42,7 @@
                         <x-table.heading>.::.</x-table.heading>
                         <x-table.heading>Nama kelas</x-table.heading>
                         <x-table.heading>Asal Sekolah</x-table.heading> 
-                        <x-table.heading>Mata Pelajaran</x-table.heading> 
+                        {{-- <x-table.heading>Mata Pelajaran</x-table.heading>  --}}
                     </x-slot>
 
                     <x-slot name="body">
@@ -72,8 +72,9 @@
                             <x-table.cell>
                                 <div class="flex">
                                     <x-button.link wire:click="edit({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[uil--edit]"></span></x-button.link>
-                                    <x-button.link wire:click="addMapel({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[cil--book]"  ></span> tambah mapel</x-button.link>
-
+                                    {{-- <x-button.link wire:click="addMapel({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[cil--book]"  ></span> tambah mapel</x-button.link> --}}
+                                    <x-button.link  href="{{ route('account.mapping.kelas-siswa-nilai', [ 'id'=> $values->id ]) }}" @click.prevent="Livewire.navigate('{{ route('account.mapping.kelas-siswa-nilai', [ 'id'=> $values->id ]) }}')" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit">Tambah Nilai</x-button.link>
+                                   
 
                                 </div>
                             </x-table.cell>
@@ -83,11 +84,11 @@
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->sekolah->nama_sekolah }} </span>
                             </x-table.cell> 
-                             <x-table.cell>
+                             {{-- <x-table.cell>
                                 @if (isset($values->mapel))
                                     {{collect($values->mapel)->pluck('title')->implode(', ')}}
                                 @endif
-                            </x-table.cell>
+                            </x-table.cell> --}}
                         </x-table.row>
                         @empty
                         <x-table.row>
@@ -165,7 +166,7 @@
                 </x-modal.dialog>
         </form>
 
-        <form wire:submit.prevent="saveMapel">
+        {{-- <form wire:submit.prevent="saveMapel">
                 <x-modal.dialog wire:model.defer="statMapel">
                     <x-slot name="title">Tambah Mapel</x-slot>
 
@@ -190,7 +191,7 @@
                         <x-button.primary type="submit">Save</x-button.primary>
                     </x-slot>
                 </x-modal.dialog>
-        </form>
+        </form> --}}
     </div>
 
 </section>
