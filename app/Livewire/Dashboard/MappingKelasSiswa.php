@@ -10,6 +10,7 @@ use App\Models\mappingSekolah as ModelMSekolah;
 use App\Models\Sekolah;
 use App\Models\Kelas;
 use Livewire\Attributes\Layout;
+use App\Models\MataPelajaran;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -29,6 +30,11 @@ class MappingKelasSiswa extends Component
         'sekolah_id' => null,
         'kelas_id' => null,
         'title' => null,
+    ];
+
+
+    public $datamapel = [ 
+        'mata_pelajaran_id' => null, 
     ];
 
     
@@ -146,7 +152,7 @@ class MappingKelasSiswa extends Component
     public function getRowsQueryProperty()
     {
         // dd($this->perPage);
-        $query = ModelMSekolah::query()->with('sekolah')->with('kelas.jenjang');
+        $query = ModelMSekolah::query()->with('sekolah')->with('kelas.jenjang')->with('mapel');
 
         return $this->applySorting($query);
     }
@@ -157,14 +163,41 @@ class MappingKelasSiswa extends Component
         return $this->applyPagination($this->rowsQuery);
         });
     }
+
+    public $statMapel = false;
+    public ModelMSekolah $editMs;
+    public function addMapel(ModelMSekolah $mp){
+        $mp->load(['kelas', 'mapel']);
+        $this->editMs = $mp;
+        $this->datamapel['mata_pelajaran_id'] = array_column($this->editMs->mapel->toArray(),'id');
+        $this->statMapel = true;
+        $this->dispatch('reinitSelect2');
+    }
+
+     public function saveMapel()
+    {
+       try {
+            $this->statMapel = false;
+            $mapel = $this->datamapel['mata_pelajaran_id']; 
+            $this->editMs->mapel()->sync($mapel); 
+            $this->notify($message ?? 'Succes tambah mapel ' );
+        } catch (\Illuminate\Validation\ValidationException $e) {
+
+            $this->notify('Periksa kembali form isian', 'warning');
+
+            throw $e;
+        }
+    }
     public function render()
     {
         $sekolah = Sekolah::get();
+        $mapel = MataPelajaran::get();
         $kelas = Kelas::get(); 
         return view('livewire.dashboard.mapping-kelas-siswa',[
             'data' => $this->rows,
             'sekolah' => $sekolah,
             'kelas' => $kelas,
+            'mapel' => $mapel,
         ]);
     }
 }

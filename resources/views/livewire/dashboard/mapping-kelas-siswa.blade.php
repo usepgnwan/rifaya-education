@@ -42,6 +42,7 @@
                         <x-table.heading>.::.</x-table.heading>
                         <x-table.heading>Nama kelas</x-table.heading>
                         <x-table.heading>Asal Sekolah</x-table.heading> 
+                        <x-table.heading>Mata Pelajaran</x-table.heading> 
                     </x-slot>
 
                     <x-slot name="body">
@@ -60,8 +61,7 @@
                         </x-table.row>
                         @endif
 
-                        @forelse ($data as $k => $values)
-
+                        @forelse ($data as $k => $values) 
                         <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $values->id }}" wire:target="filters.search,perPage,gotoPage, previousPage, nextPage">
                             <x-table.cell class="pr-0">
                                 <x-input.checkbox wire:model.live="selected" value="{{ $values->id }}" />
@@ -72,6 +72,7 @@
                             <x-table.cell>
                                 <div class="flex">
                                     <x-button.link wire:click="edit({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[uil--edit]"></span></x-button.link>
+                                    <x-button.link wire:click="addMapel({{ $values->id }})" class="bg-green-500 mx-1 px-2 py-1 rounded text-white" title="Edit"><span class="icon-[cil--book]"  ></span> tambah mapel</x-button.link>
 
 
                                 </div>
@@ -82,6 +83,11 @@
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->sekolah->nama_sekolah }} </span>
                             </x-table.cell> 
+                             <x-table.cell>
+                                @if (isset($values->mapel))
+                                    {{collect($values->mapel)->pluck('title')->implode(', ')}}
+                                @endif
+                            </x-table.cell>
                         </x-table.row>
                         @empty
                         <x-table.row>
@@ -157,7 +163,34 @@
                         <x-button.primary type="submit">Save</x-button.primary>
                     </x-slot>
                 </x-modal.dialog>
-            </form>
+        </form>
+
+        <form wire:submit.prevent="saveMapel">
+                <x-modal.dialog wire:model.defer="statMapel">
+                    <x-slot name="title">Tambah Mapel</x-slot>
+
+                    <x-slot name="content"> 
+                        <div>                             
+                            <x-input.group :inline="'true'" for="sekolah" label="Mata Pelajaran" :error="$errors->first('request.kelas_id')">
+                                <div wire:ignore>
+                                    <x-input.select wire:model.live="datamapel.mata_pelajaran_id" :multiple="'true'" :placeholder="__('- Pilih Mata Pelajaran -')"> 
+                                        @foreach ($mapel as $value)
+                                            <option value="{{ $value->id }}">{{ $value->title }}  </option>
+                                        @endforeach
+                                    </x-input.select>
+                                </div>
+                            </x-input.group>
+                        </div>
+
+                    </x-slot>
+
+                    <x-slot name="footer">
+                        <x-button.secondary wire:click="$set('statMapel', false)">Cancel</x-button.secondary>
+
+                        <x-button.primary type="submit">Save</x-button.primary>
+                    </x-slot>
+                </x-modal.dialog>
+        </form>
     </div>
 
 </section>
