@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class mappingSekolah extends Model
 {
     use HasFactory;
@@ -18,4 +19,10 @@ class mappingSekolah extends Model
     public function kelas() : BelongsTo{
         return $this->belongsTo(Kelas::class,'kelas_id');
     }
+
+    public function mapel(): BelongsToMany
+    {
+        return $this->belongsToMany(MataPelajaran::class, 'detailms_mapel');
+    }
+
 }
