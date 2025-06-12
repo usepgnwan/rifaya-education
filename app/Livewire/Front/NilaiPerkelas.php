@@ -25,6 +25,7 @@ class NilaiPerkelas extends Component
         ->join('siswas', 'mapping_kelas_siswas.siswa_id', '=', 'siswas.id')
         ->where('mapping_kelas_siswas.mapping_sekolah_id', $this->request['kelas_id'] )
         // ->select('siswas.nama_siswa')
+        ->orderBy('siswas.nama_siswa', 'asc')
         ->get()
         ->map(fn($x) => (array) $x)
         ->toArray();
