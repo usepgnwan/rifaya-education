@@ -29,16 +29,25 @@
             </thead>
             <tbody>
                 @forelse ($listsiswa as $value)
+                 
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                              {{ $value['nama_siswa'] }}
                         </td> 
                         @foreach ($listlabelnilai as $v )
                             <td scope="col" class="px-6 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white" >
-                                <div class="w-36 space-y-2">
-                                    <x-input.text type="number" wire:model="label.title" id="namanilai" placeholder="Nilai" />
-                                    <x-input.textarea :id="__('catatan')" wire:model="profile.lembaga_saat_ini" placeholder="Catatan"  />
-                      
+                                <div class="min-w-60 space-y-2"> 
+                                    
+                                    <x-input.text type="number"  wire:model.live.debounce.0ms="listNilai.{{ $value['siswa_id'] }}.{{ $v['id'] }}.nilai" id="namanilai" placeholder="Nilai"  wire:change="changeNilai({{ $listNilai[$value['siswa_id']][$v['id']]['id'] }},'nilai',{{ $value['siswa_id'] }},{{ $v['id'] }},'{{ $dataMAP->kelas->title }}')" />
+                                     
+                                    <select wire:model.live.debounce.0ms="listNilai.{{ $value['siswa_id'] }}.{{ $v['id'] }}.type" wire:change="changeNilai({{ $listNilai[$value['siswa_id']][$v['id']]['id'] }},'type',{{ $value['siswa_id'] }},{{ $v['id'] }},'{{ $dataMAP->kelas->title }}')"  class="w-full rounded-sm">
+                                        <option value="">- Pilih Status -</option> 
+                                        <option value="1">SELAMAT, NILAI ASAT KAMU AMAN!</option> 
+                                        <option value="2">NILAI ASAT KAMU PERLU DITINGKATKAN!</option> 
+                                    </select>
+                                
+                                    <x-input.textarea wire:model.live.debounce.0ms="listNilai.{{ $value['siswa_id'] }}.{{ $v['id'] }}.catatan" :id="__('catatan')" placeholder="Catatan" wire:change="changeNilai({{ $listNilai[$value['siswa_id']][$v['id']]['id'] }},'catatan',{{ $value['siswa_id'] }},{{ $v['id'] }},'{{ $dataMAP->kelas->title }}')"  /> 
+                                        
                                 </div>
                             </td>
                         @endforeach
