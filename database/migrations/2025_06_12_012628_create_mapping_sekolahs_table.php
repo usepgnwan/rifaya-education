@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mapping_sekolahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sekolah_id')->constrained()->onDelete('cascade');
-            $table->foreignId('kelas_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
             $table->string('title')->nullable();
             $table->timestamps();
         });
