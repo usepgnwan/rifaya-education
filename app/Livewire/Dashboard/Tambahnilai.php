@@ -29,8 +29,7 @@ class Tambahnilai extends Component
     ];
     public function mount($id =null)
     {
-        $this->dataMAP = ModelMSekolah::find($id)->with('sekolah')->with('kelas.jenjang')->first();
-        
+        $this->dataMAP = ModelMSekolah::find($id)->with('sekolah')->with('kelas.jenjang')->where('id',$id)->first(); 
         $this->request['mapping_sekolah_id'] =  $this->dataMAP->id;
         $this->label['mapping_sekolah_id'] =  $this->dataMAP->id;
         $this->siswa($id);
