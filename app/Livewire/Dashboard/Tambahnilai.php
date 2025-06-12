@@ -70,9 +70,9 @@ class Tambahnilai extends Component
     }
     public function changeNilai($id, $type, $id_siswa, $mapping_label_nilai_id,$kelas){
         // dd($this->listNilai[$id_siswa][$mapping_label_nilai_id][$type]);
-        $c8= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/Hjz24B9ijWwHzwRk6'>https://forms.gle/Hjz24B9ijWwHzwRk6</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
+        $c8= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/Hjz24B9ijWwHzwRk6' class='text-blue-600'>https://forms.gle/Hjz24B9ijWwHzwRk6</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
 
-        $c7= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/GodUeKKz3WYWkYo98'> https://forms.gle/GodUeKKz3WYWkYo98</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
+        $c7= "Silahkan kerjakan soal perbaikan (10 soal yang diambil dari soal ASAT) <a href='https://forms.gle/GodUeKKz3WYWkYo98' class='text-blue-600'> https://forms.gle/GodUeKKz3WYWkYo98</a> (baca cara mengerjakannya, dan dkirim maksimal senin, 16 Juni 2025 pukul 17.00 WIB, tidak ada tambahan waktu karena sudah diberikan waktu yang lama)";
 
         $aman = "Bagi yang sudah AMAN, tidak perlu mengerjakan tugas perbaikan, dikarenakan keterbatasan waktu dan kesibukkan pendampingan siswa yang perbaikan. Informasi ini sudah bisa menjadi bukti ketuntasan.";
         
