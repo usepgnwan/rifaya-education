@@ -26,6 +26,7 @@ use App\Livewire\Front\Page\RegistrasiTeacher;
 use App\Livewire\Front\Post;
 use App\Livewire\Front\Sop;
 use App\Livewire\Front\NilaiSiswa;
+use App\Livewire\Front\NilaiPerkelas;
 use App\Livewire\Dashboard\Tambahnilai;
 use App\Livewire\Front\StudentPageRegister;
 use App\Livewire\Dashboard\MappingKelasSiswa;
@@ -60,7 +61,8 @@ Route::get('/logout', LogoutController::class)->name('logout');
 
 
 
-Route::get('/data/nilai-siswa', NilaiSiswa::class)->name('nilai.siswa');
+Route::get('/data/nilai-siswa/{id?}', NilaiSiswa::class)->name('nilai.siswa');
+Route::get('/data/nilai-perkelas', NilaiPerkelas::class)->name('nilai.perkelas');
 
 Route::prefix('success')->group(function(){
     Route::get('register/teacher', RegistrasiTeacher::class)->name('success.register.teacher');
