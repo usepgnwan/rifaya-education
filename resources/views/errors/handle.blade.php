@@ -29,7 +29,7 @@
             <br><br>
             Terima kasih atas pengertiannya.')"></x-errors>
          @elseif ($statusCode == 405)
-            <x-errors :errorCode="__('405')" :msg="__('KAMU SUDAH MELEWATI BATAS WAKTU REMEDIAL ASAT MATEMATIKA. SESUAI INFORMASI, REMEDIAL DI BERIKAN WAKTU 13-16 JUNI 2025 PUKUL 17.00 WIB.')"></x-errors>
+            <x-errors :errorCode="__('405')" :msg="__('KAMU SUDAH MELEWATI BATAS WAKTU REMEDIAL ASAT MATEMATIKA. SESUAI INFORMASI, REMEDIAL DI BERIKAN WAKTU 13-16 JUNI 2025 PUKUL 19.00 WIB.')"></x-errors>
         @elseif ($statusCode == 401)
             <x-errors :errorCode="__('401')" :msg="__('Halaman tidak tersedia')"></x-errors>
         @endif

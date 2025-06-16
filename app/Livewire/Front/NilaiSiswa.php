@@ -28,7 +28,7 @@ class NilaiSiswa extends Component
     }
     public function render()
     {
-        abort(405, 'Page Expired');
+        // abort(405, 'Page Expired');
         return view('livewire.front.nilai-siswa');
     }
 }
