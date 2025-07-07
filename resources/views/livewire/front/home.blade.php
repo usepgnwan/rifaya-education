@@ -428,43 +428,43 @@
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>SMA kelas 10-11 Rp 115.000/90 menit</div>
+                                            <div>SMA kelas 10-11 Rp 105.000/90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>SMA kelas 12 Rp 125.000/90 menit</div>
+                                            <div>SMA kelas 12 Rp 110.000/90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>Alumni/UTBK/persiapan tes TNI/POLRI/Sekolah kedinasan Rp 135.000/ 90 menit</div>
+                                            <div>Alumni/UTBK/persiapan tes TNI/POLRI/Sekolah kedinasan Rp 115.000/ 90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>TOEFL Rp 135.000/90 menit</div>
+                                            <div>TOEFL Rp 120.000/90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>IELTS Rp 140.000/90 menit</div>
+                                            <div>IELTS Rp 125.000/90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>Mata Kuliah Rp 150.000/90 menit</div>
+                                            <div>Mata Kuliah Rp 130.000/90 menit</div>
                                         </div>
                                     </li>
                                     <li class="mb-1">
                                         <div class="flex">
                                             <div class="mr-2"><span class="icon-[material-symbols--checklist-rounded]"></span> </div>
-                                            <div>Persiapan tes CPNS Rp 155.000/90 menit</div>
+                                            <div>Persiapan tes CPNS Rp 130.000/90 menit</div>
                                         </div>
                                     </li>
                                 </ul>
