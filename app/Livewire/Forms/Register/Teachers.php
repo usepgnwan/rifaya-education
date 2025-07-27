@@ -45,7 +45,7 @@ trait Teachers
         return [
             'user.name' => 'required|min:3',
             'user.email' => 'required|email:dns|unique:users,email',
-            'user.profile' => 'nullable|image|mimes:jpg,png,jpeg,svg,gif|max:2048',
+            'user.profile' => 'required|image|mimes:jpg,png,jpeg,svg,gif|max:2048',
             'profile.no_telp' => 'required|numeric',
             'profile.tanggal_lahir' => 'required',
             'profile.alamat_domisili' => 'required',

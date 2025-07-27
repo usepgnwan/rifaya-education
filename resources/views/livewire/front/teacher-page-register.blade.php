@@ -143,7 +143,7 @@
                         </x-input.group>
                         <div class="mb-4 mt-4">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Foto Terkini (optional)</label>
-                            <x-input.group for="Title" :inline="'true'" label="Foto" :error="$errors->first('form.image')"  >
+                            <x-input.group for="Title" :inline="'true'" label="Foto" :error="$errors->first('user.profile')"  >
                             <div
                                 x-data="{ uploading: false, progress: 0 }"
                                 x-on:livewire-upload-start="uploading = true"
