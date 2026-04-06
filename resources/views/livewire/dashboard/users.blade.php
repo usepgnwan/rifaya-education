@@ -125,6 +125,8 @@
                         <x-table.heading>Mata Pelajaran</x-table.heading>
                         @endif
                         @if (($label_type) == 'teacher')
+                            <x-table.heading >Mapel Lainnya</x-table.heading>
+                            <x-table.heading >Link Mengajar</x-table.heading>
                             <x-table.heading >Metode Pengajaran</x-table.heading>
                         @endif
                         <x-table.heading>Status</x-table.heading>
@@ -243,6 +245,15 @@
                                 -
                                 @endforelse
                                 </div>
+                            </x-table.cell>
+                            <x-table.cell >
+                            
+                                {{ $values->user_profile->mapel_lainnya ?? "-" }}
+                            </x-table.cell>
+                            <x-table.cell >
+                                @if (!is_null($values->user_profile->link_pengajar ?? null))
+                                    <a  class="text-xs mb-1 mb rounded px-2 py-1 bg-blue-500 text-white text-nowrap" href="{{ $values->user_profile->link_pengajar ?? '' }}" target="_blank">Lihat Video</a>
+                                @endif
                             </x-table.cell>
                             @endif
                             @if (($label_type) == 'teacher')

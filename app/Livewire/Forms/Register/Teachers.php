@@ -53,6 +53,7 @@ trait Teachers
             'profile.perangkat_ajar' => 'required',
             'profile.cv' => 'required|mimes:pdf|max:5048',
             'profile.sim' => 'required',
+            'profile.link_pengajar' => 'required',
             'mapel' => 'required',
             'waktu' => 'required',
             'hari' => 'required',
@@ -74,6 +75,7 @@ trait Teachers
             'profile.perangkat_ajar' => 'Perangkat Ajar',
             'profile.cv' => 'Curriculum Vitae (CV)',
             'profile.sim' => 'SIM',
+            'profile.link_pengajar' => 'Upload link video mengajar',
             'sosmed.title' => 'Sosial Media',
             'waktu' => 'Jam Ajar',
             'hari' => 'Hari',
@@ -81,6 +83,20 @@ trait Teachers
             'mentoring' => 'Metode Mengajar',
         ];
     }
+
+    public $show_lainnya = false;
+
+    public function updatedMapel($value)
+    { 
+        // Cek apakah ada pilihan 'lainnya' (misal ID = 999)
+        if (in_array('3', $this->mapel)) {
+            $this->show_lainnya = true;
+        } else {
+            $this->show_lainnya = false;
+            $this->mapel_lainnya = '';
+        }
+    }
+
     public function register()
     {
         $mentoring = [];

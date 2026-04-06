@@ -48,7 +48,7 @@
                     </div>
                     <div class="mb-2">
                         <x-input.group for="Alamat Domisili" :inline="'true'" label="Alamat Domisili <span class='text-red-500'>*</span>" :error="$errors->first('profile.alamat_domisili')"  >
-                            <x-input.textarea :id="__('profile')" wire:model="profile.alamat_domisili" placeholder="Alamat Domisili"  />
+                            <x-input.textarea :id="__('profile')" wire:model="profile.alamat_domisili" placeholder="Pastikan masukkan alamat domisili yang lengkap"  />
                         </x-input.group>
                     </div>
                     <div class="mb-2 hidden">
@@ -67,7 +67,7 @@
                         </x-input.group>
                     </div>
                     <div class="mb-2" >
-                        <x-input.group for="kelas" :inline="'true'" label="Kemampuan Mengajar  (optional)" :error="$errors->first('kelas')"  >
+                        <x-input.group for="kelas" :inline="'true'" label="Kemampuan Mengajar  (lebih dari satu)" :error="$errors->first('kelas')"  >
                             <div wire:ignore>
                                 <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Kelas -')"  wire:model.live.debounce.300ms="kelas" >
                                     @foreach ($_kelas as $v )
@@ -79,7 +79,7 @@
                         <span></span>
                     </div>
                     <div class="mb-2" >
-                        <x-input.group for="kendaraan" :inline="'true'" label="Mata Pelajaran Yang dikuasai <span class='text-red-500'>*</span>" :error="$errors->first('mapel')"  >
+                        <x-input.group for="mapel" :inline="'true'" label="Mata Pelajaran Yang dikuasai <span class='text-red-500'>*</span>" :error="$errors->first('mapel')"  >
                             <div wire:ignore>
                                 <x-input.select :multiple="__('true')" :placeholder="__('- Pilih Mata Pelajaran -')"  wire:model.live.debounce.300ms="mapel" >
                                     @foreach ($mata_pelajarans as $v )
@@ -89,7 +89,16 @@
                             </div>
                         </x-input.group>
                     </div>
-
+                    @if ($show_lainnya)
+                        <div class="mb-2"> 
+                            <x-input.group for="mapel_lainnya" :inline="'true'" label="Mata Pelajaran lainnya <span class='text-red-500'>*</span>" :error="$errors->first('profile.mapel_lainnya')"  >
+                                <x-input.text :id="__('mapel_lainnya')" wire:model="profile.mapel_lainnya" placeholder="Mata Pelajaran lainnya"  />
+                            </x-input.group>
+                            <small>
+                                jika lebih dari satu dipisah oleh koma (,)
+                            </small>
+                        </div>
+                    @endif
                     <div class="mb-2" >
                         <x-input.group for="hari" :inline="'true'" label="Sebutkan jadwal ketersediaan mengajar Anda di Rifaya Education <span class='text-red-500'>*</span>" :error="$errors->first('hari')"  >
                             <div wire:ignore>
@@ -142,7 +151,7 @@
                             </div>
                         </x-input.group>
                         <div class="mb-4 mt-4">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Foto Terkini (optional)</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="multiple_files">Upload Foto Terkini (wajib)</label>
                             <x-input.group for="Title" :inline="'true'" label="Foto" :error="$errors->first('user.profile')"  >
                             <div
                                 x-data="{ uploading: false, progress: 0 }"
@@ -178,6 +187,14 @@
                                 <p class="text-xs text-gray-400 mt-2">PDF are Allowed. Max 5mb</p>
                             </x-input.group>
                         </div>
+                    </div> 
+                    <div class="mb-2"> 
+                        <x-input.group for="link_pengajar" :inline="'true'" label="Upload link video mengajar <span class='text-red-500'>*</span>" :error="$errors->first('profile.link_pengajar')"  >
+                            <x-input.text :id="__('link_pengajar')" wire:model="profile.link_pengajar" placeholder="Upload link video mengajar"  />
+                        </x-input.group>
+                        <small>
+                            Drive/Youtube privat, diutamakan terlihat wajah, jika tidak memungkinan tidak masalah, cukup bahas 1 soal HOTS, ini memudahkan kami dalam menyeleksi guru/tutor
+                        </small>
                     </div>
                     <div class="flex items-start mb-5">
                         <div class="flex items-center h-5">
