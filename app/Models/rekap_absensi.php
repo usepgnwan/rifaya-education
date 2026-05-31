@@ -14,6 +14,10 @@ class rekap_absensi extends Model
     protected $guarded = ['id'];
     protected $with = ['mapping'];
 
+    protected $casts = [
+        'aktivitas' => 'array',
+    ];
+
     public function mapping() : BelongsTo{
         return $this->belongsTo(MappingSiswa::class,'mapping_siswa_id');
     }

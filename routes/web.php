@@ -82,7 +82,10 @@ Route::middleware('auth')->group(function () {
             Route::get('mapping/users', MappingSiswa::class)->name('account.mapping.users');
         });
         Route::middleware(['roles:1,2,5'])->group(function(){
+            Route::get('salary/akumulasi', \App\Livewire\Dashboard\AkumulasiFee::class)->name('account.salary.akumulasi');
             Route::get('salary/{type?}', Pendapatan::class)->name('account.salary');
+            Route::get('invoice/ortu/{id}', [\App\Http\Controllers\InvoiceController::class, 'invoiceOrtu'])->name('account.invoice.ortu');
+            Route::get('invoice/guru/{id}', [\App\Http\Controllers\InvoiceController::class, 'invoiceGuru'])->name('account.invoice.guru');
         });
         Route::get('/users/profile/{username?}', Profile::class)->name('account.users.profile');
         Route::prefix('absensi')->group(function(){

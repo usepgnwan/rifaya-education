@@ -49,6 +49,7 @@
                         <x-table.heading class="w-full">Mata Pelajaran</x-table.heading>
                         <x-table.heading>Tanggal Awal</x-table.heading>
                         <x-table.heading>Tanggal Akhir</x-table.heading>
+                        <x-table.heading>Aktivitas & Durasi</x-table.heading>
                         <x-table.heading>Jadwal Terlaksana</x-table.heading>
                         <x-table.heading>Total Sesi</x-table.heading>
                         <x-table.heading>Tambahan Jam Ajar</x-table.heading>
@@ -111,6 +112,29 @@
                             </x-table.cell>
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->tanggal_akhir }} </span>
+                            </x-table.cell>
+                            <x-table.cell>
+                                @php
+                                    $totalDurasi = 0;
+                                    if (is_array($values->aktivitas)) {
+                                        foreach($values->aktivitas as $act) {
+                                            if (!empty($act['mulai']) && !empty($act['selesai'])) {
+                                                $mulai = \Carbon\Carbon::parse($act['mulai']);
+                                                $selesai = \Carbon\Carbon::parse($act['selesai']);
+                                                // If selesai is next day
+                                                if ($selesai < $mulai) {
+                                                    $selesai->addDay();
+                                                }
+                                                $totalDurasi += $mulai->diffInMinutes($selesai);
+                                            }
+                                        }
+                                    }
+                                    $jam = floor($totalDurasi / 60);
+                                    $menit = $totalDurasi % 60;
+                                @endphp
+                                <button type="button" wire:click="openAktivitasModal({{ $values->id }})" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs whitespace-nowrap shadow-sm">
+                                    Detail Aktivitas ({{ $jam }}j {{ $menit }}m)
+                                </button>
                             </x-table.cell>
                             <x-table.cell>
                                 <span class="text-cool-gray-900 font-medium">{{ $values->jadwal_terlaksana }} </span>
@@ -195,22 +219,6 @@
                     <x-input.group :inline="'true'" for="tanggal_akhir" label="Tanggal Akhir <span class='mt-1 text-red-500 text-sm'>*</span>" :error="$errors->first('request.tanggal_akhir')">
                         <x-input.text type="date" wire:model="request.tanggal_akhir" id="tanggal_akhir" placeholder="Fee Transfer " />
                     </x-input.group>
-                    <div>
-                        <x-input.group :inline="'true'" for="Jadwal Terlaksana" label="Jadwal Terlaksana <span class='mt-1 text-red-500 text-sm'>*</span>" :error="$errors->first('request.jadwal_terlaksana')">
-                            <div wire:ignore>
-                                <x-input.select wire:model.live.debounce.300ms="request.jadwal_terlaksana" :placeholder="__('- Pilih Jadwal Terlaksana -')">
-                                    <option value="">- Pilih Jadwal Terlaksana -</option>
-                                    <option value="Senin"> Senin</option>
-                                    <option value="Selasa"> Selasa</option>
-                                    <option value="Rabu"> Rabu</option>
-                                    <option value="Kamis"> Kamis</option>
-                                    <option value="Jum'at"> Jum'at</option>
-                                    <option value="Sabtu"> Sabtu</option>
-                                    <option value="Minggu"> Minggu</option>
-                                </x-input.select>
-                            </div>
-                        </x-input.group>
-                    </div>
 
                     <x-input.group :inline="'true'" for="total_sesi" label="Total Sesi <span class='mt-1 text-red-500 text-sm'>*</span>" :error="$errors->first('request.total_sesi')">
                         <x-input.text type="number" wire:model="request.total_sesi" id="total_sesi" placeholder="Total Sesi " />
@@ -219,13 +227,88 @@
                         <x-input.text type="number" wire:model="request.tambahan_jam_ajar" id="tambahan_jam_ajar" placeholder="Tambahan Jam Ajar (menit)" />
                     </x-input.group>
 
-                    <x-input.group :inline="'true'" for="file" label="File/Foto <span class='mt-1 text-red-500 text-sm'>*</span>" :error="$errors->first('request.file')">
+                    <x-input.group :inline="'true'" for="file" label="File/Foto" :error="$errors->first('request.file')">
                         <input type="file" name="file" id="file" wire:model="request.file"  >
                         <p class="text-xs text-gray-400 mt-2">PDF,PNG, JPG SVG  and GIF are Allowed.</p>
                     </x-input.group>
 
+                    <!-- Aktivitas Manager (Local) -->
+                    <div class="mt-6 pt-4 border-t border-gray-200 col-span-full">
+                        <h3 class="font-medium text-gray-800 mb-3 text-sm">Manajemen Aktivitas (Sesi Ini)</h3>
+                        <div class="flex flex-col gap-4">
+                            <div class="bg-gray-50 p-4 rounded-md border shadow-sm">
+                                <h4 class="font-medium text-gray-700 mb-3 border-b pb-2">{{ $tempAktivitasIndex !== null ? 'Edit Aktivitas' : 'Form Input Aktivitas' }}</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-600 mb-1">Tanggal</label>
+                                        <x-input.text type="date" wire:model="tempAktivitas.tanggal" />
+                                        @error('tempAktivitas.tanggal') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-600 mb-1">Aktivitas</label>
+                                        <x-input.text type="text" wire:model="tempAktivitas.materi" placeholder="Detail aktivitas..." />
+                                        @error('tempAktivitas.materi') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-600 mb-1">Jam Mulai</label>
+                                        <x-input.text type="time" wire:model="tempAktivitas.mulai" />
+                                        @error('tempAktivitas.mulai') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-600 mb-1">Jam Selesai</label>
+                                        <x-input.text type="time" wire:model="tempAktivitas.selesai" />
+                                        @error('tempAktivitas.selesai') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex space-x-2 justify-end">
+                                    @if($tempAktivitasIndex !== null)
+                                    <button type="button" wire:click="resetTempAktivitas" class="bg-gray-500 text-white rounded px-3 py-1.5 text-xs font-medium hover:bg-gray-600 transition-colors">
+                                        Batal
+                                    </button>
+                                    @endif
+                                    <button type="button" wire:click="addTempAktivitas" class="bg-blue-600 text-white rounded px-4 py-1.5 text-xs font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+                                        <span class="icon-[uil--save]"></span> {{ $tempAktivitasIndex !== null ? 'Update' : 'Add Aktivitas' }}
+                                    </button>
+                                </div>
+                            </div>
 
-
+                            <div class="overflow-x-auto rounded border">
+                                <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="px-3 py-2 text-left text-xs font-bold text-gray-600 uppercase">Tanggal</th>
+                                            <th class="px-3 py-2 text-left text-xs font-bold text-gray-600 uppercase">Aktivitas</th>
+                                            <th class="px-3 py-2 text-left text-xs font-bold text-gray-600 uppercase">Jam</th>
+                                            <th class="px-3 py-2 text-center text-xs font-bold text-gray-600 uppercase">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        @if(isset($request['aktivitas']) && is_array($request['aktivitas']) && count($request['aktivitas']) > 0)
+                                            @foreach($request['aktivitas'] as $index => $act)
+                                            <tr class="hover:bg-gray-50">
+                                                <td class="px-3 py-2 whitespace-nowrap">{{ $act['tanggal'] ?? '' }}</td>
+                                                <td class="px-3 py-2">{{ $act['materi'] ?? '' }}</td>
+                                                <td class="px-3 py-2 whitespace-nowrap text-gray-600">{{ $act['mulai'] ?? '' }} - {{ $act['selesai'] ?? '' }}</td>
+                                                <td class="px-3 py-2 whitespace-nowrap text-center">
+                                                    <button type="button" wire:click="editTempAktivitas({{ $index }})" class="text-blue-600 hover:text-blue-900 mx-1 p-1 bg-blue-50 rounded" title="Edit">
+                                                        <span class="icon-[uil--edit] text-lg"></span>
+                                                    </button>
+                                                    <button type="button" wire:click="removeTempAktivitas({{ $index }})" class="text-red-600 hover:text-red-900 mx-1 p-1 bg-red-50 rounded" title="Delete">
+                                                        <span class="icon-[prime--trash] text-lg"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="4" class="px-3 py-4 text-center text-gray-400 italic text-xs">Belum ada aktivitas.</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                     <div>
                         <x-input.group :inline="'true'" for="Laporan Orang Tua" label="Sudah Laporan Orang Tua ? <span class='mt-1 text-red-500 text-sm'>*</span>" :error="$errors->first('request.laporan')">
@@ -260,6 +343,111 @@
                 </x-slot>
             </x-modal.dialog>
         </form>
+
+        <!-- Modal Aktivitas -->
+        <x-modal.dialog wire:model="showAktivitasModal" maxWidth="4xl">
+            <x-slot name="title">Manajemen Aktivitas</x-slot>
+            <x-slot name="content">
+                <div class="flex flex-col gap-6">
+                    <!-- Top Form -->
+                    <div class="bg-gray-50 p-4 rounded-md border shadow-sm">
+                        <h4 class="font-medium text-gray-700 mb-3 border-b pb-2">{{ $editAktivitasIndex !== null ? 'Edit Aktivitas' : 'Form Input Aktivitas' }}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">Tanggal</label>
+                                <x-input.text type="date" wire:model="formAktivitas.tanggal" />
+                                @error('formAktivitas.tanggal') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">Aktivitas</label>
+                                <x-input.text type="text" wire:model="formAktivitas.materi" placeholder="Detail aktivitas..." />
+                                @error('formAktivitas.materi') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">Jam Mulai</label>
+                                <x-input.text type="time" wire:model="formAktivitas.mulai" />
+                                @error('formAktivitas.mulai') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">Jam Selesai</label>
+                                <x-input.text type="time" wire:model="formAktivitas.selesai" />
+                                @error('formAktivitas.selesai') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2 justify-end">
+                            @if($editAktivitasIndex !== null)
+                            <button type="button" wire:click="resetAktivitasForm" class="bg-gray-500 text-white rounded px-4 py-2 text-sm font-medium hover:bg-gray-600 shadow-sm transition-colors">
+                                Batal
+                            </button>
+                            @endif
+                            <button type="button" wire:click="saveAktivitas" class="bg-blue-600 text-white rounded px-6 py-2 text-sm font-medium hover:bg-blue-700 shadow-sm transition-colors flex items-center gap-2">
+                                <span class="icon-[uil--save]"></span> Save
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Table -->
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-3 border-b pb-2">List Aktivitas Tersimpan</h4>
+                        <div class="overflow-x-auto rounded border">
+                            <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Tanggal</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Aktivitas</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Jam Mulai</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Jam Selesai</th>
+                                        <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Durasi</th>
+                                        <th class="px-4 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @forelse($currentAktivitasList as $index => $act)
+                                        @php
+                                            $durasiStr = '-';
+                                            if (!empty($act['mulai']) && !empty($act['selesai'])) {
+                                                $m = \Carbon\Carbon::parse($act['mulai']);
+                                                $s = \Carbon\Carbon::parse($act['selesai']);
+                                                if ($s < $m) $s->addDay();
+                                                $mins = $m->diffInMinutes($s);
+                                                $durasiStr = floor($mins / 60) . 'j ' . ($mins % 60) . 'm';
+                                            }
+                                        @endphp
+                                        <tr class="hover:bg-gray-50 transition-colors">
+                                            <td class="px-4 py-3 whitespace-nowrap">{{ $act['tanggal'] }}</td>
+                                            <td class="px-4 py-3">{{ $act['materi'] }}</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-gray-600">{{ $act['mulai'] }}</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-gray-600">{{ $act['selesai'] }}</td>
+                                            <td class="px-4 py-3 whitespace-nowrap font-semibold text-blue-600 bg-blue-50/50">{{ $durasiStr }}</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-center">
+                                                <button type="button" wire:click="editAktivitas({{ $index }})" class="text-blue-600 hover:text-blue-900 mx-1 p-1.5 bg-blue-50 rounded transition-colors" title="Update">
+                                                    <span class="icon-[uil--edit] text-lg"></span>
+                                                </button>
+                                                <button type="button" wire:click="deleteAktivitas({{ $index }})" class="text-red-600 hover:text-red-900 mx-1 p-1.5 bg-red-50 rounded transition-colors" title="Delete">
+                                                    <span class="icon-[prime--trash] text-lg"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="px-4 py-8 text-center text-gray-400 italic">
+                                                <span class="icon-[prime--inbox] text-3xl block mx-auto mb-2 opacity-50"></span>
+                                                Belum ada aktivitas tersimpan.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-button.secondary wire:click="$set('showAktivitasModal', false)">Tutup</x-button.secondary>
+            </x-slot>
+        </x-modal.dialog>
+
     </div>
 
 </section>

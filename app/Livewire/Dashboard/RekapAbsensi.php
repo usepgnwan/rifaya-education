@@ -35,15 +35,34 @@ class RekapAbsensi extends Component
         'tambahan_jam_ajar'=> null,
         'total_sesi'=> null,
         'laporan'=> null,
-        'kendala'=> null,
-        'saran'=> null,
         'file'=> null,
         'catatan'=> null,
+        'aktivitas'=> [],
     ];
     public bool $showFilters = false;
     public array $breadcumb = [];
     public $showDeleteModal = false;
     public $showEditModal = false;
+    public $showAktivitasModal = false;
+    public $selectedRekapId = null;
+    public $currentAktivitasList = [];
+    public $editAktivitasIndex = null;
+    
+    public $formAktivitas = [
+        'tanggal' => '',
+        'materi' => '',
+        'mulai' => '',
+        'selesai' => ''
+    ];
+
+    public $tempAktivitas = [
+        'tanggal' => '',
+        'materi' => '',
+        'mulai' => '',
+        'selesai' => ''
+    ];
+    public $tempAktivitasIndex = null;
+
     public rekap_absensi $_data;
 
     public $_images = null;
@@ -59,10 +78,9 @@ class RekapAbsensi extends Component
             'request.fee_transfer' => 'required',
             'request.tanggal_awal' => 'required',
             'request.tanggal_akhir' => 'required',
-            'request.jadwal_terlaksana' => 'required',
             'request.total_sesi' => 'required',
             'request.laporan' => 'required',
-            'request.file' => 'required|mimes:pdf,jpg,png,jpeg,svg,gif|max:5048',
+            'request.file' => 'nullable|mimes:pdf,jpg,png,jpeg,svg,gif|max:5048',
         ];
     }
 
@@ -72,7 +90,6 @@ class RekapAbsensi extends Component
             'request.fee_transfer' => 'Fee Transfer',
             'request.tanggal_awal' => 'Tanggal Awal',
             'request.tanggal_akhir' => 'Tanggal Akhir',
-            'request.jadwal_terlaksana' => 'Jadwal Terlaksana',
             'request.total_sesi' => 'Total Sesi',
             'request.file' => 'File',
             'request.laporan' => 'Laporan',
@@ -158,12 +175,108 @@ class RekapAbsensi extends Component
         }
     }
 
+    public function openAktivitasModal($rekapId)
+    {
+        $this->selectedRekapId = $rekapId;
+        $rekap = rekap_absensi::find($rekapId);
+        $this->currentAktivitasList = is_array($rekap->aktivitas) ? $rekap->aktivitas : [];
+        $this->resetAktivitasForm();
+        $this->showAktivitasModal = true;
+    }
+
+    public function resetAktivitasForm()
+    {
+        $this->formAktivitas = ['tanggal' => '', 'materi' => '', 'mulai' => '', 'selesai' => ''];
+        $this->editAktivitasIndex = null;
+    }
+
+    public function editAktivitas($index)
+    {
+        $this->formAktivitas = $this->currentAktivitasList[$index];
+        $this->editAktivitasIndex = $index;
+    }
+
+    public function deleteAktivitas($index)
+    {
+        unset($this->currentAktivitasList[$index]);
+        $this->currentAktivitasList = array_values($this->currentAktivitasList);
+        $this->saveAktivitasToDb();
+    }
+
+    public function saveAktivitas()
+    {
+        $this->validate([
+            'formAktivitas.tanggal' => 'required|date',
+            'formAktivitas.materi' => 'required|string',
+            'formAktivitas.mulai' => 'required|string',
+            'formAktivitas.selesai' => 'required|string',
+        ]);
+
+        if ($this->editAktivitasIndex !== null) {
+            $this->currentAktivitasList[$this->editAktivitasIndex] = $this->formAktivitas;
+        } else {
+            $this->currentAktivitasList[] = $this->formAktivitas;
+        }
+
+        $this->saveAktivitasToDb();
+        $this->resetAktivitasForm();
+        $this->notify('Aktivitas berhasil disimpan');
+    }
+
+    private function saveAktivitasToDb()
+    {
+        $rekap = rekap_absensi::find($this->selectedRekapId);
+        if ($rekap) {
+            $rekap->aktivitas = $this->currentAktivitasList;
+            $rekap->save();
+        }
+    }
+
     public function create()
     {
         $this->reset('request');
         $this->dispatch('reinitSelect2');
         $this->_data = $this->makeBlankTransaction();
         $this->showEditModal = true;
+    }
+
+    public function addTempAktivitas()
+    {
+        $this->validate([
+            'tempAktivitas.tanggal' => 'required|date',
+            'tempAktivitas.materi' => 'required|string',
+            'tempAktivitas.mulai' => 'required|string',
+            'tempAktivitas.selesai' => 'required|string',
+        ]);
+        
+        if (!isset($this->request['aktivitas']) || !is_array($this->request['aktivitas'])) {
+            $this->request['aktivitas'] = [];
+        }
+
+        if ($this->tempAktivitasIndex !== null) {
+            $this->request['aktivitas'][$this->tempAktivitasIndex] = $this->tempAktivitas;
+        } else {
+            $this->request['aktivitas'][] = $this->tempAktivitas;
+        }
+        $this->resetTempAktivitas();
+    }
+
+    public function resetTempAktivitas()
+    {
+        $this->tempAktivitas = ['tanggal' => '', 'materi' => '', 'mulai' => '', 'selesai' => ''];
+        $this->tempAktivitasIndex = null;
+    }
+
+    public function editTempAktivitas($index)
+    {
+        $this->tempAktivitas = $this->request['aktivitas'][$index];
+        $this->tempAktivitasIndex = $index;
+    }
+
+    public function removeTempAktivitas($index)
+    {
+        unset($this->request['aktivitas'][$index]);
+        $this->request['aktivitas'] = array_values($this->request['aktivitas']);
     }
 
     public function edit(rekap_absensi $data)
@@ -175,7 +288,10 @@ class RekapAbsensi extends Component
         foreach($this->request as $k => $v){
             $this->request[$k] = $data[$k] ?? null;
         }
-        // dd($this->request);
+        if (!isset($this->request['aktivitas']) || !is_array($this->request['aktivitas'])) {
+            $this->request['aktivitas'] = [];
+        }
+        $this->resetTempAktivitas();
         $this->showEditModal = true;
     }
     public function deleteSelected()
